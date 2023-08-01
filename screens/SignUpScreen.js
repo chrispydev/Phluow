@@ -8,9 +8,6 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import FormInput from "../components/FormInput";
-import SubmitButton from "../components/SubmitButton";
-import RegisterIcon from "../components/RegisterIcon";
 
 /* eslint-disable*/
 export default function SignUpScreen({ navigation }) {
@@ -23,51 +20,6 @@ export default function SignUpScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor="#fff" />
-      <ScrollView>
-        <View style={styles.header}>
-          <Text style={styles.ButtonText}>Sign up</Text>
-        </View>
-        <FormInput
-          propState={setName}
-          formLable="Name"
-          placeHolderText="Full Name"
-        />
-        <FormInput
-          propState={setName}
-          formLable="Email"
-          placeHolderText="Email Address"
-          keyboardType="email-address"
-        />
-        <FormInput
-          stateProps={setName}
-          formLable="Password"
-          placeHolderText="Pick a strong password"
-          secureText={true}
-        />
-        <Text
-          style={{ color: "#fff", marginVertical: 20, textAlign: "center" }}
-        >
-          Or
-        </Text>
-        <View style={styles.socialRegister}>
-          <RegisterIcon iconText="facebook" buttonAction={submit} />
-          <RegisterIcon iconText="google" buttonAction={submit} />
-          <RegisterIcon iconText="instagram" buttonAction={submit} />
-        </View>
-      </ScrollView>
-      <SubmitButton buttonText="Create account" buttonAction={submit} />
-      <View
-        style={{
-          marginVertical: 10,
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <Text style={{ color: "#fff", marginRight: 10 }}>Have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
-          <Text style={{ color: "#33b328" }}>Sign in</Text>
-        </TouchableOpacity>
-      </View>
     </SafeAreaView>
   );
 }

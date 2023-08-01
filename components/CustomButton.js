@@ -3,9 +3,9 @@ import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 /* eslint-disable */
 
-export default function SubmitButton({ buttonText, buttonAction }) {
+export default function CustomButton({ buttonText, buttonAction }) {
   return (
-    <TouchableOpacity style={styles.buttonStyle} onPress={buttonAction}>
+    <TouchableOpacity style={[styles.buttonStyle]} onPress={buttonAction}>
       <Text style={styles.TextColor}>{buttonText}</Text>
     </TouchableOpacity>
   );
@@ -13,14 +13,15 @@ export default function SubmitButton({ buttonText, buttonAction }) {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    backgroundColor: "#33B328",
-    marginTop: 15,
-    paddingVertical: 10,
-    paddingHorizontal: 5,
+    backgroundColor: "#007ACC",
+    paddingVertical: 12,
+    paddingHorizontal: 29,
     borderRadius: 10,
     alignItems: "center",
+    //width: 340,
   },
   TextColor: {
     color: "#fff",
+    fontSize: 16,
   },
 });
