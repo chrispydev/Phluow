@@ -23,5 +23,7 @@ const styles = StyleSheet.create({
   TextColor: {
     color: "#fff",
     fontSize: 16,
+    fontWeight: 500,
+    textTransform: "capitalize",
   },
 });
