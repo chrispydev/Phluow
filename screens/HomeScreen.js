@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import CustomButton from "../components/CustomButton";
 import { StatusBar } from "expo-status-bar";
 import PagerView from "react-native-pager-view";
 import ImageGrid from "../components/ImageGrid";
 
 /* eslint-disable */
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.homeContainer}>
       <StatusBar style={"light"} />
@@ -40,9 +40,21 @@ export default function HomeScreen() {
         </View>
       </PagerView>
       <View style={styles.buttonContainer}>
-        <CustomButton buttonText="Create An Account" />
-        <Text style={styles.buttonText1}>Sign in</Text>
-        <Text style={styles.buttonText2}>
+        <CustomButton
+          buttonText="Create An Account"
+          buttonAction={() => navigation.navigate("SignUp")}
+        />
+        <TouchableOpacity
+          style={styles.buttonText1}
+          onPress={() => navigation.navigate("SignIn")}
+        >
+          <Text style={styles.buttonText1}>Sign in</Text>
+        </TouchableOpacity>
+
+        <Text
+          style={styles.buttonText2}
+          onPress={() => navigation.navigate("SignIn")}
+        >
           By continuing you agree to our Terms of service & Privacy Policy
         </Text>
       </View>
