@@ -8,7 +8,7 @@ export default function FormInput({
   secureText,
   keyboardType,
   iconLeft,
-  iconRight,
+  children,
 }) {
   return (
     <View style={styles.input}>
@@ -24,7 +24,7 @@ export default function FormInput({
         secureTextEntry={secureText}
         keyboardType={keyboardType}
       />
-      {/* <Image style={{ zIndex: 100 }} source={iconRight} /> */}
+      {children}
     </View>
   );
 }
@@ -32,8 +32,9 @@ export default function FormInput({
 const styles = StyleSheet.create({
   input: {
     backgroundColor: colors.boxColor,
-    paddingVertical: 16,
+    // paddingVertical: 16,
     paddingVertical: 8,
+    paddingRight: 8,
     borderRadius: 16,
     borderColor: colors.boxColor,
     borderWidth: 1,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
@@ -8,14 +8,16 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
-  TouchableNativeFeedback,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { colors } from '../styles/colors';
 import FormInput from '../components/FormInput';
 import CustomButton from '../components/CustomButton';
 
 /* eslint-disable*/
 export default function SignInScreen({ navigation }) {
+  const [secure, setSecure] = useState(true);
   return (
     <SafeAreaView style={styles.SignUpContainer}>
       <StatusBar backgroundColor='#fff' />
@@ -50,10 +52,17 @@ export default function SignInScreen({ navigation }) {
         <View style={{ gap: 12, marginVertical: 12 }}>
           <FormInput
             placeHolderText='Password'
-            secureText={true}
+            secureText={secure}
             iconLeft={require('../assets/key.png')}
-            iconRight={require('../assets/eyeicon.png')}
-          ></FormInput>
+          >
+            <TouchableOpacity onPress={() => setSecure(!secure)}>
+              {secure ? (
+                <Icon name='eye' size={25} color={colors.primaryText} />
+              ) : (
+                <Icon name='eye-off' size={25} color={colors.primaryText} />
+              )}
+            </TouchableOpacity>
+          </FormInput>
           <TouchableOpacity>
             <Text style={styles.label}>Forget Your Password</Text>
           </TouchableOpacity>
