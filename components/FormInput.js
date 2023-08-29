@@ -1,48 +1,45 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
-
+import React, { useState } from 'react';
+import { View, Image, TextInput, StyleSheet } from 'react-native';
+import { colors } from '../styles/colors';
 /* eslint-disable */
 
 export default function FormInput({
-  stateProps,
-  formLable,
   placeHolderText,
   secureText,
   keyboardType,
+  iconLeft,
+  iconRight,
 }) {
-  const [isFocused, setIsFocused] = useState(false);
   return (
-    <View style={styles.margin}>
-      <Text style={styles.TextColor}>{formLable}</Text>
+    <View style={styles.input}>
+      <Image style={{ marginRight: 20, marginLeft: 10 }} source={iconLeft} />
       <TextInput
-        onChangeText={stateProps}
-        placeholderTextColor="#fff"
-        style={[styles.InputStyle, isFocused && styles.Focused]}
+        placeholderTextColor={colors.lableText}
+        style={{
+          color: colors.lableText,
+          height: '100%',
+          flex: 1,
+        }}
         placeholder={placeHolderText}
         secureTextEntry={secureText}
         keyboardType={keyboardType}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
       />
+      {/* <Image style={{ zIndex: 100 }} source={iconRight} /> */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  TextColor: {
-    color: "#fff",
-  },
-  margin: { marginTop: 20 },
-  InputStyle: {
-    borderColor: "#fff",
-    backgroundColor: "#333",
+  input: {
+    backgroundColor: colors.boxColor,
+    paddingVertical: 16,
+    paddingVertical: 8,
+    borderRadius: 16,
+    borderColor: colors.boxColor,
     borderWidth: 1,
-    borderRadius: 10,
-    padding: 5,
-    marginTop: 5,
-    color: "#fff",
-  },
-  Focused: {
-    borderColor: "#33B328",
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: '100%',
   },
 });

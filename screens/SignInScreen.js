@@ -1,5 +1,5 @@
-import React from "react";
-import { StatusBar } from "expo-status-bar";
+import React from 'react';
+import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
   SafeAreaView,
@@ -7,64 +7,125 @@ import {
   Image,
   Text,
   TouchableOpacity,
-  TextInput,
   ScrollView,
-} from "react-native";
-import { colors } from "../styles/colors";
-import { Roboto_700Bold } from "@expo-google-fonts/roboto";
+  TouchableNativeFeedback,
+} from 'react-native';
+import { colors } from '../styles/colors';
+import FormInput from '../components/FormInput';
+import CustomButton from '../components/CustomButton';
 
 /* eslint-disable*/
 export default function SignInScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.SignUpContainer}>
-      <StatusBar backgroundColor="#fff" />
-      <TouchableOpacity style={styles.backButton}>
-        <Image source={require("../assets/signin_back.png")} />
+      <StatusBar backgroundColor='#fff' />
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}
+      >
+        <Image source={require('../assets/signin_back.png')} />
       </TouchableOpacity>
-      <View style={styles.welcomeSignInTextContainer}>
-        <Image style={styles.image} source={require("../assets/signin.png")} />
-        <Text style={styles.text}>Hello There</Text>
-        <View style={{ gap: 5 }}>
-          <Text style={styles.welcomeText}>Welcome Back</Text>
-          <Text style={styles.welcomeText}>Please sign in!</Text>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.welcomeSignInTextContainer}>
+          <Image
+            style={styles.image}
+            source={require('../assets/signin.png')}
+          />
+          <Text style={styles.text}>Hello There</Text>
+          <View style={{ gap: 5 }}>
+            <Text style={styles.welcomeText}>Welcome Back</Text>
+            <Text style={styles.welcomeText}>Please sign in!</Text>
+          </View>
         </View>
-      </View>
-      <ScrollView>
         <View style={{ gap: 12, marginTop: 40 }}>
+          <FormInput
+            keyboardType='phone-pad'
+            placeHolderText='Phone Number'
+            secureText={false}
+            iconLeft={require('../assets/calladd.png')}
+          />
+
+          <Text style={styles.label}>Login With Your Email Instead</Text>
+        </View>
+        <View style={{ gap: 12, marginVertical: 12 }}>
+          <FormInput
+            placeHolderText='Password'
+            secureText={true}
+            iconLeft={require('../assets/key.png')}
+            iconRight={require('../assets/eyeicon.png')}
+          ></FormInput>
+          <TouchableOpacity>
+            <Text style={styles.label}>Forget Your Password</Text>
+          </TouchableOpacity>
+        </View>
+        <CustomButton
+          bgColor={colors.primary}
+          buttonText='Sign in'
+          buttonAction={() => navigation.navigate('SignUp')}
+        />
+        <View style={{ marginTop: 12 }}>
           <View
             style={{
-              backgroundColor: colors.boxColor,
-              paddingVertical: 16,
-              paddingVertical: 8,
-              borderRadius: 16,
-              borderColor: colors.boxColor,
-              borderWidth: 1,
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginBottom: 10,
             }}
           >
-            <Image
-              style={{ marginRight: 30, marginLeft: 20 }}
-              source={require("../assets/calladd.png")}
+            <View
+              style={{
+                height: 1,
+                backgroundColor: colors.primaryText,
+                width: '100%',
+              }}
             />
-            <TextInput
-              style={{ color: colors.lableText }}
-              placeholder="Phone Number"
-              keyboardType="numeric"
+            <Text style={{ paddingHorizontal: 10, color: colors.primaryText }}>
+              Or, Sign in With
+            </Text>
+            <View
+              style={{
+                height: 1,
+                backgroundColor: colors.primaryText,
+                width: '100%',
+              }}
             />
           </View>
-          <Text
-            style={{
-              color: colors.secondaryText,
-              fontSize: 12,
-              fontWeight: 400,
-              lineHeight: 20,
-              textTransform: "capitalize",
-            }}
+          <CustomButton
+            buttonText='Sign In With Google'
+            bgColor={colors.boxColor}
           >
-            Login With Your Email Instead
+            <Image
+              style={{ width: 20, height: 20, marginRight: 7 }}
+              source={require('../assets/Group1434.png')}
+            />
+          </CustomButton>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 20,
+            marginBottom: 20,
+          }}
+        >
+          <Text style={{ color: colors.primaryText }}>
+            Don't Have An Account?
           </Text>
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: colors.primary,
+                fontWeight: 500,
+                textAlign: 'center',
+                textTransform: 'capitalize',
+                fontSize: 14,
+                marginLeft: 10,
+              }}
+            >
+              Sign Up
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -74,8 +135,8 @@ export default function SignInScreen({ navigation }) {
 const styles = StyleSheet.create({
   SignUpContainer: {
     flex: 1,
-    backgroundColor: "#292B2F",
-    fontFamily: "Roboto_400Regular",
+    backgroundColor: '#292B2F',
+    fontFamily: 'Roboto_400Regular',
     paddingHorizontal: 32,
     paddingVertical: 24,
   },
@@ -85,24 +146,30 @@ const styles = StyleSheet.create({
     maxWidth: 20,
   },
   welcomeSignInTextContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: 29,
   },
   text: {
     color: colors.primaryText,
     fontSize: 24,
-    // paddingVertical: 19,
-    fontWeight: "600",
-    textTransform: "capitalize",
+    fontWeight: '600',
+    textTransform: 'capitalize',
     letterSpacing: 0.24,
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
   },
   welcomeText: {
     color: colors.primaryText,
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 16,
-    fontWeight: "400",
+    fontWeight: '400',
     lineHeight: 20,
+  },
+  label: {
+    color: colors.secondaryText,
+    fontSize: 12,
+    fontWeight: 400,
+    lineHeight: 20,
+    textTransform: 'capitalize',
   },
 });

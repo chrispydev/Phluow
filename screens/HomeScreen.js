@@ -4,6 +4,7 @@ import CustomButton from "../components/CustomButton";
 import { StatusBar } from "expo-status-bar";
 import PagerView from "react-native-pager-view";
 import ImageGrid from "../components/ImageGrid";
+import { colors } from "../styles/colors";
 
 /* eslint-disable */
 export default function HomeScreen({ navigation }) {
@@ -41,6 +42,7 @@ export default function HomeScreen({ navigation }) {
       </PagerView>
       <View style={styles.buttonContainer}>
         <CustomButton
+          bgColor={colors.primary}
           buttonText="Create An Account"
           buttonAction={() => navigation.navigate("SignUp")}
         />
