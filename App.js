@@ -13,6 +13,7 @@ import {
   Roboto_400Regular,
   Roboto_500Medium,
 } from "@expo-google-fonts/roboto";
+import ConfirmEmailOtp from "./screens/ConfirmEmailOtp";
 
 export default function App() {
   let [fontsLoaded, fontError] = useFonts({
@@ -34,10 +35,13 @@ export default function App() {
           headerShown: false,
         }}
       >
+        {/*
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="password-reset" component={PasswordReset} />
+        */}
+        <Stack.Screen name="confirm-email-otp" component={ConfirmEmailOtp} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -37,7 +37,7 @@ export default function Wrapper({ children, title, paragraph }) {
 const styles = StyleSheet.create({
   SignUpContainer: {
     flex: 1,
-    backgroundColor: "#292B2F",
+    backgroundColor: colors.primary,
     fontFamily: "Roboto_400Regular",
     paddingHorizontal: 32,
     paddingVertical: 24,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     gap: 29,
   },
   text: {
-    color: colors.primaryText,
+    color: colors.secondaryText,
     fontSize: 24,
     fontWeight: "700",
     textAlign: "center",
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_400Regular",
   },
   welcomeText: {
-    color: colors.primaryText,
+    color: colors.secondaryText,
     textAlign: "center",
     fontSize: 16,
     fontWeight: "400",
