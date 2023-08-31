@@ -14,6 +14,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { colors } from "../styles/colors";
 import FormInput from "../components/FormInput";
+import CustomButton from "../components/CustomButton";
 
 /* eslint-disable*/
 export default function SignUpScreen({ navigation }) {
@@ -66,6 +67,7 @@ export default function SignUpScreen({ navigation }) {
             fontStyle: "normal",
             textAlign: "center",
             marginTop: 19,
+            fontSize: 16,
             color: colors.primaryText,
           }}
         >
@@ -101,6 +103,84 @@ export default function SignUpScreen({ navigation }) {
               )}
             </TouchableOpacity>
           </FormInput>
+          <Text
+            style={{
+              color: colors.primaryText,
+              textTransform: "capitalize",
+              fontWeight: "400",
+              fontSize: 14,
+              lineHeight: 20,
+            }}
+          >
+            Register As:
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <CustomButton
+              pHorizontal={15}
+              buttonText="An Individual"
+              bgColor={colors.boxColor}
+            >
+              <Image
+                style={{ width: 20, height: 20, marginRight: 7 }}
+                source={require("../assets/profilecircle.png")}
+              />
+            </CustomButton>
+            <CustomButton
+              pHorizontal={15}
+              buttonText="A Business"
+              bgColor={colors.boxColor}
+            >
+              <Image
+                style={{ width: 20, height: 20, marginRight: 7 }}
+                source={require("../assets/briefcase.png")}
+              />
+            </CustomButton>
+          </View>
+
+          <CustomButton
+            bgColor={colors.primary}
+            buttonText="Create Account"
+            buttonAction={() => navigation.navigate("SignUp")}
+          />
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 10,
+            }}
+          >
+            <Text
+              style={{
+                textAlign: "center",
+                fontWeight: 500,
+                textTransform: "capitalize",
+                fontSize: 14,
+                color: colors.primaryText,
+              }}
+            >
+              Already Have An Account
+            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Log in")}>
+              <Text
+                style={{
+                  color: colors.primary,
+                  textAlign: "center",
+                  fontWeight: 500,
+                  textTransform: "capitalize",
+                  fontSize: 14,
+                }}
+              >
+                Sign in
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

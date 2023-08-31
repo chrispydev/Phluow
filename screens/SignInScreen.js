@@ -63,7 +63,9 @@ export default function SignInScreen({ navigation }) {
               )}
             </TouchableOpacity>
           </FormInput>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("password-reset")}
+          >
             <Text style={styles.label}>Forget Your Password</Text>
           </TouchableOpacity>
         </View>
@@ -102,6 +104,7 @@ export default function SignInScreen({ navigation }) {
           <CustomButton
             buttonText="Sign In With Google"
             bgColor={colors.boxColor}
+            pHorizontal={29}
           >
             <Image
               style={{ width: 20, height: 20, marginRight: 7 }}

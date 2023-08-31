@@ -42,6 +42,7 @@ export default function HomeScreen({ navigation }) {
       </PagerView>
       <View style={styles.buttonContainer}>
         <CustomButton
+          pHorizontal={29}
           bgColor={colors.primary}
           buttonText="Create An Account"
           buttonAction={() => navigation.navigate("SignUp")}
@@ -53,10 +54,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.buttonText1}>Sign in</Text>
         </TouchableOpacity>
 
-        <Text
-          style={styles.buttonText2}
-          onPress={() => navigation.navigate("SignIn")}
-        >
+        <Text style={styles.buttonText2}>
           By continuing you agree to our Terms of service & Privacy Policy
         </Text>
       </View>

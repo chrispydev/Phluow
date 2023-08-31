@@ -7,11 +7,15 @@ export default function CustomButton({
   buttonText,
   buttonAction,
   bgColor,
+  pHorizontal,
   children,
 }) {
   return (
     <TouchableOpacity
-      style={[styles.buttonStyle, { backgroundColor: bgColor }]}
+      style={[
+        styles.buttonStyle,
+        { backgroundColor: bgColor, paddingHorizontal: pHorizontal },
+      ]}
       onPress={buttonAction}
     >
       {children}
@@ -23,7 +27,8 @@ export default function CustomButton({
 const styles = StyleSheet.create({
   buttonStyle: {
     paddingVertical: 12,
-    paddingHorizontal: 29,
+    // paddingHorizontal: 29,
+    // paddingHorizontal: 15,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
