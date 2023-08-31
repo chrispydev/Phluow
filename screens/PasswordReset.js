@@ -24,6 +24,7 @@ export default function PasswordReset() {
           Email Address
         </Text>
         <FormInput
+          keyboardType='email-address'
           placeHolderText='Email Address'
           secureText={false}
           iconLeft={require('../assets/smsnotification.png')}

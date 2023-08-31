@@ -80,6 +80,7 @@ export default function SignUpScreen({ navigation }) {
             iconLeft={require('../assets/profile.png')}
           />
           <FormInput
+            keyboardType='email-address'
             placeHolderText='Email Address'
             secureText={false}
             iconLeft={require('../assets/smsnotification.png')}
