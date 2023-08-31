@@ -27,7 +27,6 @@ export default function Wrapper({ children, title, paragraph }) {
         <Text style={styles.text}>{title}</Text>
         <View style={{ gap: 5 }}>
           <Text style={styles.welcomeText}>{paragraph}</Text>
-          {/*<Text style={styles.welcomeText}>Please sign in!</Text>*/}
         </View>
       </View>
       {children}
