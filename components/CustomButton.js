@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 /* eslint-disable */
@@ -7,14 +7,21 @@ export default function CustomButton({
   buttonText,
   buttonAction,
   bgColor,
+  bRadius,
   pHorizontal,
+  pVertical,
   children,
 }) {
   return (
     <TouchableOpacity
       style={[
         styles.buttonStyle,
-        { backgroundColor: bgColor, paddingHorizontal: pHorizontal },
+        {
+          backgroundColor: bgColor,
+          paddingHorizontal: pHorizontal,
+          paddingVertical: pVertical ? pVertical : 12,
+          borderRadius: bRadius ? bRadius : 15,
+        },
       ]}
       onPress={buttonAction}
     >
@@ -26,8 +33,6 @@ export default function CustomButton({
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    paddingVertical: 12,
-    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",

@@ -39,7 +39,7 @@ export default function App() {
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="password-reset" component={PasswordReset} />
-        <Stack.Screen name="confirm-email-otp" component={ConfirmEmailOtp} />
+        <Stack.Screen name="confirm-email" component={ConfirmEmailOtp} />
       </Stack.Navigator>
     </NavigationContainer>
   );

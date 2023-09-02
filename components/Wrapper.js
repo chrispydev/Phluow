@@ -11,7 +11,7 @@ import {
 import { colors } from "../styles/colors";
 
 /* eslint-disable*/
-export default function Wrapper({ children, title, paragraph }) {
+export default function Wrapper({ children, title, paragraph, navigation }) {
   return (
     <SafeAreaView style={styles.SignUpContainer}>
       <StatusBar backgroundColor="#fff" />
