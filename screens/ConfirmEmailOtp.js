@@ -144,7 +144,7 @@ export default function ConfirmEmailOtp() {
                 textAlign: "center",
               }}
             >
-              Resend code
+              Re-send code
             </Text>
           </TouchableOpacity>
         )}
