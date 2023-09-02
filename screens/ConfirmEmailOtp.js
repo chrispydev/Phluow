@@ -1,20 +1,92 @@
-import React from "react";
-import { Text, TextInput, View } from "react-native";
+import React, { useRef, useEffect, useState } from "react";
+import { Text, TextInput, View, TouchableOpacity } from "react-native";
 import Wrapper from "../components/Wrapper";
 import { colors } from "../styles/colors";
 import CustomButton from "../components/CustomButton";
 
 export default function ConfirmEmailOtp() {
+  const inputRefs = useRef([]);
+  let currentIndex = useRef(0);
+
+  const [timer, setTimer] = useState(240); // Initial timer value in seconds
+  const [isTimerRunning, setIsTimerRunning] = useState(true); // Flag to control timer running state
+
+  useEffect(() => {
+    if (isTimerRunning) {
+      // Start the timer
+      const interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+
+      // Clear the interval and run the function when the timer ends
+      if (timer === 0) {
+        clearInterval(interval);
+        setIsTimerRunning(false);
+        handleTimerEnd();
+      }
+
+      // Clean up the interval on component unmount
+      return () => clearInterval(interval);
+    }
+  }, [timer, isTimerRunning]);
+
+  const handleTimerEnd = () => {
+    // Function to run when the timer ends
+    console.log("Timer ended!");
+    // Add your desired logic here
+  };
+
+  const handleStartTimer = () => {
+    // Function to start the timer again
+    setTimer(240);
+    setIsTimerRunning(true);
+  };
+
+  const formatTime = (time) => {
+    // Calculate minutes and seconds
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+
+    // Format the time in M:SS format with leading zeros
+    const formattedTime = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+    return formattedTime;
+  };
+
+  const handleChange = (text, index) => {
+    if (text.length === 1) {
+      currentIndex.current =
+        index < inputRefs.current.length - 1 ? index + 1 : currentIndex.current;
+      inputRefs.current[currentIndex.current].focus();
+    } else if (text.length === 0 && index > 0) {
+      currentIndex.current = index - 1;
+      inputRefs.current[currentIndex.current].focus();
+    }
+  };
   return (
     <Wrapper
       title="Confirm Email"
       paragraph="Enter the code sent to your email and confirm to login"
     >
-      <View style={{ marginTop: 20, flexDirection: "row", gap: 14.5 }}>
+      <View
+        style={{
+          marginTop: 20,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          width: "100%",
+        }}
+      >
         {[...new Array(5)].map((_, index) => (
           <TextInput
+            ref={(ref) => {
+              inputRefs.current[index] = ref;
+            }}
             key={index}
             keyboardType="decimal-pad"
+            contextMenuHidden
+            selectTextOnFocus
+            textID={`OTPInput-${index}`}
+            onChangeText={(text) => handleChange(text, index)}
             maxLength={1}
             style={{
               borderColor: colors.secondaryText,
@@ -26,6 +98,7 @@ export default function ConfirmEmailOtp() {
               color: colors.secondaryText,
               fontSize: 18,
               fontWeight: "800",
+              textAlign: "center",
             }}
           />
         ))}
@@ -50,16 +123,31 @@ export default function ConfirmEmailOtp() {
         >
           Haven&apos;t gotten code yet?
         </Text>
-        <Text
-          style={{
-            color: colors.secondary,
-            fontSize: 14,
-            fontWeight: 500,
-            textAlign: "center",
-          }}
-        >
-          30:00 sec
-        </Text>
+        {isTimerRunning ? (
+          <Text
+            style={{
+              color: colors.secondary,
+              fontSize: 14,
+              fontWeight: 500,
+              textAlign: "center",
+            }}
+          >
+            {formatTime(timer)}
+          </Text>
+        ) : (
+          <TouchableOpacity onPress={handleStartTimer}>
+            <Text
+              style={{
+                color: colors.secondary,
+                fontSize: 14,
+                fontWeight: 500,
+                textAlign: "center",
+              }}
+            >
+              Resend code
+            </Text>
+          </TouchableOpacity>
+        )}
       </View>
       <CustomButton buttonText="Confirm" bgColor={colors.secondary} />
     </Wrapper>
