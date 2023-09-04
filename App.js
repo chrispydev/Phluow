@@ -19,7 +19,11 @@ import HomeScreen from "./screens/HomeScreen";
 
 function HomeTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Tab.Screen name="home" component={HomeScreen} />
     </Tab.Navigator>
   );
