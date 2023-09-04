@@ -1,7 +1,17 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import React from 'react';
+import { colors } from '../styles/colors';
 
-export default function PickCard({ cardColor, cImage }) {
+export default function PickCard({
+  cardColor,
+  cImage,
+  cName,
+  cLocation,
+  cDate,
+  cPrice,
+  cStatus,
+  cTime,
+}) {
   return (
     <View
       style={{
@@ -26,8 +36,8 @@ export default function PickCard({ cardColor, cImage }) {
         />
       </View>
       <View>
-        <Text style={styles.companyTitle}>Company Name</Text>
-        <Text style={styles.location}>Location</Text>
+        <Text style={styles.companyTitle}>{cName}</Text>
+        <Text style={styles.location}>{cLocation}</Text>
         <View
           style={{
             flexDirection: 'row',
@@ -36,13 +46,13 @@ export default function PickCard({ cardColor, cImage }) {
             gap: 10,
           }}
         >
-          <Text style={styles.date}>12:30pm</Text>
-          <Text style={styles.date}>July 20, 2023</Text>
+          <Text style={styles.date}>{cTime}</Text>
+          <Text style={styles.date}>{cDate}</Text>
         </View>
       </View>
       <View>
-        <Text style={styles.price}>GH₵20</Text>
-        <Text style={[styles.status, { color: cardColor }]}>Pending</Text>
+        <Text style={styles.price}>{cPrice}</Text>
+        <Text style={[styles.status, { color: cardColor }]}>{cStatus}</Text>
       </View>
     </View>
   );
