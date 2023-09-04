@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#202225"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -19,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/splash.png",
         "backgroundColor": "#202225"
-      }
+      },
+      "package": "com.chrispydev.phluow"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2a344cdc-73eb-4224-85c3-2e5cb83d4048"
+      }
     }
   }
 }

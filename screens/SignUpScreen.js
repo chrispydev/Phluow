@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
+import React, { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
   SafeAreaView,
@@ -8,14 +8,15 @@ import {
   Image,
   ScrollView,
   Text,
-} from "react-native";
+} from 'react-native';
 
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { colors } from "../styles/colors";
-import FormInput from "../components/FormInput";
-import CustomButton from "../components/CustomButton";
-import PopupConfirmation from "../components/PopupConfirmation";
+import { colors } from '../styles/colors';
+import FormInput from '../components/FormInput';
+import CustomButton from '../components/CustomButton';
+import PopupConfirmation from '../components/PopupConfirmation';
+import Wrapper from '../components/Wrapper';
 
 /* eslint-disable*/
 export default function SignUpScreen({ navigation }) {
@@ -23,26 +24,20 @@ export default function SignUpScreen({ navigation }) {
   const [visible, setVisible] = useState(false);
 
   return (
-    <SafeAreaView style={styles.SignUpContainer}>
-      <StatusBar backgroundColor="#fff" />
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}
-      >
-        <Image source={require("../assets/signin_back.png")} />
-      </TouchableOpacity>
+    <Wrapper show navigation={navigation}>
+      <StatusBar backgroundColor='#fff' />
       <PopupConfirmation
-        popupText="You have Signup successfully!
-Check your email to confirm code sent to you."
+        popupText='You have signUp successfully!
+Check your email to confirm code sent to you.'
         visible={visible}
         onClose={() => {
-          Alert.alert("Modal has been closed.");
+          Alert.alert('Modal has been closed.');
           setVisible(!visible);
         }}
       >
         <CustomButton
           buttonAction={() => setVisible(false)}
-          buttonText="Okay"
+          buttonText='Okay'
           bgColor={colors.secondary}
           pHorizontal={30}
           pVertical={5}
@@ -53,28 +48,28 @@ Check your email to confirm code sent to you."
         <View
           style={{
             marginTop: 10,
-            justifyContent: "center",
-            alignItems: "center",
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <Text
             style={{
               fontSize: 24,
               letterSpacing: 0.24,
-              textTransform: "capitalize",
+              textTransform: 'capitalize',
               color: colors.secondaryText,
-              fontWeight: "700",
+              fontWeight: '700',
             }}
           >
-            Find, Order With{" "}
+            Find, Order With{' '}
           </Text>
           <Text
             style={{
               fontSize: 24,
               letterSpacing: 0.24,
-              textTransform: "capitalize",
+              textTransform: 'capitalize',
               color: colors.secondaryText,
-              fontWeight: "700",
+              fontWeight: '700',
             }}
           >
             Ease
@@ -82,11 +77,11 @@ Check your email to confirm code sent to you."
         </View>
         <Text
           style={{
-            fontWeight: "400",
-            textTransform: "capitalize",
+            fontWeight: '400',
+            textTransform: 'capitalize',
             lineHeight: 20,
-            fontStyle: "normal",
-            textAlign: "center",
+            fontStyle: 'normal',
+            textAlign: 'center',
             marginTop: 19,
             fontSize: 16,
             color: colors.secondaryText,
@@ -96,40 +91,40 @@ Check your email to confirm code sent to you."
         </Text>
         <View style={{ marginTop: 29, gap: 15 }}>
           <FormInput
-            placeHolderText="Full Name"
+            placeHolderText='Full Name'
             secureText={false}
-            iconLeft={require("../assets/profile.png")}
+            iconLeft={require('../assets/profile.png')}
           />
           <FormInput
-            keyboardType="email-address"
-            placeHolderText="Email Address"
+            keyboardType='email-address'
+            placeHolderText='Email Address'
             secureText={false}
-            iconLeft={require("../assets/smsnotification.png")}
+            iconLeft={require('../assets/smsnotification.png')}
           />
           <FormInput
-            keyboardType="phone-pad"
-            placeHolderText="Phone Number"
+            keyboardType='phone-pad'
+            placeHolderText='Phone Number'
             secureText={false}
-            iconLeft={require("../assets/calladd.png")}
+            iconLeft={require('../assets/calladd.png')}
           />
           <FormInput
-            placeHolderText="Password"
+            placeHolderText='Password'
             secureText={secure}
-            iconLeft={require("../assets/key.png")}
+            iconLeft={require('../assets/key.png')}
           >
             <TouchableOpacity onPress={() => setSecure(!secure)}>
               {secure ? (
-                <Icon name="eye" size={25} color={colors.secondaryText} />
+                <Icon name='eye' size={25} color={colors.secondaryText} />
               ) : (
-                <Icon name="eye-off" size={25} color={colors.secondaryText} />
+                <Icon name='eye-off' size={25} color={colors.secondaryText} />
               )}
             </TouchableOpacity>
           </FormInput>
           <Text
             style={{
               color: colors.secondaryText,
-              textTransform: "capitalize",
-              fontWeight: "400",
+              textTransform: 'capitalize',
+              fontWeight: '400',
               fontSize: 14,
               lineHeight: 20,
             }}
@@ -138,64 +133,64 @@ Check your email to confirm code sent to you."
           </Text>
           <View
             style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}
           >
             <CustomButton
               pHorizontal={15}
-              buttonText="An Individual"
+              buttonText='An Individual'
               bgColor={colors.boxColor}
             >
               <Image
                 style={{ width: 20, height: 20, marginRight: 7 }}
-                source={require("../assets/profilecircle.png")}
+                source={require('../assets/profilecircle.png')}
               />
             </CustomButton>
             <CustomButton
               pHorizontal={15}
-              buttonText="A Business"
+              buttonText='A Business'
               bgColor={colors.boxColor}
             >
               <Image
                 style={{ width: 20, height: 20, marginRight: 7 }}
-                source={require("../assets/briefcase.png")}
+                source={require('../assets/briefcase.png')}
               />
             </CustomButton>
           </View>
 
           <CustomButton
             bgColor={colors.secondary}
-            buttonText="Create Account"
+            buttonText='Create Account'
             buttonAction={() => setVisible(!visible)}
           />
           <View
             style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
               gap: 10,
             }}
           >
             <Text
               style={{
-                textAlign: "center",
+                textAlign: 'center',
                 fontWeight: 500,
-                textTransform: "capitalize",
+                textTransform: 'capitalize',
                 fontSize: 14,
                 color: colors.secondaryText,
               }}
             >
               Already Have An Account
             </Text>
-            <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+            <TouchableOpacity onPress={() => navigation.navigate('signin')}>
               <Text
                 style={{
                   color: colors.secondary,
-                  textAlign: "center",
+                  textAlign: 'center',
                   fontWeight: 500,
-                  textTransform: "capitalize",
+                  textTransform: 'capitalize',
                   fontSize: 14,
                 }}
               >
@@ -205,15 +200,15 @@ Check your email to confirm code sent to you."
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </Wrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  SignUpContainer: {
+  signUpContainer: {
     flex: 1,
     backgroundColor: colors.primary,
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     paddingHorizontal: 32,
     paddingVertical: 24,
   },

@@ -1,10 +1,12 @@
-import React, { useRef, useEffect, useState } from "react";
-import { Text, TextInput, View, TouchableOpacity } from "react-native";
-import Wrapper from "../components/Wrapper";
-import { colors } from "../styles/colors";
-import CustomButton from "../components/CustomButton";
+import React, { useRef, useEffect, useState } from 'react';
+import { Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import Wrapper from '../components/Wrapper';
+import { colors } from '../styles/colors';
+import CustomButton from '../components/CustomButton';
+import { globalStyles } from '../styles/global';
 
-export default function ConfirmEmailOtp() {
+/*eslint-disable*/
+export default function ConfirmEmailOtp({ navigation }) {
   const inputRefs = useRef([]);
   let currentIndex = useRef(0);
 
@@ -32,7 +34,7 @@ export default function ConfirmEmailOtp() {
 
   const handleTimerEnd = () => {
     // Function to run when the timer ends
-    console.log("Timer ended!");
+    console.log('Timer ended!');
     // Add your desired logic here
   };
 
@@ -48,7 +50,7 @@ export default function ConfirmEmailOtp() {
     const seconds = time % 60;
 
     // Format the time in M:SS format with leading zeros
-    const formattedTime = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
 
     return formattedTime;
   };
@@ -64,16 +66,22 @@ export default function ConfirmEmailOtp() {
     }
   };
   return (
-    <Wrapper
-      title="Confirm Email"
-      paragraph="Enter the code sent to your email and confirm to login"
-    >
+    <Wrapper show navigation={navigation}>
+      <View style={globalStyles.welcomesigninTextContainer}>
+        <Image source={require('../assets/signin.png')} />
+        <Text style={globalStyles.text}>Confirm Email</Text>
+        <View style={{ gap: 5 }}>
+          <Text style={globalStyles.welcomeText}>
+            Enter the code sent to your email and confirm to login
+          </Text>
+        </View>
+      </View>
       <View
         style={{
           marginTop: 20,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: "100%",
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          width: '100%',
         }}
       >
         {[...new Array(5)].map((_, index) => (
@@ -82,7 +90,7 @@ export default function ConfirmEmailOtp() {
               inputRefs.current[index] = ref;
             }}
             key={index}
-            keyboardType="decimal-pad"
+            keyboardType='decimal-pad'
             contextMenuHidden
             selectTextOnFocus
             textID={`OTPInput-${index}`}
@@ -97,17 +105,17 @@ export default function ConfirmEmailOtp() {
               height: 50,
               color: colors.secondaryText,
               fontSize: 18,
-              fontWeight: "800",
-              textAlign: "center",
+              fontWeight: '800',
+              textAlign: 'center',
             }}
           />
         ))}
       </View>
       <View
         style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
           marginTop: 15,
           marginBottom: 15,
           gap: 10,
@@ -118,7 +126,7 @@ export default function ConfirmEmailOtp() {
             color: colors.secondaryText,
             fontSize: 14,
             fontWeight: 500,
-            textAlign: "center",
+            textAlign: 'center',
           }}
         >
           Haven&apos;t gotten code yet?
@@ -129,7 +137,7 @@ export default function ConfirmEmailOtp() {
               color: colors.secondary,
               fontSize: 14,
               fontWeight: 500,
-              textAlign: "center",
+              textAlign: 'center',
             }}
           >
             {formatTime(timer)}
@@ -141,7 +149,7 @@ export default function ConfirmEmailOtp() {
                 color: colors.secondary,
                 fontSize: 14,
                 fontWeight: 500,
-                textAlign: "center",
+                textAlign: 'center',
               }}
             >
               Re-send code
@@ -149,7 +157,11 @@ export default function ConfirmEmailOtp() {
           </TouchableOpacity>
         )}
       </View>
-      <CustomButton buttonText="Confirm" bgColor={colors.secondary} />
+      <CustomButton
+        buttonText='Confirm'
+        bgColor={colors.secondary}
+        buttonAction={() => navigation.navigate('home-tab')}
+      />
     </Wrapper>
   );
 }

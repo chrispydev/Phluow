@@ -1,16 +1,23 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Image } from 'react-native';
 import Wrapper from '../components/Wrapper';
 import { colors } from '../styles/colors';
 import FormInput from '../components/FormInput';
 import CustomButton from '../components/CustomButton';
+import { globalStyles } from '../styles/global';
 
-export default function PasswordReset() {
+export default function PasswordReset({ navigation }) {
   return (
-    <Wrapper
-      title='Reset Password'
-      paragraph='Enter your email address and tap send to start the process'
-    >
+    <Wrapper show navigation={navigation}>
+      <View style={globalStyles.welcomesigninTextContainer}>
+        <Image source={require('../assets/signin.png')} />
+        <Text style={globalStyles.text}>Reset Password</Text>
+        <View style={{ gap: 5 }}>
+          <Text style={globalStyles.welcomeText}>
+            Enter your email address and tap send to start the process
+          </Text>
+        </View>
+      </View>
       <View style={{ marginTop: 30, gap: 20 }}>
         <Text
           style={{

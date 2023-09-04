@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   SafeAreaView,
@@ -7,27 +7,45 @@ import {
   Image,
   Text,
   StyleSheet,
-} from "react-native";
-import { colors } from "../styles/colors";
+} from 'react-native';
+import { colors } from '../styles/colors';
 
 /* eslint-disable*/
-export default function Wrapper({ children, title, paragraph, navigation }) {
+export default function Wrapper({ children, headerTitle, show, navigation }) {
   return (
-    <SafeAreaView style={styles.SignUpContainer}>
-      <StatusBar backgroundColor="#fff" />
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}
+    <SafeAreaView style={styles.signUpContainer}>
+      <StatusBar backgroundColor='#fff' />
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
-        <Image source={require("../assets/signin_back.png")} />
-      </TouchableOpacity>
+        {show && (
+          <>
+            <TouchableOpacity
+              style={styles.backButton}
+              onPress={() => navigation.goBack()}
+            >
+              <Image source={require('../assets/signin_back.png')} />
+            </TouchableOpacity>
+          </>
+        )}
 
-      <View style={styles.welcomeSignInTextContainer}>
-        <Image style={styles.image} source={require("../assets/signin.png")} />
-        <Text style={styles.text}>{title}</Text>
-        <View style={{ gap: 5 }}>
-          <Text style={styles.welcomeText}>{paragraph}</Text>
-        </View>
+        <Text
+          style={{
+            flex: 1,
+            color: colors.lableText,
+            textAlign: 'center',
+            fontWeight: '600',
+            lineHeight: 20,
+            letterSpacing: -0.24,
+            fontSize: 20,
+          }}
+        >
+          {headerTitle}
+        </Text>
       </View>
       {children}
     </SafeAreaView>
@@ -35,10 +53,10 @@ export default function Wrapper({ children, title, paragraph, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  SignUpContainer: {
+  signUpContainer: {
     flex: 1,
     backgroundColor: colors.primary,
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     paddingHorizontal: 32,
     paddingVertical: 24,
   },
@@ -46,27 +64,5 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: -20,
     maxWidth: 20,
-  },
-  welcomeSignInTextContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 29,
-  },
-  text: {
-    color: colors.secondaryText,
-    fontSize: 24,
-    fontWeight: "700",
-    textAlign: "center",
-    textTransform: "capitalize",
-    letterSpacing: 0.24,
-    fontFamily: "Roboto_400Regular",
-  },
-  welcomeText: {
-    color: colors.secondaryText,
-    textAlign: "center",
-    fontSize: 16,
-    fontWeight: "400",
-    lineHeight: 20,
-    flexWrap: "wrap",
   },
 });

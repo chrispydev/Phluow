@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
+import React, { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
   SafeAreaView,
@@ -9,54 +9,49 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { colors } from "../styles/colors";
-import FormInput from "../components/FormInput";
-import CustomButton from "../components/CustomButton";
-import PopupConfirmation from "../components/PopupConfirmation";
+import { colors } from '../styles/colors';
+import FormInput from '../components/FormInput';
+import CustomButton from '../components/CustomButton';
+import PopupConfirmation from '../components/PopupConfirmation';
+import Wrapper from '../components/Wrapper';
 
 /* eslint-disable*/
-export default function SignInScreen({ navigation }) {
+export default function SigninScreen({ navigation }) {
   const [secure, setSecure] = useState(true);
   const [visible, setVisible] = useState(false);
 
   const handleModal = () => {
-    navigation.navigate("confirm-email");
+    navigation.navigate('confirm-email');
     setVisible(!visible);
   };
 
   return (
-    <SafeAreaView style={styles.SignUpContainer}>
-      <StatusBar backgroundColor="#fff" />
+    <Wrapper show navigation={navigation}>
+      <StatusBar backgroundColor='#fff' />
       <PopupConfirmation
-        popupText="You have Login Successfully"
+        popupText='You have Login Successfully'
         visible={visible}
         onClose={() => {
-          Alert.alert("Modal has been closed.");
+          Alert.alert('Modal has been closed.');
         }}
       >
         <CustomButton
           buttonAction={() => handleModal()}
-          buttonText="Continue"
+          buttonText='Continue'
           bgColor={colors.secondary}
           pHorizontal={30}
           pVertical={5}
           bRadius={120}
         />
       </PopupConfirmation>
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}
-      >
-        <Image source={require("../assets/signin_back.png")} />
-      </TouchableOpacity>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.welcomeSignInTextContainer}>
+        <View style={styles.welcomesigninTextContainer}>
           <Image
             style={styles.image}
-            source={require("../assets/signin.png")}
+            source={require('../assets/signin.png')}
           />
           <Text style={styles.text}>Hello There</Text>
           <View style={{ gap: 5 }}>
@@ -66,45 +61,45 @@ export default function SignInScreen({ navigation }) {
         </View>
         <View style={{ gap: 12, marginTop: 40 }}>
           <FormInput
-            keyboardType="phone-pad"
-            placeHolderText="Phone Number"
+            keyboardType='phone-pad'
+            placeHolderText='Phone Number'
             secureText={false}
-            iconLeft={require("../assets/calladd.png")}
+            iconLeft={require('../assets/calladd.png')}
           />
 
           <Text style={styles.label}>Login With Your Email Instead</Text>
         </View>
         <View style={{ gap: 12, marginVertical: 12 }}>
           <FormInput
-            placeHolderText="Password"
+            placeHolderText='Password'
             secureText={secure}
-            iconLeft={require("../assets/key.png")}
+            iconLeft={require('../assets/key.png')}
           >
             <TouchableOpacity onPress={() => setSecure(!secure)}>
               {secure ? (
-                <Icon name="eye" size={25} color={colors.secondaryText} />
+                <Icon name='eye' size={25} color={colors.secondaryText} />
               ) : (
-                <Icon name="eye-off" size={25} color={colors.secondaryText} />
+                <Icon name='eye-off' size={25} color={colors.secondaryText} />
               )}
             </TouchableOpacity>
           </FormInput>
           <TouchableOpacity
-            onPress={() => navigation.navigate("password-reset")}
+            onPress={() => navigation.navigate('password-reset')}
           >
             <Text style={styles.label}>Forget Your Password</Text>
           </TouchableOpacity>
         </View>
         <CustomButton
           bgColor={colors.secondary}
-          buttonText="Sign in"
+          buttonText='Sign in'
           buttonAction={() => setVisible(!visible)}
         />
         <View style={{ marginTop: 12 }}>
           <View
             style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
               marginBottom: 10,
             }}
           >
@@ -112,7 +107,7 @@ export default function SignInScreen({ navigation }) {
               style={{
                 height: 1,
                 backgroundColor: colors.secondaryText,
-                width: "100%",
+                width: '100%',
               }}
             />
             <Text
@@ -124,26 +119,26 @@ export default function SignInScreen({ navigation }) {
               style={{
                 height: 1,
                 backgroundColor: colors.secondaryText,
-                width: "100%",
+                width: '100%',
               }}
             />
           </View>
           <CustomButton
-            buttonText="Sign In With Google"
+            buttonText='Sign In With Google'
             bgColor={colors.boxColor}
             pHorizontal={29}
           >
             <Image
               style={{ width: 20, height: 20, marginRight: 7 }}
-              source={require("../assets/Group1434.png")}
+              source={require('../assets/Group1434.png')}
             />
           </CustomButton>
         </View>
         <View
           style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
             marginTop: 20,
             marginBottom: 20,
           }}
@@ -151,13 +146,13 @@ export default function SignInScreen({ navigation }) {
           <Text style={{ color: colors.secondaryText }}>
             Don't Have An Account?
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+          <TouchableOpacity onPress={() => navigation.navigate('signUp')}>
             <Text
               style={{
                 color: colors.secondary,
                 fontWeight: 500,
-                textAlign: "center",
-                textTransform: "capitalize",
+                textAlign: 'center',
+                textTransform: 'capitalize',
                 fontSize: 14,
                 marginLeft: 10,
               }}
@@ -167,15 +162,15 @@ export default function SignInScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </Wrapper>
   );
 }
 
 const styles = StyleSheet.create({
-  SignUpContainer: {
+  signUpContainer: {
     flex: 1,
     backgroundColor: colors.primary,
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     paddingHorizontal: 32,
     paddingVertical: 24,
   },
@@ -184,24 +179,24 @@ const styles = StyleSheet.create({
     marginLeft: -20,
     maxWidth: 20,
   },
-  welcomeSignInTextContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+  welcomesigninTextContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: 29,
   },
   text: {
     color: colors.secondaryText,
     fontSize: 24,
-    fontWeight: "600",
-    textTransform: "capitalize",
+    fontWeight: '600',
+    textTransform: 'capitalize',
     letterSpacing: 0.24,
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
   },
   welcomeText: {
     color: colors.secondaryText,
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 16,
-    fontWeight: "400",
+    fontWeight: '400',
     lineHeight: 20,
   },
   label: {
@@ -209,6 +204,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 400,
     lineHeight: 20,
-    textTransform: "capitalize",
+    textTransform: 'capitalize',
   },
 });
