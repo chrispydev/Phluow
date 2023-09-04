@@ -11,7 +11,13 @@ import {
 import { colors } from '../styles/colors';
 
 /* eslint-disable*/
-export default function Wrapper({ children, headerTitle, show, navigation }) {
+export default function Wrapper({
+  children,
+  headerTitle,
+  show,
+  navigation,
+  removePadding,
+}) {
   return (
     <SafeAreaView style={styles.signUpContainer}>
       <StatusBar backgroundColor='#fff' />
@@ -21,6 +27,7 @@ export default function Wrapper({ children, headerTitle, show, navigation }) {
           justifyContent: 'center',
           alignItems: 'center',
           padding: 10,
+          paddingHorizontal: 32,
         }}
       >
         {show && (
@@ -48,7 +55,13 @@ export default function Wrapper({ children, headerTitle, show, navigation }) {
           {headerTitle}
         </Text>
       </View>
-      {children}
+      <View
+        style={{
+          paddingHorizontal: removePadding ? 0 : 32,
+        }}
+      >
+        {children}
+      </View>
     </SafeAreaView>
   );
 }
@@ -58,7 +71,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
     fontFamily: 'Roboto_400Regular',
-    paddingHorizontal: 32,
     paddingVertical: 24,
   },
   backButton: {

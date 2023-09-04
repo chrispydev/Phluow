@@ -26,18 +26,15 @@ import { colors } from './styles/colors';
 const screenOptions = ({ route }) => ({
   tabBarIcon: ({ focused }) => {
     let imageTab;
-    if (route.name === 'home') {
-      console.log(route.name);
+    if (route.name === 'Home') {
       imageTab = focused
         ? `${require('./assets/home-active.png')}`
         : `${require('./assets/home.png')}`;
-    } else if (route.name === 'services') {
-      console.log(route.name);
+    } else if (route.name === 'Services') {
       imageTab = focused
         ? `${require('./assets/service.png')}`
         : `${require('./assets/service.png')}`;
-    } else if (route.name === 'pickup-oder') {
-      console.log(route.name);
+    } else if (route.name === 'Schedule Pickups') {
       imageTab = focused
         ? `${require('./assets/pickup-active.png')}`
         : `${require('./assets/pickup.png')}`;
@@ -66,9 +63,9 @@ const screenOptions = ({ route }) => ({
 function HomeTabs() {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen name='home' component={HomeScreen} />
-      <Tab.Screen name='services' component={Services} />
-      <Tab.Screen name='pickup-oder' component={PickUpOrder} />
+      <Tab.Screen name='Home' component={HomeScreen} />
+      <Tab.Screen name='Services' component={Services} />
+      <Tab.Screen name='Schedule Pickups' component={PickUpOrder} />
     </Tab.Navigator>
   );
 }
