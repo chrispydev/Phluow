@@ -20,6 +20,7 @@ export default function Wrapper({ children, headerTitle, show, navigation }) {
           flexDirection: 'row',
           justifyContent: 'center',
           alignItems: 'center',
+          padding: 10,
         }}
       >
         {show && (
@@ -36,7 +37,7 @@ export default function Wrapper({ children, headerTitle, show, navigation }) {
         <Text
           style={{
             flex: 1,
-            color: colors.lableText,
+            color: colors.secondaryText,
             textAlign: 'center',
             fontWeight: '600',
             lineHeight: 20,
@@ -61,7 +62,6 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
   },
   backButton: {
-    padding: 10,
     marginLeft: -20,
     maxWidth: 20,
   },
