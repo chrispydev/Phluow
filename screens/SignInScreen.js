@@ -47,7 +47,10 @@ export default function SigninScreen({ navigation }) {
           bRadius={120}
         />
       </PopupConfirmation>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={{ marginBottom: 10 }}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.welcomesigninTextContainer}>
           <Image
             style={styles.image}
