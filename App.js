@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -19,16 +20,55 @@ import HomeScreen from './screens/HomeScreen';
 import PickUpOrder from './screens/PickUpOrder';
 import Services from './screens/Services';
 
+// import Ionicons from 'react-native-vector-icons/Ionicons';
+import { colors } from './styles/colors';
+
+const screenOptions = ({ route }) => ({
+  tabBarIcon: ({ focused }) => {
+    let imageTab;
+    if (route.name === 'home') {
+      console.log(route.name);
+      imageTab = focused
+        ? `${require('./assets/home-active.png')}`
+        : `${require('./assets/home.png')}`;
+    } else if (route.name === 'services') {
+      console.log(route.name);
+      imageTab = focused
+        ? `${require('./assets/service.png')}`
+        : `${require('./assets/service.png')}`;
+    } else if (route.name === 'pickup-oder') {
+      console.log(route.name);
+      imageTab = focused
+        ? `${require('./assets/pickup-active.png')}`
+        : `${require('./assets/pickup.png')}`;
+    }
+
+    return <Image source={imageTab} />;
+  },
+  tabBarActiveTintColor: colors.secondary,
+  tabBarInactiveTintColor: colors.secondaryText,
+  headerShown: false,
+  tabBarStyle: {
+    backgroundColor: colors.primaryDarker,
+    textTransform: 'uppercase',
+    paddingVertical: 10,
+    borderTopWidth: 0,
+    // borderTopColor: colors.secondary,
+  },
+  tabBarLabelStyle: {
+    fontSize: 12,
+    fontWeight: 500,
+    lineHeight: 20,
+    letterSpacing: -0.24,
+  },
+});
+
 function HomeTabs() {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
+    <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name='home' component={HomeScreen} />
-      <Tab.Screen name='pickup-oder' component={PickUpOrder} />
       <Tab.Screen name='services' component={Services} />
+      <Tab.Screen name='pickup-oder' component={PickUpOrder} />
     </Tab.Navigator>
   );
 }
