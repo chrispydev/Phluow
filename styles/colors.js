@@ -5,7 +5,7 @@ export const colors = {
   primaryDark: '#292B2F',
   pending: '#F2A78C',
   complete: '#2C9043',
-  ongoing: '#F85D5D',
+  denied: '#F85D5D',
   secondaryText: '#fff',
   lableText: '#FFFFFF99',
   // secondaryText: 'rgba(255, 255, 255, 0.60)',

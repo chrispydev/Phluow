@@ -89,7 +89,7 @@ Check your email to confirm code sent to you.'
         >
           Let's Create An Account to Continue
         </Text>
-        <View style={{ marginTop: 29, gap: 15 }}>
+        <View style={{ marginTop: 29, gap: 15, marginBottom: 100 }}>
           <FormInput
             placeHolderText='Full Name'
             secureText={false}

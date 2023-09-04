@@ -20,8 +20,9 @@ export default function PickCard({
         alignItems: 'center',
         paddingLeft: 10,
         paddingRight: 20,
-        paddingBottom: 15,
-        paddingTop: 15,
+        paddingVertical: 15,
+        marginVertical: 1,
+        backgroundColor: colors.boxColor,
       }}
     >
       <View>
