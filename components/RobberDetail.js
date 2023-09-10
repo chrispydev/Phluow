@@ -1,39 +1,48 @@
-import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
-import { colors } from "../styles/colors";
-import HorizontalLine from "./HorizontalLine";
-import CustomButton from "./CustomButton";
+import React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
+import { colors } from '../styles/colors';
+import HorizontalLine from './HorizontalLine';
+import CustomButton from './CustomButton';
 
-export default function RobberDetail() {
+export default function RobberDetail({
+  show_1,
+  show_2,
+  robberText,
+  robberBText,
+  robberVolume,
+  robberTTest,
+  robberPrice,
+  robberTColor,
+}) {
   return (
     <View style={{ marginHorizontal: 20, marginVertical: 10 }}>
       <View style={styles.roberDetail}>
         <View
           style={{
-            flexDirection: "row",
+            flexDirection: 'row',
             gap: 10,
-            alignItems: "center",
+            alignItems: 'center',
             paddingVertical: 10,
             paddingHorizontal: 10,
           }}
         >
           <Image
             style={{ width: 47, height: 59, flexShrink: 0, borderRadius: 5 }}
-            source={require("../assets/rober.png")}
+            source={require('../assets/rober.png')}
           />
           <View style={{ gap: 7 }}>
             <Text style={[styles.robberText, { color: colors.textLightColor }]}>
-              Sachets Water
+              {robberText}
             </Text>
-            <Text style={{ color: colors.secondaryText }}>500ml</Text>
+            <Text style={{ color: colors.secondaryText }}>{robberVolume}</Text>
           </View>
         </View>
         <HorizontalLine />
         <View
           style={{
             padding: 20,
-            flexDirection: "row",
-            justifyContent: "space-between",
+            flexDirection: 'row',
+            justifyContent: 'space-between',
           }}
         >
           <Text
@@ -42,12 +51,12 @@ export default function RobberDetail() {
               fontSize: 14,
               fontWeight: 500,
               letterSpacing: -0.24,
-              flexWrap: "wrap",
+              flexWrap: 'wrap',
             }}
           >
-            1 sachets of water
+            {robberTTest}
           </Text>
-          <View style={{ alignItems: "flex-start", gap: 7 }}>
+          <View style={{ alignItems: 'flex-start', gap: 7 }}>
             <Text
               style={{
                 color: colors.textLightColor,
@@ -64,22 +73,22 @@ export default function RobberDetail() {
                 letterSpacing: -0.24,
               }}
             >
-              Ghc 10.00
+              {robberPrice}
             </Text>
           </View>
         </View>
         <HorizontalLine />
         <View
           style={{
-            padding: 30,
-            justifyContent: "center",
-            alignItems: "center",
+            padding: 20,
+            justifyContent: 'center',
+            alignItems: 'center',
             gap: 10,
           }}
         >
           <View
             style={{
-              backgroundColor: "#292B2F",
+              backgroundColor: '#292B2F',
               gap: 5,
               maxWidth: 154,
               maxHeight: 70,
@@ -94,7 +103,7 @@ export default function RobberDetail() {
                 fontWeight: 600,
                 lineHeight: 20,
                 color: colors.secondaryText,
-                textAlign: "center",
+                textAlign: 'center',
               }}
             >
               Number of purchase
@@ -105,7 +114,7 @@ export default function RobberDetail() {
                 fontWeight: 600,
                 lineHeight: 20,
                 color: colors.secondaryText,
-                textAlign: "center",
+                textAlign: 'center',
               }}
             >
               2
@@ -114,41 +123,57 @@ export default function RobberDetail() {
           <CustomButton
             pVertical={16}
             pHorizontal={8}
-            buttonText="Return sachet rubber"
-            bgColor={colors.textLightColor}
+            buttonText={robberBText}
+            bgColor={robberTColor}
           />
         </View>
-        <View
-          style={{ flexDirection: "row", justifyContent: "center", gap: 10 }}
-        >
-          <Text
-            style={{ color: colors.complete, fontWeight: 600, fontSize: 14 }}
-          >
-            Delivery Status:{" "}
-          </Text>
-          <Text
-            style={{
-              color: colors.secondaryText,
-              fontWeight: 600,
-              fontSize: 14,
-            }}
-          >
-            Time / Date
-          </Text>
-        </View>
-        <View
-          style={{
-            margin: 10,
-            backgroundColor: "#292B2F",
-            borderRadius: 16,
-            paddingVertical: 22,
-            paddingHorizontal: 18,
-          }}
-        >
-          <Text style={{ color: "#515356", fontWeight: 400, fontSize: 14 }}>
-            Additional Information from Company shows up here
-          </Text>
-        </View>
+        {show_1 && (
+          <>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                gap: 10,
+              }}
+            >
+              <Text
+                style={{
+                  color: colors.complete,
+                  fontWeight: 600,
+                  fontSize: 14,
+                }}
+              >
+                Delivery Status:
+              </Text>
+              <Text
+                style={{
+                  color: colors.secondaryText,
+                  fontWeight: 600,
+                  fontSize: 14,
+                }}
+              >
+                Time / Date
+              </Text>
+            </View>
+          </>
+        )}
+        {show_2 && (
+          <>
+            <View
+              style={{
+                margin: 10,
+                backgroundColor: '#292B2F',
+                borderRadius: 16,
+                paddingVertical: 22,
+                paddingHorizontal: 18,
+              }}
+            >
+              <Text style={{ color: '#515356', fontWeight: 400, fontSize: 14 }}>
+                Additional Information from Company shows up here
+              </Text>
+            </View>
+          </>
+        )}
       </View>
     </View>
   );
@@ -156,7 +181,7 @@ export default function RobberDetail() {
 
 const styles = StyleSheet.create({
   roberDetail: {
-    backgroundColor: "#40444B",
+    backgroundColor: '#40444B',
     borderRadius: 10,
   },
   robberText: {
