@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
-import React from 'react';
-import { colors } from '../styles/colors';
+import { View, Text, StyleSheet, Image } from "react-native";
+import React from "react";
+import { colors } from "../styles/colors";
 
+/*eslint-disable*/
 export default function PickCard({
   cardColor,
   cImage,
@@ -15,9 +16,9 @@ export default function PickCard({
   return (
     <View
       style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
         paddingLeft: 10,
         paddingRight: 20,
         paddingVertical: 15,
@@ -41,9 +42,9 @@ export default function PickCard({
         <Text style={styles.location}>{cLocation}</Text>
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
             gap: 10,
           }}
         >
@@ -72,14 +73,14 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     lineHeight: 27.346,
     letterSpacing: -0.328,
-    textAlign: 'left',
+    textAlign: "left",
     color: colors.secondaryText,
   },
   date: {
     color: colors.secondaryText,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 10,
-    fontWeight: '400',
+    fontWeight: "400",
     letterSpacing: 0.32,
   },
   price: {
