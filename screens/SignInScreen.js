@@ -32,12 +32,27 @@ export default function SigninScreen({ navigation }) {
     <Wrapper show navigation={navigation}>
       <StatusBar backgroundColor='#fff' />
       <PopupConfirmation
-        popupText='You have Login Successfully'
         visible={visible}
         onClose={() => {
           Alert.alert('Modal has been closed.');
         }}
       >
+        <Image source={require('../assets/ellipse.png')} />
+        <View style={{ gap: 10 }}>
+          <Text style={{ color: colors.secondaryText, textAlign: 'center' }}>
+            Success!
+          </Text>
+        </View>
+
+        <Text
+          style={{
+            color: colors.secondaryText,
+            textAlign: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          You have Login Successfully
+        </Text>
         <CustomButton
           buttonAction={() => handleModal()}
           buttonText='Continue'
