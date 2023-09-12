@@ -27,14 +27,29 @@ export default function SignUpScreen({ navigation }) {
     <Wrapper show navigation={navigation}>
       <StatusBar backgroundColor='#fff' />
       <PopupConfirmation
-        popupText='You have signUp successfully!
-Check your email to confirm code sent to you.'
         visible={visible}
         onClose={() => {
           Alert.alert('Modal has been closed.');
           setVisible(!visible);
         }}
       >
+        <Image source={require('../assets/ellipse.png')} />
+        <View style={{ gap: 10 }}>
+          <Text style={{ color: colors.secondaryText, textAlign: 'center' }}>
+            Success!
+          </Text>
+        </View>
+
+        <Text
+          style={{
+            color: colors.secondaryText,
+            textAlign: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          You have signUp successfully! Check your email to confirm code sent to
+          you.
+        </Text>
         <CustomButton
           buttonAction={() => setVisible(false)}
           buttonText='Okay'
@@ -204,17 +219,17 @@ Check your email to confirm code sent to you.'
   );
 }
 
-const styles = StyleSheet.create({
-  signUpContainer: {
-    flex: 1,
-    backgroundColor: colors.primary,
-    fontFamily: 'Roboto_400Regular',
-    paddingHorizontal: 32,
-    paddingVertical: 24,
-  },
-  backButton: {
-    padding: 10,
-    marginLeft: -20,
-    maxWidth: 20,
-  },
-});
+// const styles = StyleSheet.create({
+//   signUpContainer: {
+//     flex: 1,
+//     backgroundColor: colors.primary,
+//     fontFamily: 'Roboto_400Regular',
+//     paddingHorizontal: 32,
+//     paddingVertical: 24,
+//   },
+//   backButton: {
+//     padding: 10,
+//     marginLeft: -20,
+//     maxWidth: 20,
+//   },
+// });
