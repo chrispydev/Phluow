@@ -5,12 +5,12 @@ import RobberDetail from './RobberDetail';
 import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 import {colors} from '../styles/colors';
 
-const Sheet = () => {
+const Sheet = ({index}) => {
   // ref
   const bottomSheetRef = useRef(null);
 
   // variables
-  const snapPoints = useMemo(() => ['70%', '100%'], []);
+  const snapPoints = useMemo(() => ['100%', '100%'], []);
 
   // callbacks
   const handleSheetChanges = useCallback(index => {
@@ -21,18 +21,19 @@ const Sheet = () => {
   return (
     <View
       style={{
-        flex: 1,
-        paddingTop: '100%',
-        paddingBottom: '100%',
-        backgroundColor: 'rgba(0,0,0,0.1)',
+        paddingBottom: '90%',
+        paddingTop: '30%',
+        backgroundColor: colors.primaryDarker,
       }}>
       <BottomSheet
+        // enablePanDownToClose={true}
         backgroundStyle={{
           padding: 10,
-          backgroundColor: colors.scheduleButtonColor,
+          backgroundColor: colors.primaryDarker,
+          borderRadius: 0,
         }}
         ref={bottomSheetRef}
-        index={1}
+        index={index}
         backdropComponent={props => (
           <BottomSheetBackdrop
             {...props}
@@ -42,7 +43,7 @@ const Sheet = () => {
         )}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}>
-        <ScrollView style={{backgroundColor: colors.scheduleButtonColor}}>
+        <ScrollView style={{backgroundColor: colors.primaryDarker}}>
           {[...new Array(10)].map((_, index) => (
             <RobberDetail
               key={index}

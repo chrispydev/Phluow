@@ -1,22 +1,35 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, Alert} from 'react-native';
+import React, {useCallback, useMemo, useRef, useState} from 'react';
+import {View} from 'react-native';
 import Wrapper from '../components/Wrapper';
 import {colors} from '../styles/colors';
 import Status from './Custom/Status';
 import Ongoing from './Custom/Ongoing';
 import Complete from './Custom/Complete';
 import CustomButton from '../components/CustomButton';
-import PopupConfirmation from '../components/PopupConfirmation';
-import Sheet from '../components/sheet';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
+
+import RobberDetail from '../components/RobberDetail';
+import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 
 export default function PickUpOrder({navigation}) {
   const [page, setPage] = useState('status');
-  const [visible, setVisible] = useState(false);
+
+  const bottomSheetRef = useRef(null);
+
+  const [index, setIndex] = useState(-1);
+
+  const snapPoints = useMemo(() => ['100%', '100%'], []);
+
+  const handleSheetChanges = useCallback(index => {
+    console.log('handleSheetChanges', index);
+  }, []);
+
+  const closeSheet = () => {
+    setIndex(-1);
+  };
 
   const moveToStatus = () => {
     setPage('status');
-    handleModal();
   };
 
   const moveOnGoing = () => {
@@ -27,53 +40,55 @@ export default function PickUpOrder({navigation}) {
     setPage('complete');
   };
 
-  const handleModal = () => {};
+  const completeEvent = () => {
+    if (index == -1) {
+      setIndex(1);
+    }
+  };
 
-  const popUp = (
+  const RNBottonSheet = ({index}) => (
     <>
-      <PopupConfirmation
-        visible={visible}
-        onClose={() => {
-          Alert.alert('Modal has been closed.');
+      <View
+        style={{
+          paddingBottom: '90%',
+          paddingTop: '30%',
+          backgroundColor: colors.primaryDarker,
         }}>
-        <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-          <Text style={{color: colors.secondaryText, textAlign: 'center'}}>
-            Your order is still pending
-          </Text>
-          <Text
-            style={{
-              paddingLeft: 3,
-              color: colors.pending,
-              textAlign: 'center',
-            }}>
-            pending
-          </Text>
-          <Text style={{color: colors.secondaryText, textAlign: 'center'}}>
-            Wait for [company name] to accept your order
-          </Text>
-        </View>
-
-        <TouchableOpacity onPress={() => setVisible(!visible)}>
-          <Text
-            style={{
-              color: colors.secondaryText,
-              textAlign: 'center',
-              flexWrap: 'wrap',
-              textDecorationStyle: 'dashed',
-              textDecorationLine: 'underline',
-            }}>
-            See details of Order
-          </Text>
-        </TouchableOpacity>
-        <CustomButton
-          buttonAction={() => handleModal()}
-          buttonText="Continue"
-          bgColor={colors.secondary}
-          pHorizontal={30}
-          pVertical={5}
-          bRadius={120}
-        />
-      </PopupConfirmation>
+        <BottomSheet
+          handleIndicatorStyle={{backgroundColor: 'white', width: '45%'}}
+          enablePanDownToClose={true}
+          onClose={closeSheet}
+          backgroundStyle={{
+            padding: 10,
+            backgroundColor: colors.primaryDarker,
+            borderRadius: 0,
+          }}
+          ref={bottomSheetRef}
+          index={index}
+          backdropComponent={props => (
+            <BottomSheetBackdrop
+              {...props}
+              appearsOnIndex={0}
+              disappearsOnIndex={-1}
+            />
+          )}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}>
+          <ScrollView style={{backgroundColor: colors.primaryDarker}}>
+            {[...new Array(10)].map((_, index) => (
+              <RobberDetail
+                key={index}
+                robberText="Sachets water"
+                robberVolume="500ml"
+                robberTTest="1 sachets of  water"
+                robberPrice="GHC 10.00"
+                robberTColor={colors.secondary}
+                robberBText="Return sachet rubber"
+              />
+            ))}
+          </ScrollView>
+        </BottomSheet>
+      </View>
     </>
   );
 
@@ -187,7 +202,7 @@ export default function PickUpOrder({navigation}) {
               pHorizontal={10}
             />
           </View>
-          <Complete />
+          <Complete completeEvent={completeEvent} />
         </>
       )}
     </>
@@ -199,9 +214,7 @@ export default function PickUpOrder({navigation}) {
       removePadding
       navigation={navigation}>
       <GestureHandlerRootView>
-        <Sheet />
-        {/* {popUp} */}
-        {/* {currentPage} */}
+        {index == -1 ? <>{currentPage}</> : <RNBottonSheet index={index} />}
       </GestureHandlerRootView>
     </Wrapper>
   );

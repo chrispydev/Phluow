@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {colors} from '../styles/colors';
 
@@ -12,6 +12,7 @@ export default function PickCard({
   cPrice,
   cStatus,
   cTime,
+  completeEvent,
 }) {
   return (
     <View
@@ -52,7 +53,9 @@ export default function PickCard({
       </View>
       <View>
         <Text style={styles.price}>{cPrice}</Text>
-        <Text style={[styles.status, {color: cardColor}]}>{cStatus}</Text>
+        <TouchableOpacity onPress={completeEvent}>
+          <Text style={[styles.status, {color: cardColor}]}>{cStatus}</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
