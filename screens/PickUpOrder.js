@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import Wrapper from '../components/Wrapper';
 import {colors} from '../styles/colors';
@@ -6,27 +6,13 @@ import Status from './Custom/Status';
 import Ongoing from './Custom/Ongoing';
 import Complete from './Custom/Complete';
 import CustomButton from '../components/CustomButton';
-import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
-
-import RobberDetail from '../components/RobberDetail';
-import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import RNBottonSheet from '../components/RNBottomSheet';
 
 export default function PickUpOrder({navigation}) {
   const [page, setPage] = useState('status');
 
-  const bottomSheetRef = useRef(null);
-
   const [index, setIndex] = useState(-1);
-
-  const snapPoints = useMemo(() => ['100%', '100%'], []);
-
-  const handleSheetChanges = useCallback(index => {
-    console.log('handleSheetChanges', index);
-  }, []);
-
-  const closeSheet = () => {
-    setIndex(-1);
-  };
 
   const moveToStatus = () => {
     setPage('status');
@@ -41,56 +27,14 @@ export default function PickUpOrder({navigation}) {
   };
 
   const completeEvent = () => {
-    if (index == -1) {
+    if (index === -1) {
       setIndex(1);
     }
   };
 
-  const RNBottonSheet = ({index}) => (
-    <>
-      <View
-        style={{
-          paddingBottom: '90%',
-          paddingTop: '30%',
-          backgroundColor: colors.primaryDarker,
-        }}>
-        <BottomSheet
-          handleIndicatorStyle={{backgroundColor: 'white', width: '45%'}}
-          enablePanDownToClose={true}
-          onClose={closeSheet}
-          backgroundStyle={{
-            padding: 10,
-            backgroundColor: colors.primaryDarker,
-            borderRadius: 0,
-          }}
-          ref={bottomSheetRef}
-          index={index}
-          backdropComponent={props => (
-            <BottomSheetBackdrop
-              {...props}
-              appearsOnIndex={0}
-              disappearsOnIndex={-1}
-            />
-          )}
-          snapPoints={snapPoints}
-          onChange={handleSheetChanges}>
-          <ScrollView style={{backgroundColor: colors.primaryDarker}}>
-            {[...new Array(10)].map((_, index) => (
-              <RobberDetail
-                key={index}
-                robberText="Sachets water"
-                robberVolume="500ml"
-                robberTTest="1 sachets of  water"
-                robberPrice="GHC 10.00"
-                robberTColor={colors.secondary}
-                robberBText="Return sachet rubber"
-              />
-            ))}
-          </ScrollView>
-        </BottomSheet>
-      </View>
-    </>
-  );
+  const closeSheet = () => {
+    setIndex(-1);
+  };
 
   const currentPage = (
     <>
@@ -214,7 +158,11 @@ export default function PickUpOrder({navigation}) {
       removePadding
       navigation={navigation}>
       <GestureHandlerRootView>
-        {index == -1 ? <>{currentPage}</> : <RNBottonSheet index={index} />}
+        {index === -1 ? (
+          <>{currentPage}</>
+        ) : (
+          <RNBottonSheet index={index} closeSheet={closeSheet} />
+        )}
       </GestureHandlerRootView>
     </Wrapper>
   );
