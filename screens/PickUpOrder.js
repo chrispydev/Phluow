@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import Wrapper from '../components/Wrapper';
 import {colors} from '../styles/colors';
 import Status from './Custom/Status';
@@ -38,117 +38,55 @@ export default function PickUpOrder({navigation}) {
 
   const currentPage = (
     <>
-      {page === 'status' && (
-        <>
-          <View
-            style={{
-              backgroundColor: colors.primaryDark,
-              paddingVertical: 10,
-              paddingHorizontal: 10,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <CustomButton
-              buttonAction={() => moveToStatus()}
-              bgColor={colors.secondary}
-              buttonText="Status"
-              pVertical={10}
-              pHorizontal={10}
-              bRadius={10}
-            />
-            <CustomButton
-              buttonAction={() => moveOnGoing()}
-              bgColor={colors.primaryDark}
-              buttonText="Ongoing"
-              pVertical={10}
-              pHorizontal={10}
-            />
-            <CustomButton
-              buttonAction={() => moveToComplete()}
-              bgColor={colors.primaryDark}
-              buttonText="Complete"
-              pVertical={10}
-              pHorizontal={10}
-            />
-          </View>
-          <Status />
-        </>
-      )}
-      {page === 'ongoing' && (
-        <>
-          <View
-            style={{
-              backgroundColor: colors.primaryDark,
-              paddingVertical: 10,
-              paddingHorizontal: 10,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <CustomButton
-              buttonAction={() => moveToStatus()}
-              bgColor={colors.primaryDark}
-              buttonText="Status"
-              pVertical={10}
-              pHorizontal={10}
-              bRadius={10}
-            />
-            <CustomButton
-              buttonAction={() => moveOnGoing()}
-              bgColor={colors.secondary}
-              buttonText="Ongoing"
-              pVertical={10}
-              pHorizontal={10}
-            />
-            <CustomButton
-              buttonAction={() => moveToComplete()}
-              bgColor={colors.primaryDark}
-              buttonText="Complete"
-              pVertical={10}
-              pHorizontal={10}
-            />
-          </View>
-          <Ongoing />
-        </>
-      )}
-      {page === 'complete' && (
-        <>
-          <View
-            style={{
-              backgroundColor: colors.primaryDark,
-              paddingVertical: 10,
-              paddingHorizontal: 10,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <CustomButton
-              buttonAction={() => moveToStatus()}
-              bgColor={colors.primaryDark}
-              buttonText="Status"
-              pVertical={10}
-              pHorizontal={10}
-              bRadius={10}
-            />
-            <CustomButton
-              buttonAction={() => moveOnGoing()}
-              bgColor={colors.primaryDark}
-              buttonText="Ongoing"
-              pVertical={10}
-              pHorizontal={10}
-            />
-            <CustomButton
-              buttonAction={() => moveToComplete()}
-              bgColor={colors.secondary}
-              buttonText="Complete"
-              pVertical={10}
-              pHorizontal={10}
-            />
-          </View>
-          <Complete completeEvent={completeEvent} />
-        </>
-      )}
+      <View
+        style={{
+          backgroundColor: colors.primaryDark,
+          paddingVertical: 10,
+          paddingHorizontal: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <CustomButton
+          buttonAction={() => moveToStatus()}
+          bgColor={page === 'status' ? colors.secondary : colors.primaryDark}
+          buttonText="Status"
+          pVertical={10}
+          pHorizontal={10}
+          bRadius={10}
+        />
+        <CustomButton
+          buttonAction={() => moveOnGoing()}
+          bgColor={page === 'ongoing' ? colors.secondary : colors.primaryDark}
+          buttonText="Ongoing"
+          pVertical={10}
+          pHorizontal={10}
+        />
+        <CustomButton
+          buttonAction={() => moveToComplete()}
+          bgColor={page === 'complete' ? colors.secondary : colors.primaryDark}
+          buttonText="Complete"
+          pVertical={10}
+          pHorizontal={10}
+        />
+      </View>
+      <ScrollView>
+        {page === 'status' && (
+          <>
+            <Status />
+          </>
+        )}
+        {page === 'ongoing' && (
+          <>
+            <Ongoing />
+          </>
+        )}
+        {page === 'complete' && (
+          <>
+            <Complete completeEvent={completeEvent} />
+          </>
+        )}
+      </ScrollView>
     </>
   );
   return (

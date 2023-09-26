@@ -2,7 +2,6 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {colors} from '../styles/colors';
 
-/*eslint-disable*/
 export default function PickCard({
   cardColor,
   cImage,
