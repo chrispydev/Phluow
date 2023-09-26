@@ -15,7 +15,7 @@ export default function RobberDetail({
   robberTColor,
 }) {
   return (
-    <View style={{marginHorizontal: 20, marginVertical: 10}}>
+    <View style={{marginHorizontal: '15%', marginVertical: 5}}>
       <View style={styles.roberDetail}>
         <View
           style={{

@@ -23,7 +23,6 @@ export default function SchedulePickups() {
         index={1}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}>
-        {' '}
         <RobberDetail
           robberText="Sachets water"
           robberVolume="500ml"

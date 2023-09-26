@@ -51,7 +51,9 @@ const screenOptions = ({route}) => ({
 
 function HomeTabs() {
   return (
-    <Tab.Navigator screenOptions={screenOptions}>
+    <Tab.Navigator
+      screenOptions={screenOptions}
+      initialRouteName="Schedule Pickups">
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Services" component={Services} />
 
