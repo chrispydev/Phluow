@@ -1,7 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-
-/* eslint-disable */
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
 export default function CustomButton({
   buttonText,
@@ -25,8 +23,7 @@ export default function CustomButton({
           borderRadius: bRadius ? bRadius : 15,
         },
       ]}
-      onPress={buttonAction}
-    >
+      onPress={buttonAction}>
       {children}
       <Text style={styles.TextColor}>{buttonText}</Text>
     </TouchableOpacity>
@@ -42,7 +39,7 @@ const styles = StyleSheet.create({
   TextColor: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 500,
+    fontWeight: '500',
     textTransform: 'capitalize',
   },
 });

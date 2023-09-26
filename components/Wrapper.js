@@ -8,9 +8,8 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { colors } from '../styles/colors';
+import {colors} from '../styles/colors';
 
-/* eslint-disable*/
 export default function Wrapper({
   children,
   headerTitle,
@@ -20,7 +19,7 @@ export default function Wrapper({
 }) {
   return (
     <SafeAreaView style={styles.signUpContainer}>
-      <StatusBar backgroundColor='#fff' />
+      <StatusBar backgroundColor="#000" />
       <View
         style={{
           flexDirection: 'row',
@@ -28,14 +27,12 @@ export default function Wrapper({
           alignItems: 'center',
           padding: 10,
           paddingHorizontal: 32,
-        }}
-      >
+        }}>
         {show && (
           <>
             <TouchableOpacity
               style={styles.backButton}
-              onPress={() => navigation.goBack()}
-            >
+              onPress={() => navigation.goBack()}>
               <Image source={require('../assets/signin_back.png')} />
             </TouchableOpacity>
           </>
@@ -50,16 +47,14 @@ export default function Wrapper({
             lineHeight: 20,
             letterSpacing: -0.24,
             fontSize: 20,
-          }}
-        >
+          }}>
           {headerTitle}
         </Text>
       </View>
       <View
         style={{
           paddingHorizontal: removePadding ? 0 : 32,
-        }}
-      >
+        }}>
         {children}
       </View>
     </SafeAreaView>

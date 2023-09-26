@@ -1,18 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import CustomButton from '../components/CustomButton';
-import { StatusBar } from 'expo-status-bar';
+import {StatusBar} from 'expo-status-bar';
 import PagerView from 'react-native-pager-view';
 import ImageGrid from '../components/ImageGrid';
-import { colors } from '../styles/colors';
+import {colors} from '../styles/colors';
 
 /* eslint-disable */
-export default function WelcomeScreen({ navigation }) {
+export default function WelcomeScreen({navigation}) {
   return (
     <View style={styles.homeContainer}>
       <StatusBar style={'light'} />
-      <PagerView style={{ flex: 1 }} initialPage={0}>
-        <View key='1'>
+      <PagerView style={{flex: 1}} initialPage={0}>
+        <View key="1">
           <Image style={styles.image} source={require('../assets/Saly.png')} />
           <View style={styles.textContainer}>
             <Text style={[styles.text, styles.text1]}>Order With Ease</Text>
@@ -26,7 +26,7 @@ export default function WelcomeScreen({ navigation }) {
             </View>
           </View>
         </View>
-        <View key='2'>
+        <View key="2">
           <ImageGrid />
           <View style={styles.textContainer}>
             <Text style={[styles.text, styles.text1]}>We made it simple</Text>
@@ -44,13 +44,12 @@ export default function WelcomeScreen({ navigation }) {
         <CustomButton
           pHorizontal={29}
           bgColor={colors.secondary}
-          buttonText='Create An Account'
+          buttonText="Create An Account"
           buttonAction={() => navigation.navigate('signUp')}
         />
         <TouchableOpacity
           style={styles.buttonText1}
-          onPress={() => navigation.navigate('signin')}
-        >
+          onPress={() => navigation.navigate('signin')}>
           <Text style={styles.buttonText1}>Sign in</Text>
         </TouchableOpacity>
 
@@ -85,12 +84,12 @@ const styles = StyleSheet.create({
   },
   text1: {
     fontSize: 24,
-    fontWeight: 700,
+    fontWeight: '700',
     marginBottom: 10,
   },
   text2: {
     fontSize: 16,
-    fontWeight: 400,
+    fontWeight: '400',
     lineHeight: 20,
   },
   carouselBars: {
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
     color: '#007ACC',
     marginTop: 20,
     fontSize: 20,
-    fontWeight: 500,
+    fontWeight: '500',
     lineHeight: 20,
   },
   buttonText2: {
@@ -127,7 +126,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 20,
     fontSize: 14,
-    fontWeight: 400,
+    fontWeight: '400',
     textTransform: 'capitalize',
   },
 });

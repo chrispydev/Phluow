@@ -1,12 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import React, {useRef, useEffect, useState} from 'react';
+import {Text, TextInput, View, TouchableOpacity, Image} from 'react-native';
 import Wrapper from '../components/Wrapper';
-import { colors } from '../styles/colors';
+import {colors} from '../styles/colors';
 import CustomButton from '../components/CustomButton';
-import { globalStyles } from '../styles/global';
+import {globalStyles} from '../styles/global';
 
-/*eslint-disable*/
-export default function ConfirmEmailOtp({ navigation }) {
+export default function ConfirmEmailOtp({navigation}) {
   const inputRefs = useRef([]);
   let currentIndex = useRef(0);
 
@@ -17,7 +16,7 @@ export default function ConfirmEmailOtp({ navigation }) {
     if (isTimerRunning) {
       // Start the timer
       const interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
+        setTimer(prevTimer => prevTimer - 1);
       }, 1000);
 
       // Clear the interval and run the function when the timer ends
@@ -44,7 +43,7 @@ export default function ConfirmEmailOtp({ navigation }) {
     setIsTimerRunning(true);
   };
 
-  const formatTime = (time) => {
+  const formatTime = time => {
     // Calculate minutes and seconds
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
@@ -70,7 +69,7 @@ export default function ConfirmEmailOtp({ navigation }) {
       <View style={globalStyles.welcomesigninTextContainer}>
         <Image source={require('../assets/signin.png')} />
         <Text style={globalStyles.text}>Confirm Email</Text>
-        <View style={{ gap: 5 }}>
+        <View style={{gap: 5}}>
           <Text style={globalStyles.welcomeText}>
             Enter the code sent to your email and confirm to login
           </Text>
@@ -82,19 +81,18 @@ export default function ConfirmEmailOtp({ navigation }) {
           flexDirection: 'row',
           justifyContent: 'space-between',
           width: '100%',
-        }}
-      >
+        }}>
         {[...new Array(5)].map((_, index) => (
           <TextInput
-            ref={(ref) => {
+            ref={ref => {
               inputRefs.current[index] = ref;
             }}
             key={index}
-            keyboardType='decimal-pad'
+            keyboardType="decimal-pad"
             contextMenuHidden
             selectTextOnFocus
             textID={`OTPInput-${index}`}
-            onChangeText={(text) => handleChange(text, index)}
+            onChangeText={text => handleChange(text, index)}
             maxLength={1}
             style={{
               borderColor: colors.secondaryText,
@@ -119,16 +117,14 @@ export default function ConfirmEmailOtp({ navigation }) {
           marginTop: 15,
           marginBottom: 15,
           gap: 10,
-        }}
-      >
+        }}>
         <Text
           style={{
             color: colors.secondaryText,
             fontSize: 14,
-            fontWeight: 500,
+            fontWeight: '500',
             textAlign: 'center',
-          }}
-        >
+          }}>
           Haven&apos;t gotten code yet?
         </Text>
         {isTimerRunning ? (
@@ -136,10 +132,9 @@ export default function ConfirmEmailOtp({ navigation }) {
             style={{
               color: colors.secondary,
               fontSize: 14,
-              fontWeight: 500,
+              fontWeight: '500',
               textAlign: 'center',
-            }}
-          >
+            }}>
             {formatTime(timer)}
           </Text>
         ) : (
@@ -148,17 +143,16 @@ export default function ConfirmEmailOtp({ navigation }) {
               style={{
                 color: colors.secondary,
                 fontSize: 14,
-                fontWeight: 500,
+                fontWeight: '500',
                 textAlign: 'center',
-              }}
-            >
+              }}>
               Re-send code
             </Text>
           </TouchableOpacity>
         )}
       </View>
       <CustomButton
-        buttonText='Confirm'
+        buttonText="Confirm"
         bgColor={colors.secondary}
         buttonAction={() => navigation.navigate('home-tab')}
       />

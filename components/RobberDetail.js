@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { colors } from '../styles/colors';
+import {View, Text, Image, StyleSheet} from 'react-native';
+import {colors} from '../styles/colors';
 import HorizontalLine from './HorizontalLine';
 import CustomButton from './CustomButton';
 
@@ -15,7 +15,7 @@ export default function RobberDetail({
   robberTColor,
 }) {
   return (
-    <View style={{ marginHorizontal: 20, marginVertical: 10 }}>
+    <View style={{marginHorizontal: 20, marginVertical: 10}}>
       <View style={styles.roberDetail}>
         <View
           style={{
@@ -24,17 +24,16 @@ export default function RobberDetail({
             alignItems: 'center',
             paddingVertical: 10,
             paddingHorizontal: 10,
-          }}
-        >
+          }}>
           <Image
-            style={{ width: 47, height: 59, flexShrink: 0, borderRadius: 5 }}
+            style={{width: 47, height: 59, flexShrink: 0, borderRadius: 5}}
             source={require('../assets/rober.png')}
           />
-          <View style={{ gap: 7 }}>
-            <Text style={[styles.robberText, { color: colors.textLightColor }]}>
+          <View style={{gap: 7}}>
+            <Text style={[styles.robberText, {color: colors.textLightColor}]}>
               {robberText}
             </Text>
-            <Text style={{ color: colors.secondaryText }}>{robberVolume}</Text>
+            <Text style={{color: colors.secondaryText}}>{robberVolume}</Text>
           </View>
         </View>
         <HorizontalLine />
@@ -43,36 +42,32 @@ export default function RobberDetail({
             padding: 20,
             flexDirection: 'row',
             justifyContent: 'space-between',
-          }}
-        >
+          }}>
           <Text
             style={{
               color: colors.secondaryText,
               fontSize: 14,
-              fontWeight: 500,
+              fontWeight: '500',
               letterSpacing: -0.24,
               flexWrap: 'wrap',
-            }}
-          >
+            }}>
             {robberTTest}
           </Text>
-          <View style={{ alignItems: 'flex-start', gap: 7 }}>
+          <View style={{alignItems: 'flex-start', gap: 7}}>
             <Text
               style={{
                 color: colors.textLightColor,
-                fontWeight: 600,
+                fontWeight: '600',
                 letterSpacing: -0.24,
-              }}
-            >
+              }}>
               Price:
             </Text>
             <Text
               style={{
                 color: colors.secondaryText,
-                fontWeight: 600,
+                fontWeight: '600',
                 letterSpacing: -0.24,
-              }}
-            >
+              }}>
               {robberPrice}
             </Text>
           </View>
@@ -84,8 +79,7 @@ export default function RobberDetail({
             justifyContent: 'center',
             alignItems: 'center',
             gap: 10,
-          }}
-        >
+          }}>
           <View
             style={{
               backgroundColor: '#292B2F',
@@ -95,28 +89,25 @@ export default function RobberDetail({
               borderRadius: 10,
               paddingVertical: 20,
               paddingHorizontal: 10,
-            }}
-          >
+            }}>
             <Text
               style={{
                 fontSize: 12,
-                fontWeight: 600,
+                fontWeight: '600',
                 lineHeight: 20,
                 color: colors.secondaryText,
                 textAlign: 'center',
-              }}
-            >
+              }}>
               Number of purchase
             </Text>
             <Text
               style={{
                 fontSize: 20,
-                fontWeight: 600,
+                fontWeight: '600',
                 lineHeight: 20,
                 color: colors.secondaryText,
                 textAlign: 'center',
-              }}
-            >
+              }}>
               2
             </Text>
           </View>
@@ -134,24 +125,21 @@ export default function RobberDetail({
                 flexDirection: 'row',
                 justifyContent: 'center',
                 gap: 10,
-              }}
-            >
+              }}>
               <Text
                 style={{
                   color: colors.complete,
-                  fontWeight: 600,
+                  fontWeight: '600',
                   fontSize: 14,
-                }}
-              >
+                }}>
                 Delivery Status:
               </Text>
               <Text
                 style={{
                   color: colors.secondaryText,
-                  fontWeight: 600,
+                  fontWeight: '600',
                   fontSize: 14,
-                }}
-              >
+                }}>
                 Time / Date
               </Text>
             </View>
@@ -166,9 +154,8 @@ export default function RobberDetail({
                 borderRadius: 16,
                 paddingVertical: 22,
                 paddingHorizontal: 18,
-              }}
-            >
-              <Text style={{ color: '#515356', fontWeight: 400, fontSize: 14 }}>
+              }}>
+              <Text style={{color: '#515356', fontWeight: '400', fontSize: 14}}>
                 Additional Information from Company shows up here
               </Text>
             </View>
@@ -186,7 +173,7 @@ const styles = StyleSheet.create({
   },
   robberText: {
     fontSize: 14,
-    fontWeight: 600,
+    fontWeight: '600',
     letterSpacing: -0.24,
     lineHeight: 20,
   },

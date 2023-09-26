@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { View, Image, TextInput, StyleSheet } from 'react-native';
-import { colors } from '../styles/colors';
-/* eslint-disable */
+import React, {useState} from 'react';
+import {View, Image, TextInput, StyleSheet} from 'react-native';
+import {colors} from '../styles/colors';
 
 export default function FormInput({
   placeHolderText,
@@ -12,7 +11,7 @@ export default function FormInput({
 }) {
   return (
     <View style={styles.input}>
-      <Image style={{ marginRight: 20, marginLeft: 10 }} source={iconLeft} />
+      <Image style={{marginRight: 20, marginLeft: 10}} source={iconLeft} />
       <TextInput
         placeholderTextColor={colors.lableText}
         style={{
@@ -32,8 +31,7 @@ export default function FormInput({
 const styles = StyleSheet.create({
   input: {
     backgroundColor: colors.boxColor,
-    // paddingVertical: 16,
-    paddingVertical: 8,
+
     paddingRight: 8,
     borderRadius: 16,
     borderColor: colors.boxColor,

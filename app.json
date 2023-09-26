@@ -1,36 +1,4 @@
 {
-  "expo": {
-    "name": "phluow",
-    "slug": "phluow",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/splash.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#202225"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/splash.png",
-        "backgroundColor": "#202225"
-      },
-      "package": "com.chrispydev.phluow"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "2a344cdc-73eb-4224-85c3-2e5cb83d4048"
-      }
-    }
-  }
+  "name": "phluow_native_cli",
+  "displayName": "phluow_native_cli"
 }
