@@ -30,11 +30,11 @@ export default function HomeScreen() {
           />
           {[...Array(5)].map(i => (
             <HomeCompanyCard
+              key={i}
               cName="Company Name"
               status="available"
               carDetail="3 cars available"
               image={require('../assets/im8.png')}
-              key={i}
             />
           ))}
         </ScrollView>

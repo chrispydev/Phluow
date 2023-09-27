@@ -18,7 +18,7 @@ export default function HomeCompanyCard({image, cName, status, carDetail}) {
       </View>
       <View style={{alignItems: 'center'}}>
         <Icon
-          name="map"
+          name="map-marker"
           size={25}
           color={colors.secondaryText}
           style={styles.cardText}
