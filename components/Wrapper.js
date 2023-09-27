@@ -18,12 +18,12 @@ export default function Wrapper({
   removePadding,
 }) {
   return (
-    <SafeAreaView style={styles.signUpContainer}>
+    <SafeAreaView style={styles.Container}>
       <StatusBar backgroundColor="#000" />
       <View
         style={{
           flexDirection: 'row',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           alignItems: 'center',
           padding: 10,
           paddingHorizontal: 32,
@@ -62,7 +62,7 @@ export default function Wrapper({
 }
 
 const styles = StyleSheet.create({
-  signUpContainer: {
+  Container: {
     flex: 1,
     backgroundColor: colors.primary,
     fontFamily: 'Roboto_400Regular',
