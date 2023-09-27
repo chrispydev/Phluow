@@ -4,6 +4,7 @@ import {colors} from '../styles/colors';
 import NavBar from '../components/NavBar';
 import CarouselImage from '../components/CarouselImage';
 import TextHeader from '../components/TextHeader';
+import HomeCompanyCard from '../components/HomeCompanyCard';
 
 export default function HomeScreen() {
   return (
@@ -27,6 +28,15 @@ export default function HomeScreen() {
             textLeft="Order for Instant Delivery"
             textRight="View all"
           />
+          {[...Array(5)].map(i => (
+            <HomeCompanyCard
+              cName="Company Name"
+              status="available"
+              carDetail="3 cars available"
+              image={require('../assets/im8.png')}
+              key={i}
+            />
+          ))}
         </ScrollView>
       </ScrollView>
     </SafeAreaView>
