@@ -11,6 +11,7 @@ import Services from './screens/Services';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {colors} from './styles/colors';
 import {Image} from 'react-native';
+import WelcomeScreen from './screens/WelcomeScreen';
 
 const screenOptions = ({route}) => ({
   tabBarIcon: ({focused}) => {
@@ -63,7 +64,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="home-tab"
+        initialRouteName="welcome"
         screenOptions={{
           headerShown: false,
         }}>
@@ -71,6 +72,7 @@ function App() {
         <Stack.Screen name="signin" component={SigninScreen} />
         <Stack.Screen name="password-reset" component={PasswordReset} />
         <Stack.Screen name="confirm-email" component={ConfirmEmailOtp} />
+        <Stack.Screen name="welcome" component={WelcomeScreen} />
         <Stack.Screen name="home-tab" component={HomeTabs} />
       </Stack.Navigator>
     </NavigationContainer>

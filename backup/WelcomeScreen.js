@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native';
 import CustomButton from '../components/CustomButton';
 import PagerView from 'react-native-pager-view';
@@ -18,7 +17,7 @@ export default function WelcomeScreen({navigation}) {
   return (
     <Wrapper navigation={navigation}>
       <StatusBar backgroundColor="#000" />
-      <PagerView style={{width: '100%', height: '75%'}} initialPage={0}>
+      <PagerView style={{flex: 1}} initialPage={0}>
         <View key="1">
           <Image style={styles.image} source={require('../assets/saly.png')} />
           <View style={styles.textContainer}>
@@ -69,10 +68,15 @@ export default function WelcomeScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  homeContainer: {
+    flex: 1,
+    backgroundColor: colors.primary,
+    padding: 10,
+  },
   textContainer: {
     marginTop: -20,
   },
-  image: {width: '100%', height: '80%'},
+  image: {width: 399, height: 400},
   text: {
     color: '#fff',
     textTransform: 'capitalize',
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
     width: 5,
     marginLeft: 3,
     marginRight: 3,
-    backgroundColor: colors.boxColor,
+    backgroundColor: colors.primary,
   },
   buttonContainer: {
     justifyContent: 'space-between',

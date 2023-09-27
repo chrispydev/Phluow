@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import React from 'react';
+import {View, Image, StyleSheet} from 'react-native';
 
 export default function ImageGrid() {
   return (
@@ -7,27 +7,27 @@ export default function ImageGrid() {
       <View>
         <Image
           style={styles.image}
-          source={require("../assets/envelope_left.png")}
+          source={require('../assets/envelope_left.png')}
         />
         <Image
           style={styles.image}
-          source={require("../assets/cup_left.png")}
-        />
-      </View>
-      <View>
-        <Image
-          style={styles.image}
-          source={require("../assets/marker_left.png")}
+          source={require('../assets/cup_left.png')}
         />
       </View>
       <View>
         <Image
           style={styles.image}
-          source={require("../assets/clock_left.png")}
+          source={require('../assets/marker_left.png')}
+        />
+      </View>
+      <View>
+        <Image
+          style={styles.image}
+          source={require('../assets/clock_left.png')}
         />
         <Image
           style={styles.image}
-          source={require("../assets/wallet_front.png")}
+          source={require('../assets/wallet_front.png')}
         />
       </View>
     </View>
@@ -36,15 +36,15 @@ export default function ImageGrid() {
 
 const styles = StyleSheet.create({
   imageContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: 335.867,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '80%',
   },
   image: {
-    height: 100,
-    width: 100,
-    marginBottom: 60,
+    height: 130,
+    width: 130,
+    marginBottom: '100%',
     paddingBottom: 10,
   },
 });
