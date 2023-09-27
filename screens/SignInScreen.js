@@ -5,13 +5,11 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
-  Alert,
   StatusBar,
   StyleSheet,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import PopupConfirmation from '../components/PopupConfirmation';
 import CustomButton from '../components/CustomButton';
 import FormInput from '../components/FormInput';
 import Wrapper from '../components/Wrapper';
@@ -19,45 +17,10 @@ import {colors} from '../styles/colors';
 
 export default function SigninScreen({navigation}) {
   const [secure, setSecure] = useState(true);
-  const [visible, setVisible] = useState(false);
-
-  const handleModal = () => {
-    navigation.navigate('confirm-email');
-    setVisible(!visible);
-  };
 
   return (
     <Wrapper show navigation={navigation}>
       <StatusBar backgroundColor="#000" />
-      <PopupConfirmation
-        visible={visible}
-        onClose={() => {
-          Alert.alert('Modal has been closed.');
-        }}>
-        <Image source={require('../assets/ellipse.png')} />
-        <View style={{gap: 10}}>
-          <Text style={{color: colors.secondaryText, textAlign: 'center'}}>
-            Success!
-          </Text>
-        </View>
-
-        <Text
-          style={{
-            color: colors.secondaryText,
-            textAlign: 'center',
-            flexWrap: 'wrap',
-          }}>
-          You have Login Successfully
-        </Text>
-        <CustomButton
-          buttonAction={() => handleModal()}
-          buttonText="Continue"
-          bgColor={colors.secondary}
-          pHorizontal={30}
-          pVertical={5}
-          bRadius={120}
-        />
-      </PopupConfirmation>
       <ScrollView
         style={{marginBottom: 10}}
         showsVerticalScrollIndicator={false}>
@@ -103,7 +66,7 @@ export default function SigninScreen({navigation}) {
         <CustomButton
           bgColor={colors.secondary}
           buttonText="Sign in"
-          buttonAction={() => setVisible(!visible)}
+          buttonAction={() => navigation.navigate('confirm-email')}
         />
         <View style={{marginTop: 12}}>
           <View

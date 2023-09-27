@@ -11,7 +11,6 @@ export default function CustomButton({
   children,
   disabled,
 }) {
-  console.log(bgColor);
   return (
     <TouchableOpacity
       disabled={disabled}

@@ -1,9 +1,17 @@
 import React, {useRef, useEffect, useState} from 'react';
-import {Text, TextInput, View, TouchableOpacity, Image} from 'react-native';
+import {
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+  Image,
+  Alert,
+} from 'react-native';
 import Wrapper from '../components/Wrapper';
 import {colors} from '../styles/colors';
 import CustomButton from '../components/CustomButton';
 import {globalStyles} from '../styles/global';
+import PopupConfirmation from '../components/PopupConfirmation';
 
 export default function ConfirmEmailOtp({navigation}) {
   const inputRefs = useRef([]);
@@ -11,6 +19,7 @@ export default function ConfirmEmailOtp({navigation}) {
 
   const [timer, setTimer] = useState(240); // Initial timer value in seconds
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Flag to control timer running state
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (isTimerRunning) {
@@ -33,7 +42,7 @@ export default function ConfirmEmailOtp({navigation}) {
 
   const handleTimerEnd = () => {
     // Function to run when the timer ends
-    console.log('Timer ended!');
+    // console.log('Timer ended!');
     // Add your desired logic here
   };
 
@@ -54,6 +63,11 @@ export default function ConfirmEmailOtp({navigation}) {
     return formattedTime;
   };
 
+  const handleModal = () => {
+    navigation.navigate('home-tab');
+    setVisible(!visible);
+  };
+
   const handleChange = (text, index) => {
     if (text.length === 1) {
       currentIndex.current =
@@ -66,6 +80,35 @@ export default function ConfirmEmailOtp({navigation}) {
   };
   return (
     <Wrapper show navigation={navigation}>
+      <PopupConfirmation
+        visible={visible}
+        onClose={() => {
+          Alert.alert('Modal has been closed.');
+        }}>
+        <Image source={require('../assets/ellipse.png')} />
+        <View style={{gap: 10}}>
+          <Text style={{color: colors.secondaryText, textAlign: 'center'}}>
+            Success!
+          </Text>
+        </View>
+
+        <Text
+          style={{
+            color: colors.secondaryText,
+            textAlign: 'center',
+            flexWrap: 'wrap',
+          }}>
+          You have Login Successfully
+        </Text>
+        <CustomButton
+          buttonAction={() => handleModal()}
+          buttonText="Continue"
+          bgColor={colors.secondary}
+          pHorizontal={30}
+          pVertical={5}
+          bRadius={120}
+        />
+      </PopupConfirmation>
       <View style={globalStyles.welcomesigninTextContainer}>
         <Image source={require('../assets/signin.png')} />
         <Text style={globalStyles.text}>Confirm Email</Text>
@@ -154,7 +197,7 @@ export default function ConfirmEmailOtp({navigation}) {
       <CustomButton
         buttonText="Confirm"
         bgColor={colors.secondary}
-        buttonAction={() => navigation.navigate('home-tab')}
+        buttonAction={() => setVisible(!visible)}
       />
     </Wrapper>
   );

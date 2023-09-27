@@ -11,7 +11,6 @@ import Services from './screens/Services';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {colors} from './styles/colors';
 import {Image} from 'react-native';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const screenOptions = ({route}) => ({
   tabBarIcon: ({focused}) => {
@@ -66,7 +65,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="home-tab"
+        initialRouteName="signUp"
         screenOptions={{
           headerShown: false,
         }}>

@@ -13,7 +13,7 @@ export default function SchedulePickups() {
 
   // callbacks
   const handleSheetChanges = useCallback(index => {
-    console.log('handleSheetChanges', index);
+    // console.log('handleSheetChanges', index);
   }, []);
 
   return (

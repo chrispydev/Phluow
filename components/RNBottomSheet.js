@@ -1,9 +1,9 @@
 import React, {useCallback, useMemo, useRef} from 'react';
-import {colors} from '../styles/colors';
-import RobberDetail from './RobberDetail';
+import {View} from 'react-native';
 import BottomSheet from '@gorhom/bottom-sheet';
 import {ScrollView} from 'react-native-gesture-handler';
-import {View} from 'react-native';
+import {colors} from '../styles/colors';
+import RobberDetail from './RobberDetail';
 
 export default function RNBottonSheet({index, closeSheet}) {
   const bottomSheetRef = useRef(null);
@@ -11,7 +11,7 @@ export default function RNBottonSheet({index, closeSheet}) {
   const snapPoints = useMemo(() => ['100%', '100%'], []);
 
   const handleSheetChanges = useCallback(i => {
-    console.log('handleSheetChanges', i);
+    // console.log('handleSheetChanges', i);
   }, []);
 
   return (
@@ -21,6 +21,7 @@ export default function RNBottonSheet({index, closeSheet}) {
           paddingBottom: '90%',
           paddingTop: '30%',
           backgroundColor: colors.primaryDarker,
+          opacity: 0.8,
         }}>
         <BottomSheet
           handleIndicatorStyle={{backgroundColor: 'white', width: '45%'}}
@@ -33,13 +34,6 @@ export default function RNBottonSheet({index, closeSheet}) {
           }}
           ref={bottomSheetRef}
           index={index}
-          // backdropComponent={props => (
-          //   <BottomSheetBackdrop
-          //     {...props}
-          //     appearsOnIndex={0}
-          //     disappearsOnIndex={-1}
-          //   />
-          // )}
           snapPoints={snapPoints}
           onChange={handleSheetChanges}>
           <ScrollView style={{backgroundColor: colors.primaryDarker}}>

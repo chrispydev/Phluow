@@ -6,6 +6,7 @@ import {
   ScrollView,
   Text,
   StatusBar,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -18,6 +19,11 @@ import Wrapper from '../components/Wrapper';
 export default function SignUpScreen({navigation}) {
   const [secure, setSecure] = useState(true);
   const [visible, setVisible] = useState(false);
+
+  const handleSubmit = () => {
+    navigation.navigate('signin');
+    setVisible(!visible);
+  };
 
   return (
     <Wrapper show navigation={navigation}>
@@ -41,11 +47,10 @@ export default function SignUpScreen({navigation}) {
             textAlign: 'center',
             flexWrap: 'wrap',
           }}>
-          You have signUp successfully! Check your email to confirm code sent to
-          you.
+          You have signUp successfully!
         </Text>
         <CustomButton
-          buttonAction={() => setVisible(false)}
+          buttonAction={() => handleSubmit()}
           buttonText="Okay"
           bgColor={colors.secondary}
           pHorizontal={30}
