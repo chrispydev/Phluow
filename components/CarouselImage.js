@@ -2,10 +2,10 @@ import React from 'react';
 import {Image, StyleSheet, View, Text} from 'react-native';
 import {colors} from '../styles/colors';
 
-export default function CarouselImage() {
+export default function CarouselImage({cImageTop, cImageOverLay}) {
   return (
     <View style={styles.TopNav}>
-      <Image style={styles.TopImageNav} source={require('../assets/im8.png')} />
+      <Image style={styles.TopImageNav} source={cImageTop} />
       <View
         style={{
           backgroundColor: colors.boxColor,
@@ -28,7 +28,7 @@ export default function CarouselImage() {
               margin: 4,
               borderRadius: 8,
             }}
-            source={require('../assets/im7.png')}
+            source={cImageOverLay}
           />
         </View>
         <Text style={styles.Text}>Name of Company</Text>

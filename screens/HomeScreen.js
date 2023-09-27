@@ -1,5 +1,11 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StatusBar, StyleSheet} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+} from 'react-native';
 import {colors} from '../styles/colors';
 import NavBar from '../components/NavBar';
 import CarouselImage from '../components/CarouselImage';
@@ -19,23 +25,38 @@ export default function HomeScreen() {
           }}
           horizontal={true}
           pagingEnabled={true}>
-          {[...Array(10)].map(i => (
-            <CarouselImage key={i} />
-          ))}
+          <CarouselImage
+            cImageTop={require('../assets/image1.png')}
+            cImageOverLay={require('../assets/image4.png')}
+          />
+          <CarouselImage
+            cImageTop={require('../assets/image2.png')}
+            cImageOverLay={require('../assets/image4(1).png')}
+          />
         </ScrollView>
         <ScrollView style={{marginTop: '4%'}}>
           <TextHeader
             textLeft="Order for Instant Delivery"
             textRight="View all"
           />
-          {[...Array(5)].map(i => (
-            <HomeCompanyCard
-              key={i}
-              cName="Company Name"
-              status="available"
-              carDetail="3 cars available"
-              image={require('../assets/im8.png')}
-            />
+          {[...Array(2)].map(i => (
+            <View>
+              <HomeCompanyCard
+                key={i}
+                cName="Company Name"
+                status="available"
+                carDetail="3 cars available"
+                image={require('../assets/im8.png')}
+              />
+
+              <HomeCompanyCard
+                key={i}
+                cName="Company Name"
+                status="available"
+                carDetail="3 cars available"
+                image={require('../assets/image6.png')}
+              />
+            </View>
           ))}
         </ScrollView>
       </ScrollView>
