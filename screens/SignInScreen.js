@@ -21,9 +21,7 @@ export default function SigninScreen({navigation}) {
   return (
     <Wrapper show navigation={navigation}>
       <StatusBar backgroundColor="#000" />
-      <ScrollView
-        style={{marginBottom: 10}}
-        showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.welcomesigninTextContainer}>
           <Image
             style={styles.image}
@@ -50,11 +48,13 @@ export default function SigninScreen({navigation}) {
             placeHolderText="Password"
             secureText={secure}
             iconLeft={require('../assets/key.png')}>
-            <TouchableOpacity onPress={() => setSecure(!secure)}>
+            <TouchableOpacity
+              style={{marginRight: 10}}
+              onPress={() => setSecure(!secure)}>
               {secure ? (
-                <Icon name="eye" size={25} color={colors.secondaryText} />
+                <Icon name="eye" size={35} color={colors.secondaryText} />
               ) : (
-                <Icon name="eye-off" size={25} color={colors.secondaryText} />
+                <Icon name="eye-off" size={35} color={colors.secondaryText} />
               )}
             </TouchableOpacity>
           </FormInput>
@@ -74,7 +74,7 @@ export default function SigninScreen({navigation}) {
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
-              marginBottom: 10,
+              marginVertical: 15,
             }}>
             <View
               style={{
@@ -83,7 +83,12 @@ export default function SigninScreen({navigation}) {
                 width: '100%',
               }}
             />
-            <Text style={{paddingHorizontal: 10, color: colors.secondaryText}}>
+            <Text
+              style={{
+                fontSize: 20,
+                paddingHorizontal: 10,
+                color: colors.secondaryText,
+              }}>
               Or, Sign in With
             </Text>
             <View
@@ -112,7 +117,7 @@ export default function SigninScreen({navigation}) {
             marginTop: 20,
             marginBottom: 20,
           }}>
-          <Text style={{color: colors.secondaryText}}>
+          <Text style={{color: colors.secondaryText, fontSize: 20}}>
             Don't Have An Account?
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('signUp')}>
@@ -122,7 +127,7 @@ export default function SigninScreen({navigation}) {
                 fontWeight: '500',
                 textAlign: 'center',
                 textTransform: 'capitalize',
-                fontSize: 14,
+                fontSize: 20,
                 marginLeft: 10,
               }}>
               Sign Up
@@ -142,8 +147,8 @@ export const styles = StyleSheet.create({
   },
   text: {
     color: colors.secondaryText,
-    fontSize: 24,
-    fontWeight: '600',
+    fontSize: 45,
+    fontWeight: '700',
     textTransform: 'capitalize',
     letterSpacing: 0.24,
     fontFamily: 'Roboto_400Regular',
@@ -151,15 +156,15 @@ export const styles = StyleSheet.create({
   welcomeText: {
     color: colors.secondaryText,
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 25,
     fontWeight: '400',
-    lineHeight: 20,
+    lineHeight: 30,
   },
   label: {
     color: colors.secondaryText,
-    fontSize: 12,
+    fontSize: 22,
     fontWeight: '400',
-    lineHeight: 20,
+    lineHeight: 30,
     textTransform: 'capitalize',
   },
 });

@@ -25,7 +25,6 @@ export default function Wrapper({
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: 10,
           paddingHorizontal: 32,
         }}>
         {show && (
@@ -33,7 +32,10 @@ export default function Wrapper({
             <TouchableOpacity
               style={styles.backButton}
               onPress={() => navigation.goBack()}>
-              <Image source={require('../assets/signin_back.png')} />
+              <Image
+                style={{width: 30, height: 30}}
+                source={require('../assets/signin_back.png')}
+              />
             </TouchableOpacity>
           </>
         )}
@@ -69,7 +71,6 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
   },
   backButton: {
-    marginLeft: -20,
-    maxWidth: 20,
+    marginLeft: '2%',
   },
 });

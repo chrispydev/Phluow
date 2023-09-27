@@ -11,18 +11,21 @@ export default function FormInput({
 }) {
   return (
     <View style={styles.input}>
-      <Image style={{marginRight: 20, marginLeft: 10}} source={iconLeft} />
-      <TextInput
-        placeholderTextColor={colors.lableText}
+      <View
         style={{
-          color: colors.lableText,
-          height: '100%',
-          flex: 1,
-        }}
-        placeholder={placeHolderText}
-        secureTextEntry={secureText}
-        keyboardType={keyboardType}
-      />
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+        }}>
+        <Image style={{width: '10%', padding: '9%'}} source={iconLeft} />
+        <TextInput
+          placeholderTextColor={colors.lableText}
+          style={{fontSize: 20}}
+          placeholder={placeHolderText}
+          secureTextEntry={secureText}
+          keyboardType={keyboardType}
+        />
+      </View>
       {children}
     </View>
   );
@@ -30,15 +33,14 @@ export default function FormInput({
 
 const styles = StyleSheet.create({
   input: {
-    backgroundColor: colors.boxColor,
-
-    paddingRight: 8,
-    borderRadius: 16,
-    borderColor: colors.boxColor,
-    borderWidth: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
     width: '100%',
+    height: 80,
+    backgroundColor: colors.boxColor,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: '3%',
+    borderRadius: 30,
+    elevation: 2,
   },
 });

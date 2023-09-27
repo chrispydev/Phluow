@@ -20,12 +20,12 @@ export default function CustomButton({
           backgroundColor: bgColor,
           paddingHorizontal: pHorizontal,
           paddingVertical: pVertical ? pVertical : 12,
-          borderRadius: bRadius ? bRadius : 15,
+          borderRadius: bRadius ? bRadius : 30,
         },
       ]}
       onPress={buttonAction}>
       {children}
-      <Text style={styles.TextColor}>{buttonText}</Text>
+      <Text style={styles.buttonText}>{buttonText}</Text>
     </TouchableOpacity>
   );
 }
@@ -35,10 +35,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    height: 75,
+    elevation: 2,
   },
-  TextColor: {
+  buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 25,
     fontWeight: '500',
     textTransform: 'capitalize',
   },
