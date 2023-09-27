@@ -17,16 +17,16 @@ const screenOptions = ({route}) => ({
     let imageTab;
     if (route.name === 'Home') {
       imageTab = focused
-        ? `${require('./assets/home-active.png')}`
-        : `${require('./assets/home.png')}`;
+        ? require('./assets/home-active.png')
+        : require('./assets/home.png');
     } else if (route.name === 'Services') {
       imageTab = focused
-        ? `${require('./assets/service.png')}`
-        : `${require('./assets/service.png')}`;
+        ? require('./assets/service.png')
+        : require('./assets/service.png');
     } else if (route.name === 'Schedule Pickups') {
       imageTab = focused
-        ? `${require('./assets/pickup-active.png')}`
-        : `${require('./assets/pickup.png')}`;
+        ? require('./assets/pickup-active.png')
+        : require('./assets/pickup.png');
     }
 
     return <Image source={imageTab} width={100} height={100} />;
@@ -50,9 +50,7 @@ const screenOptions = ({route}) => ({
 
 function HomeTabs() {
   return (
-    <Tab.Navigator
-      screenOptions={screenOptions}
-      initialRouteName="Schedule Pickups">
+    <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Services" component={Services} />
 
@@ -65,7 +63,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="signUp"
+        initialRouteName="home-tab"
         screenOptions={{
           headerShown: false,
         }}>
