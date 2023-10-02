@@ -7,6 +7,7 @@ import {
   Text,
   StatusBar,
   Alert,
+  StyleSheet,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -15,6 +16,7 @@ import FormInput from '../components/FormInput';
 import CustomButton from '../components/CustomButton';
 import PopupConfirmation from '../components/PopupConfirmation';
 import Wrapper from '../components/Wrapper';
+import {globalStyles} from '../styles/global';
 
 export default function SignUpScreen({navigation}) {
   const [secure, setSecure] = useState(true);
@@ -36,7 +38,12 @@ export default function SignUpScreen({navigation}) {
         }}>
         <Image source={require('../assets/ellipse.png')} />
         <View style={{gap: 10}}>
-          <Text style={{color: colors.secondaryText, textAlign: 'center'}}>
+          <Text
+            style={{
+              color: colors.secondaryText,
+              textAlign: 'center',
+              fontSize: 25,
+            }}>
             Success!
           </Text>
         </View>
@@ -46,16 +53,17 @@ export default function SignUpScreen({navigation}) {
             color: colors.secondaryText,
             textAlign: 'center',
             flexWrap: 'wrap',
+            fontSize: 20,
           }}>
-          You have signUp successfully!
+          You have Signup successfully!
         </Text>
         <CustomButton
           buttonAction={() => handleSubmit()}
-          buttonText="Okay"
+          buttonText="Continue"
           bgColor={colors.secondary}
-          pHorizontal={30}
-          pVertical={5}
+          pHorizontal={70}
           bRadius={120}
+          height={60}
         />
       </PopupConfirmation>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -65,40 +73,10 @@ export default function SignUpScreen({navigation}) {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text
-            style={{
-              fontSize: 24,
-              letterSpacing: 0.24,
-              textTransform: 'capitalize',
-              color: colors.secondaryText,
-              fontWeight: '700',
-            }}>
-            Find, Order With
-          </Text>
-          <Text
-            style={{
-              fontSize: 24,
-              letterSpacing: 0.24,
-              textTransform: 'capitalize',
-              color: colors.secondaryText,
-              fontWeight: '700',
-            }}>
-            Ease
-          </Text>
+          <Text style={styles.text}>Find, Order With</Text>
+          <Text style={styles.text}>Ease</Text>
         </View>
-        <Text
-          style={{
-            fontWeight: '400',
-            textTransform: 'capitalize',
-            lineHeight: 20,
-            fontStyle: 'normal',
-            textAlign: 'center',
-            marginTop: 19,
-            fontSize: 16,
-            color: colors.secondaryText,
-          }}>
-          Let's Create An Account to Continue
-        </Text>
+        <Text style={styles.text1}>Let's Create An Account to Continue</Text>
         <View style={{marginTop: 29, gap: 15, marginBottom: 100}}>
           <FormInput
             placeHolderText="Full Name"
@@ -180,9 +158,9 @@ export default function SignUpScreen({navigation}) {
             <Text
               style={{
                 textAlign: 'center',
-                fontWeight: '500',
+                fontWeight: '300',
                 textTransform: 'capitalize',
-                fontSize: 14,
+                fontSize: 22,
                 color: colors.secondaryText,
               }}>
               Already Have An Account
@@ -192,9 +170,9 @@ export default function SignUpScreen({navigation}) {
                 style={{
                   color: colors.secondary,
                   textAlign: 'center',
-                  fontWeight: '500',
+                  fontWeight: '400',
                   textTransform: 'capitalize',
-                  fontSize: 14,
+                  fontSize: 22,
                 }}>
                 Sign in
               </Text>
@@ -205,3 +183,23 @@ export default function SignUpScreen({navigation}) {
     </Wrapper>
   );
 }
+
+const styles = StyleSheet.create({
+  text: {
+    color: colors.secondaryText,
+    fontSize: 40,
+    fontWeight: '700',
+    textTransform: 'capitalize',
+    fontFamily: 'Roboto_400Regular',
+  },
+  text1: {
+    fontWeight: '300',
+    textTransform: 'capitalize',
+    lineHeight: 20,
+    fontStyle: 'normal',
+    textAlign: 'center',
+    marginTop: 19,
+    fontSize: 19,
+    color: colors.secondaryText,
+  },
+});

@@ -14,17 +14,63 @@ import CustomButton from '../components/CustomButton';
 import FormInput from '../components/FormInput';
 import Wrapper from '../components/Wrapper';
 import {colors} from '../styles/colors';
+import PopupConfirmation from '../components/PopupConfirmation';
+import {globalStyles} from '../styles/global';
 
 export default function SigninScreen({navigation}) {
   const [secure, setSecure] = useState(true);
 
+  const [visible, setVisible] = useState(false);
+
+  const handleSubmit = () => {
+    navigation.navigate('confirm-email');
+    setVisible(!visible);
+  };
+
   return (
     <Wrapper show navigation={navigation}>
       <StatusBar backgroundColor="#000" />
+      <PopupConfirmation
+        visible={visible}
+        onClose={() => {
+          Alert.alert('Modal has been closed.');
+          setVisible(!visible);
+        }}>
+        <Image source={require('../assets/ellipse.png')} />
+        <View style={{gap: 10}}>
+          <Text
+            style={{
+              color: colors.secondaryText,
+              textAlign: 'center',
+              fontSize: 25,
+            }}>
+            Success!
+          </Text>
+        </View>
+
+        <Text
+          style={{
+            color: colors.secondaryText,
+            textAlign: 'center',
+            flexWrap: 'wrap',
+            fontSize: 20,
+          }}>
+          You have Sign in successfully! Check your email to confirm code sent
+          to you.
+        </Text>
+        <CustomButton
+          buttonAction={() => handleSubmit()}
+          buttonText="Okay"
+          bgColor={colors.secondary}
+          pHorizontal={100}
+          bRadius={120}
+          height={60}
+        />
+      </PopupConfirmation>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.welcomesigninTextContainer}>
           <Image
-            style={styles.image}
+            style={globalStyles.image}
             source={require('../assets/signin.png')}
           />
           <Text style={styles.text}>Hello There</Text>
@@ -66,7 +112,7 @@ export default function SigninScreen({navigation}) {
         <CustomButton
           bgColor={colors.secondary}
           buttonText="Sign in"
-          buttonAction={() => navigation.navigate('confirm-email')}
+          buttonAction={() => setVisible(!visible)}
         />
         <View style={{marginTop: 12}}>
           <View

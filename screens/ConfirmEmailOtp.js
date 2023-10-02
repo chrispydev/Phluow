@@ -87,7 +87,12 @@ export default function ConfirmEmailOtp({navigation}) {
         }}>
         <Image source={require('../assets/ellipse.png')} />
         <View style={{gap: 10}}>
-          <Text style={{color: colors.secondaryText, textAlign: 'center'}}>
+          <Text
+            style={{
+              color: colors.secondaryText,
+              textAlign: 'center',
+              fontSize: 30,
+            }}>
             Success!
           </Text>
         </View>
@@ -97,6 +102,7 @@ export default function ConfirmEmailOtp({navigation}) {
             color: colors.secondaryText,
             textAlign: 'center',
             flexWrap: 'wrap',
+            fontSize: 20,
           }}>
           You have Login Successfully
         </Text>
@@ -104,13 +110,16 @@ export default function ConfirmEmailOtp({navigation}) {
           buttonAction={() => handleModal()}
           buttonText="Continue"
           bgColor={colors.secondary}
-          pHorizontal={30}
+          pHorizontal={70}
           pVertical={5}
           bRadius={120}
         />
       </PopupConfirmation>
       <View style={globalStyles.welcomesigninTextContainer}>
-        <Image source={require('../assets/signin.png')} />
+        <Image
+          style={globalStyles.image}
+          source={require('../assets/signin.png')}
+        />
         <Text style={globalStyles.text}>Confirm Email</Text>
         <View style={{gap: 5}}>
           <Text style={globalStyles.welcomeText}>
@@ -142,10 +151,10 @@ export default function ConfirmEmailOtp({navigation}) {
               backgroundColor: colors.boxColor,
               borderRadius: 4,
               borderWidth: 1,
-              width: 50,
-              height: 50,
+              width: 70,
+              height: 70,
               color: colors.secondaryText,
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: '800',
               textAlign: 'center',
             }}
@@ -164,8 +173,8 @@ export default function ConfirmEmailOtp({navigation}) {
         <Text
           style={{
             color: colors.secondaryText,
-            fontSize: 14,
-            fontWeight: '500',
+            fontSize: 20,
+            fontWeight: '400',
             textAlign: 'center',
           }}>
           Haven&apos;t gotten code yet?
@@ -174,7 +183,7 @@ export default function ConfirmEmailOtp({navigation}) {
           <Text
             style={{
               color: colors.secondary,
-              fontSize: 14,
+              fontSize: 20,
               fontWeight: '500',
               textAlign: 'center',
             }}>
@@ -185,7 +194,7 @@ export default function ConfirmEmailOtp({navigation}) {
             <Text
               style={{
                 color: colors.secondary,
-                fontSize: 14,
+                fontSize: 20,
                 fontWeight: '500',
                 textAlign: 'center',
               }}>

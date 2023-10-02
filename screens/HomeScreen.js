@@ -1,66 +1,58 @@
 import React from 'react';
 import {
-  SafeAreaView,
+  // SafeAreaView,
   View,
-  ScrollView,
-  StatusBar,
+  // ScrollView,
+  // StatusBar,
   StyleSheet,
+  // Text,
 } from 'react-native';
 import {colors} from '../styles/colors';
-import NavBar from '../components/NavBar';
-import CarouselImage from '../components/CarouselImage';
-import TextHeader from '../components/TextHeader';
-import HomeCompanyCard from '../components/HomeCompanyCard';
+// import NavBar from '../components/NavBar';
+// import CarouselImage from '../components/CarouselImage';
+// import TextHeader from '../components/TextHeader';
+// import HomeCompanyCard from '../components/HomeCompanyCard';
+import MapboxGL from '@rnmapbox/maps';
+
+MapboxGL.setAccessToken(
+  'pk.eyJ1IjoiY2hyaXN0aWFub3d1c3UiLCJhIjoiY2xuOTdtaTQxMDR0MzJrbDN3Yjh5bTAwbCJ9.H1HDrWCE0Nn97YOr_NGTOQ',
+);
+MapboxGL.setConnected(true);
+MapboxGL.setTelemetryEnabled(false);
+MapboxGL.setWellKnownTileServer('Mapbox');
+
+export function MapViewComponent() {
+  return (
+    <View style={styles.page}>
+      <View style={styles.container}>
+        <MapboxGL.MapView
+          style={styles.map}
+          localizeLabels={true}
+          styleURL="mapbox://styles/mapbox/navigation-night-v1"
+          // styleURL="mapbox://styles/christianowusu/cln97ttdm03hb01r49x5l2bgc"
+          pitchEnabled={true}
+          rotateEnabled={true}>
+          <MapboxGL.Camera
+            zoomLevel={15}
+            centerCoordinate={[10.181667, 36.806389]}
+            animationMode={'flyTo'}
+          />
+          <MapboxGL.PointAnnotation
+            id="marker"
+            coordinate={[10.181667, 36.806389]}>
+            <View />
+          </MapboxGL.PointAnnotation>
+        </MapboxGL.MapView>
+      </View>
+    </View>
+  );
+}
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={styles.Container}>
-      <StatusBar backgroundColor="#000" />
-      <NavBar authName="Good Morning Eben" />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <TextHeader textLeft="Around You" textRight="View all" />
-        <ScrollView
-          contentContainerStyle={{
-            marginHorizontal: 10,
-          }}
-          horizontal={true}
-          pagingEnabled={true}>
-          <CarouselImage
-            cImageTop={require('../assets/image1.png')}
-            cImageOverLay={require('../assets/image4.png')}
-          />
-          <CarouselImage
-            cImageTop={require('../assets/image2.png')}
-            cImageOverLay={require('../assets/image4(1).png')}
-          />
-        </ScrollView>
-        <ScrollView style={{marginTop: '4%'}}>
-          <TextHeader
-            textLeft="Order for Instant Delivery"
-            textRight="View all"
-          />
-          {[...Array(2)].map(i => (
-            <View>
-              <HomeCompanyCard
-                key={i}
-                cName="Company Name"
-                status="available"
-                carDetail="3 cars available"
-                image={require('../assets/im8.png')}
-              />
-
-              <HomeCompanyCard
-                key={i}
-                cName="Company Name"
-                status="available"
-                carDetail="3 cars available"
-                image={require('../assets/image6.png')}
-              />
-            </View>
-          ))}
-        </ScrollView>
-      </ScrollView>
-    </SafeAreaView>
+    <>
+      <MapViewComponent />
+    </>
   );
 }
 
@@ -72,5 +64,19 @@ const styles = StyleSheet.create({
   },
   Text: {
     color: colors.secondaryText,
+  },
+  page: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  container: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'tomato',
+  },
+  map: {
+    flex: 1,
   },
 });

@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#fff',
     marginTop: 20,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '300',
     textTransform: 'capitalize',
   },

@@ -9,19 +9,21 @@ export const globalStyles = StyleSheet.create({
   },
   text: {
     color: colors.secondaryText,
-    fontSize: 24,
+    fontSize: 40,
     fontWeight: '700',
-    textAlign: 'center',
     textTransform: 'capitalize',
-    letterSpacing: 0.24,
     fontFamily: 'Roboto_400Regular',
   },
   welcomeText: {
     color: colors.secondaryText,
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: '400',
-    lineHeight: 20,
+    lineHeight: 25,
     flexWrap: 'wrap',
+  },
+  image: {
+    width: 250,
+    height: 80,
   },
 });

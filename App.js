@@ -64,7 +64,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="welcome"
+        initialRouteName="home-tab"
         screenOptions={{
           headerShown: false,
         }}>

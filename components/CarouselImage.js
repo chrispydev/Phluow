@@ -41,10 +41,11 @@ const styles = StyleSheet.create({
   Text: {
     color: colors.secondaryText,
     marginTop: 20,
+    fontSize: 20,
   },
   TopNav: {
-    width: 180,
-    maxHeight: 220,
+    width: 260,
+    maxHeight: 260,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     borderBottomRightRadius: 20,
@@ -55,6 +56,6 @@ const styles = StyleSheet.create({
   TopImageNav: {
     objectFit: 'fill',
     height: '70%',
-    width: 180,
+    width: '100%',
   },
 });

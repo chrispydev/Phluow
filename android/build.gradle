@@ -6,7 +6,8 @@ buildscript {
         minSdkVersion = 21
         compileSdkVersion = 33
         targetSdkVersion = 33
-
+        // mapbox implemenation
+        //RNMapboxMapsImpl = 'mapbox'
         // We use NDK 23 which has both M1 support and is the side-by-side NDK version from AGP.
         ndkVersion = "23.1.7779620"
         kotlin_version = '1.6.10' // <- add this line
@@ -14,11 +15,28 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        // mapbox implemenation
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                // Do not change the username below.
+                // This should always be `mapbox` (not your username).
+                username = 'mapbox'
+                // Use the secret token you stored in gradle.properties as the password
+                //password = project.properties['MAPBOX_DOWNLOADS_TOKEN'] ?: ""
+                // password = 'pk.eyJ1IjoiY2hyaXNweWRldiIsImEiOiJjbG44eGw1eTMwMmVkMmlxZHRuZDBoajgyIn0.UKEWeThZyfgiAIM886dmyw'
+                password = 'sk.eyJ1IjoiY2hyaXN0aWFub3d1c3UiLCJhIjoiY2xuOTgwZTF0MDRoZDJrdDl0MmtlemxlMCJ9.-3HXWdJFVMgc4jQ2k_O2og'
+            }
+        }
     }
     dependencies {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
 
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version") // <- add this line
+
     }
 }

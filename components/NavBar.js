@@ -23,7 +23,7 @@ export default function NavBar({authName}) {
           lineHeight: 20,
           marginLeft: '5%',
           letterSpacing: -0.24,
-          fontSize: 16,
+          fontSize: 20,
         }}>
         {authName}
       </Text>
@@ -33,7 +33,7 @@ export default function NavBar({authName}) {
           padding: 5,
           borderRadius: 25,
         }}>
-        <Icon name="menu" size={25} color={colors.secondaryText} />
+        <Icon name="menu" size={30} color={colors.secondaryText} />
       </TouchableOpacity>
     </View>
   );

@@ -9,21 +9,22 @@ export default function HomeCompanyCard({image, cName, status, carDetail}) {
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <Image style={styles.cardImage} source={image} />
         <View>
-          <Text style={[styles.cardText, {fontSize: 18}]}>{cName}</Text>
-          <Text style={[styles.cardText, {color: colors.complete}]}>
+          <Text style={[styles.cardText, {fontSize: 22}]}>{cName}</Text>
+          <Text
+            style={[styles.cardText, {color: colors.complete, fontSize: 18}]}>
             {status}
           </Text>
-          <Text style={styles.cardText}>{carDetail}</Text>
+          <Text style={[styles.cardText, {fontSize: 18}]}>{carDetail}</Text>
         </View>
       </View>
       <View style={{alignItems: 'center'}}>
         <Icon
           name="map-marker"
-          size={25}
+          size={30}
           color={colors.secondaryText}
           style={styles.cardText}
         />
-        <Text style={[styles.cardText, {fontSize: 13}]}>Order Now</Text>
+        <Text style={[styles.cardText, {fontSize: 18}]}>Order Now</Text>
       </View>
     </View>
   );
@@ -43,8 +44,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   cardImage: {
-    height: 80,
-    width: 75,
+    height: 100,
+    width: 90,
     borderRadius: 15,
     marginRight: 20,
   },

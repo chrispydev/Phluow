@@ -10,6 +10,7 @@ export default function CustomButton({
   pVertical,
   children,
   disabled,
+  height,
 }) {
   return (
     <TouchableOpacity
@@ -21,6 +22,7 @@ export default function CustomButton({
           paddingHorizontal: pHorizontal,
           paddingVertical: pVertical ? pVertical : 12,
           borderRadius: bRadius ? bRadius : 30,
+          height: height ? height : 75,
         },
       ]}
       onPress={buttonAction}>
@@ -35,7 +37,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    height: 75,
     elevation: 2,
   },
   buttonText: {

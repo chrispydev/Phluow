@@ -25,5 +25,6 @@ export default function TextHeader({textLeft, textRight}) {
 const styles = StyleSheet.create({
   Text: {
     color: colors.secondaryText,
+    fontSize: 20,
   },
 });
