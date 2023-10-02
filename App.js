@@ -30,21 +30,25 @@ const screenOptions = ({route}) => ({
         : require('./assets/pickup.png');
     }
 
-    return <Image source={imageTab} width={100} height={100} />;
+    return (
+      <Image style={{width: 45, height: 45, margin: 10}} source={imageTab} />
+    );
   },
   tabBarActiveTintColor: colors.secondary,
   tabBarInactiveTintColor: colors.secondaryText,
+  tabBarInactiveTintSize: 30,
   headerShown: false,
   tabBarStyle: {
     backgroundColor: colors.primaryDarker,
     textTransform: 'uppercase',
-    paddingVertical: 10,
     borderTopWidth: 0,
+    height: '10%',
+    paddingVertical: 20,
   },
   tabBarLabelStyle: {
-    fontSize: 12,
-    fontWeight: '500',
-    lineHeight: 20,
+    fontSize: 20,
+    fontWeight: '600',
+    lineHeight: 30,
     letterSpacing: -0.24,
   },
 });
