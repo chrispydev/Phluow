@@ -19,7 +19,7 @@ export default function RNBottonSheet({index, closeSheet}) {
       <View
         style={{
           paddingBottom: '90%',
-          paddingTop: '30%',
+          paddingTop: '90%',
           backgroundColor: colors.primaryDarker,
           opacity: 0.8,
         }}>

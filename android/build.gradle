@@ -28,7 +28,7 @@ buildscript {
                 // Use the secret token you stored in gradle.properties as the password
                 //password = project.properties['MAPBOX_DOWNLOADS_TOKEN'] ?: ""
                 // password = 'pk.eyJ1IjoiY2hyaXNweWRldiIsImEiOiJjbG44eGw1eTMwMmVkMmlxZHRuZDBoajgyIn0.UKEWeThZyfgiAIM886dmyw'
-                password = 'sk.eyJ1IjoiY2hyaXN0aWFub3d1c3UiLCJhIjoiY2xuOTgwZTF0MDRoZDJrdDl0MmtlemxlMCJ9.-3HXWdJFVMgc4jQ2k_O2og'
+                password = 'sk.eyJ1IjoiY2hyaXN0aWFub3d1c3UiLCJhIjoiY2xuOXA4NXVjMGNjcDJtbWQ3aHlicmhieSJ9.RYyqnrWUcTj8qmvioPCU9A'
             }
         }
     }

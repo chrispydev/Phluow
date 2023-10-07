@@ -7,7 +7,7 @@ import Ongoing from './Custom/Ongoing';
 import Complete from './Custom/Complete';
 import CustomButton from '../components/CustomButton';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import RNBottonSheet from '../components/RNBottomSheet';
+import RNBottonSheet from '../components/RNBottonSheet';
 
 export default function PickUpOrder({navigation}) {
   const [page, setPage] = useState('status');

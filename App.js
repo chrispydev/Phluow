@@ -30,9 +30,7 @@ const screenOptions = ({route}) => ({
         : require('./assets/pickup.png');
     }
 
-    return (
-      <Image style={{width: 45, height: 45, margin: 10}} source={imageTab} />
-    );
+    return <Image style={{width: 45, height: 45}} source={imageTab} />;
   },
   tabBarActiveTintColor: colors.secondary,
   tabBarInactiveTintColor: colors.secondaryText,
@@ -43,6 +41,7 @@ const screenOptions = ({route}) => ({
     textTransform: 'uppercase',
     borderTopWidth: 0,
     height: '10%',
+    width: '100%',
     paddingVertical: 20,
   },
   tabBarLabelStyle: {
