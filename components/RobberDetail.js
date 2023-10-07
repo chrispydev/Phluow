@@ -33,7 +33,9 @@ export default function RobberDetail({
             <Text style={[styles.robberText, {color: colors.textLightColor}]}>
               {robberText}
             </Text>
-            <Text style={{color: colors.secondaryText}}>{robberVolume}</Text>
+            <Text style={{color: colors.secondaryText, fontSize: 18}}>
+              {robberVolume}
+            </Text>
           </View>
         </View>
         <HorizontalLine />
@@ -46,7 +48,7 @@ export default function RobberDetail({
           <Text
             style={{
               color: colors.secondaryText,
-              fontSize: 14,
+              fontSize: 18,
               fontWeight: '500',
               letterSpacing: -0.24,
               flexWrap: 'wrap',
@@ -59,6 +61,7 @@ export default function RobberDetail({
                 color: colors.textLightColor,
                 fontWeight: '600',
                 letterSpacing: -0.24,
+                fontSize: 18,
               }}>
               Price:
             </Text>
@@ -67,6 +70,7 @@ export default function RobberDetail({
                 color: colors.secondaryText,
                 fontWeight: '600',
                 letterSpacing: -0.24,
+                fontSize: 18,
               }}>
               {robberPrice}
             </Text>
@@ -84,15 +88,15 @@ export default function RobberDetail({
             style={{
               backgroundColor: '#292B2F',
               gap: 5,
-              maxWidth: 154,
-              maxHeight: 70,
+              maxWidth: 204,
+              maxHeight: 100,
               borderRadius: 10,
               paddingVertical: 20,
               paddingHorizontal: 10,
             }}>
             <Text
               style={{
-                fontSize: 12,
+                fontSize: 15,
                 fontWeight: '600',
                 lineHeight: 20,
                 color: colors.secondaryText,
@@ -113,7 +117,8 @@ export default function RobberDetail({
           </View>
           <CustomButton
             pVertical={16}
-            pHorizontal={8}
+            bRadius={50}
+            pHorizontal={20}
             buttonText={robberBText}
             bgColor={robberTColor}
           />
@@ -172,7 +177,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   robberText: {
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: '600',
     letterSpacing: -0.24,
     lineHeight: 20,

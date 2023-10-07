@@ -1,6 +1,6 @@
-import React from "react";
-import { View } from "react-native";
-import { colors } from "../styles/colors";
+import React from 'react';
+import {View} from 'react-native';
+import {colors} from '../styles/colors';
 
 export default function HorizontalLine() {
   return (
@@ -8,7 +8,7 @@ export default function HorizontalLine() {
       style={{
         backgroundColor: colors.secondaryText,
         height: 1,
-        width: "100%",
+        width: '100%',
       }}
     />
   );

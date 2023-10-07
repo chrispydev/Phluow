@@ -1,0 +1,71 @@
+import React, {useState, useRef, useCallback} from 'react';
+import RNBSheetWrapper from '../RNBSheetWrapper';
+import {Text, TouchableOpacity, View} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {colors} from '../../styles/colors';
+import PurchaseDetails from '../PurchaseDetails';
+
+export default function WaterPurchase() {
+  const bottomSheetModalRef = useRef(null);
+
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current.close();
+  }, []);
+
+  return (
+    <RNBSheetWrapper
+      minH="70%"
+      maxH="95%"
+      bgColor={colors.primary}
+      bottomSheetModalRef={bottomSheetModalRef}>
+      <View style={{alignItems: 'flex-end', marginBottom: '3%'}}>
+        <TouchableOpacity
+          onPress={() => handlePresentModalPress()}
+          style={{
+            width: 40,
+            height: 40,
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginRight: '5%',
+            borderWidth: 2,
+            borderColor: colors.secondaryText,
+            borderRadius: 50 / 2,
+          }}>
+          <Icon name="close" size={30} color={colors.secondaryText} />
+        </TouchableOpacity>
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <View
+          style={{
+            backgroundColor: colors.boxColor,
+            paddingVertical: '5%',
+            paddingHorizontal: '5%',
+            width: '80%',
+            borderRadius: 20,
+            gap: 10,
+          }}>
+          <Text
+            style={{
+              color: colors.scheduleButtonColor,
+              fontSize: 25,
+              fontWeight: '600',
+            }}>
+            Total Price counter:
+          </Text>
+          <Text
+            style={{
+              color: colors.secondaryText,
+              fontSize: 25,
+              fontWeight: '600',
+              textAlign: 'center',
+            }}>
+            GHC 10.00
+          </Text>
+        </View>
+      </View>
+      <View>
+        <PurchaseDetails />
+      </View>
+    </RNBSheetWrapper>
+  );
+}

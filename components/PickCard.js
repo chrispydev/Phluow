@@ -28,8 +28,8 @@ export default function PickCard({
       <View>
         <Image
           style={{
-            width: 123.774,
-            height: 88,
+            width: 150,
+            height: 120,
             flexShrink: 0,
             borderRadius: 10.9,
           }}
@@ -66,10 +66,10 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 27.346,
     letterSpacing: -0.32,
-    fontSize: 16,
+    fontSize: 22,
   },
   location: {
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: '500',
     lineHeight: 27.346,
     letterSpacing: -0.328,
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   date: {
     color: colors.secondaryText,
     textAlign: 'center',
-    fontSize: 10,
+    fontSize: 16,
     fontWeight: '400',
     letterSpacing: 0.32,
   },
@@ -88,10 +88,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     lineHeight: 27.346,
     letterSpacing: -0.32,
-    fontSize: 18,
+    fontSize: 22,
   },
   status: {
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: '600',
     lineHeight: 27.346,
     letterSpacing: -0.328,

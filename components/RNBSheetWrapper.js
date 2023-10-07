@@ -1,21 +1,23 @@
-import React, {useCallback, useMemo, useRef} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import {colors} from '../styles/colors';
 
-export default function RNBSheetWrapper({children}) {
-  //ref
-  const bottomSheetModalRef = useRef(null);
-
+export default function RNBSheetWrapper({
+  children,
+  minH,
+  maxH,
+  bgColor,
+  mIndex,
+  bottomSheetModalRef,
+}) {
   //variable
-  const snapPoints = useMemo(() => ['15%', '30%'], []);
+  const snapPoints = useMemo(() => [minH, maxH], [minH, maxH]);
 
   // callbacks
   const handlePresentModalPress = useCallback(() => {
-    console.log('This button was pressed');
     bottomSheetModalRef.current.present();
-  }, []);
+  }, [bottomSheetModalRef]);
 
   const handleSheetChanges = useCallback(index => {
     console.log('handleSheetChanges', index);
@@ -34,12 +36,12 @@ export default function RNBSheetWrapper({children}) {
         <BottomSheetModal
           handleIndicatorStyle={{backgroundColor: 'white', width: '45%'}}
           backgroundStyle={{
-            backgroundColor: colors.boxColor,
+            backgroundColor: bgColor,
             borderRadius: 20,
             justifyContent: 'center',
           }}
           ref={bottomSheetModalRef}
-          index={1}
+          index={mIndex}
           snapPoints={snapPoints}
           onChange={handleSheetChanges}>
           {children}
