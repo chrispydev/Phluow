@@ -11,6 +11,7 @@ export default function CustomButton({
   children,
   disabled,
   height,
+  width,
 }) {
   return (
     <TouchableOpacity
@@ -23,6 +24,7 @@ export default function CustomButton({
           paddingVertical: pVertical ? pVertical : 12,
           borderRadius: bRadius ? bRadius : 30,
           height: height ? height : 75,
+          width: width && width,
         },
       ]}
       onPress={buttonAction}>

@@ -4,6 +4,7 @@ import {Switch, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {colors} from '../../styles/colors';
 import PurchaseDetails from '../PurchaseDetails';
+import CustomButton from '../CustomButton';
 
 export default function WaterPurchase() {
   const bottomSheetModalRef = useRef(null);
@@ -100,6 +101,13 @@ export default function WaterPurchase() {
             value={isEnabled}
           />
         </View>
+      </View>
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <CustomButton
+          buttonText="Continue"
+          bgColor={colors.secondary}
+          width={'70%'}
+        />
       </View>
     </RNBSheetWrapper>
   );
