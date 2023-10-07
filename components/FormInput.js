@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Image, TextInput, StyleSheet} from 'react-native';
 import {colors} from '../styles/colors';
 
@@ -7,20 +7,34 @@ export default function FormInput({
   secureText,
   keyboardType,
   iconLeft,
+  elevation,
+  bgColor,
+  fSize,
   children,
 }) {
   return (
-    <View style={styles.input}>
+    <View
+      style={[
+        styles.input,
+        {
+          backgroundColor: bgColor ? bgColor : colors.boxColor,
+          elevation: elevation ? elevation : 2,
+        },
+      ]}>
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-evenly',
           alignItems: 'center',
         }}>
-        <Image style={{width: '10%', padding: '9%'}} source={iconLeft} />
+        {iconLeft && (
+          <>
+            <Image style={{width: '10%', padding: '9%'}} source={iconLeft} />
+          </>
+        )}
         <TextInput
           placeholderTextColor={colors.lableText}
-          style={{fontSize: 20}}
+          style={{fontSize: fSize ? fSize : 20, color: colors.secondaryText}}
           placeholder={placeHolderText}
           secureTextEntry={secureText}
           keyboardType={keyboardType}
@@ -35,12 +49,10 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     height: 80,
-    backgroundColor: colors.boxColor,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: '3%',
     borderRadius: 30,
-    elevation: 2,
   },
 });

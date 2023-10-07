@@ -1,12 +1,14 @@
-import React, {useState, useRef, useCallback} from 'react';
+import React, {useRef, useCallback, useState} from 'react';
 import RNBSheetWrapper from '../RNBSheetWrapper';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Switch, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {colors} from '../../styles/colors';
 import PurchaseDetails from '../PurchaseDetails';
 
 export default function WaterPurchase() {
   const bottomSheetModalRef = useRef(null);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current.close();
@@ -15,7 +17,7 @@ export default function WaterPurchase() {
   return (
     <RNBSheetWrapper
       minH="70%"
-      maxH="95%"
+      maxH="100%"
       bgColor={colors.primary}
       bottomSheetModalRef={bottomSheetModalRef}>
       <View style={{alignItems: 'flex-end', marginBottom: '3%'}}>
@@ -63,8 +65,41 @@ export default function WaterPurchase() {
           </Text>
         </View>
       </View>
-      <View>
-        <PurchaseDetails />
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            width: '80%',
+          }}>
+          <PurchaseDetails />
+        </View>
+        <View
+          style={{
+            backgroundColor: colors.boxColor,
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '94%',
+            borderRadius: 20,
+            paddingHorizontal: '5%',
+            marginRight: '2%',
+            marginLeft: '2%',
+          }}>
+          <Switch
+            trackColor={{
+              false: colors.scheduleButtonColor,
+              true: colors.complete,
+            }}
+            thumbColor={isEnabled ? colors.secondaryText : '#f4f3f4'}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+          />
+        </View>
       </View>
     </RNBSheetWrapper>
   );

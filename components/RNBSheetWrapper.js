@@ -1,7 +1,11 @@
 import React, {useCallback, useMemo} from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+  BottomSheetScrollView,
+} from '@gorhom/bottom-sheet';
 
 export default function RNBSheetWrapper({
   children,
@@ -44,7 +48,7 @@ export default function RNBSheetWrapper({
           index={mIndex}
           snapPoints={snapPoints}
           onChange={handleSheetChanges}>
-          {children}
+          <BottomSheetScrollView>{children}</BottomSheetScrollView>
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>
