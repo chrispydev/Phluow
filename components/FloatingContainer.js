@@ -7,16 +7,16 @@ export default function FloatingContainer() {
   return (
     <View
       style={{
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: '40%',
+        zIndex: 2,
         padding: 20,
         borderRadius: 10,
         marginHorizontal: '10%',
         backgroundColor: colors.boxColor,
         gap: 10,
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        bottom: '52%',
-        zIndex: 9999,
       }}>
       <View style={{flexDirection: 'row', gap: 5}}>
         <Text

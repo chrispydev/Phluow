@@ -1,48 +1,60 @@
 import React, {useCallback, useMemo, useRef} from 'react';
-import {ScrollView, View} from 'react-native';
+import {View, Text, StyleSheet, Button} from 'react-native';
 
-import BottomSheet from '@gorhom/bottom-sheet';
+import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {colors} from '../styles/colors';
 
-export default function RNBSheetWrapper({index, closeSheet, children}) {
-  const bottomSheetRef = useRef(null);
+export default function RNBSheetWrapper({children}) {
+  //ref
+  const bottomSheetModalRef = useRef(null);
 
-  const snapPoints = useMemo(() => ['100%', '100%'], []);
+  //variable
+  const snapPoints = useMemo(() => ['15%', '30%'], []);
 
-  const handleSheetChanges = useCallback(i => {
-    console.log('handleSheetChanges', i);
+  // callbacks
+  const handlePresentModalPress = useCallback(() => {
+    console.log('This button was pressed');
+    bottomSheetModalRef.current.present();
   }, []);
+
+  const handleSheetChanges = useCallback(index => {
+    console.log('handleSheetChanges', index);
+  }, []);
+
+  //renders
   return (
-    <View
-      style={{
-        flex: 1,
-        marginTop: '100%',
-        paddingBottom: '100%',
-        opacity: 0.9,
-        borderTopRightRadius: 30,
-        borderTopLeftRadius: 30,
-      }}>
-      <BottomSheet
-        handleIndicatorStyle={{backgroundColor: 'white', width: '45%'}}
-        enablePanDownToClose={true}
-        onClose={closeSheet}
-        backgroundStyle={{
-          padding: 10,
-          backgroundColor: colors.boxColor,
-          borderRadius: 30,
-        }}
-        ref={bottomSheetRef}
-        index={index}
-        snapPoints={snapPoints}
-        onChange={handleSheetChanges}>
-        <ScrollView
-          style={{
-            paddingHorizontal: '10%',
-            paddingVertical: '4%',
-          }}>
+    <BottomSheetModalProvider>
+      <View style={styles.container}>
+        <Text>This is the map component</Text>
+        <Button
+          onPress={handlePresentModalPress}
+          title="Press Modal"
+          color="black"
+        />
+        <BottomSheetModal
+          handleIndicatorStyle={{backgroundColor: 'white', width: '45%'}}
+          backgroundStyle={{
+            backgroundColor: colors.boxColor,
+            borderRadius: 20,
+            justifyContent: 'center',
+          }}
+          ref={bottomSheetModalRef}
+          index={1}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}>
           {children}
-        </ScrollView>
-      </BottomSheet>
-    </View>
+        </BottomSheetModal>
+      </View>
+    </BottomSheetModalProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    width: '100%',
+    padding: 24,
+    justifyContent: 'flex-start',
+    backgroundColor: 'grey',
+  },
+});

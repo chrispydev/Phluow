@@ -56,6 +56,7 @@ export default function Wrapper({
       <View
         style={{
           paddingHorizontal: removePadding ? 0 : 32,
+          position: 'relative',
         }}>
         {children}
       </View>
@@ -69,7 +70,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     fontFamily: 'Roboto_400Regular',
     paddingVertical: 24,
-    position: 'relative',
   },
   backButton: {
     marginLeft: '2%',

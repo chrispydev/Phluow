@@ -30,7 +30,7 @@ const screenOptions = ({route}) => ({
         : require('./assets/pickup.png');
     }
 
-    return <Image style={{width: 45, height: 45}} source={imageTab} />;
+    return <Image style={{width: 40, height: 40}} source={imageTab} />;
   },
   tabBarActiveTintColor: colors.secondary,
   tabBarInactiveTintColor: colors.secondaryText,

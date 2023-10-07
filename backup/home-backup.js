@@ -10,21 +10,28 @@ import CustomButton from '../components/CustomButton';
 export default function HomeScreen() {
   return (
     <Wrapper removePadding>
-      <FloatingContainer />
+      <View
+        style={{
+          backgroundColor: colors.denied,
+          width: '100%',
+        }}>
+        <Text style={{color: 'white'}}>This is a text</Text>
+      </View>
+      {/*<FloatingContainer />*/}
       <GestureHandlerRootView>
         <RNBSheetWrapper>
           <View
             style={{
+              paddingVertical: 10,
               gap: 20,
-              marginTop: '5%',
             }}>
             <Text
               style={{
                 color: colors.secondaryText,
-                fontSize: 22,
+                fontSize: 20,
                 textAlign: 'center',
               }}>
-              You are about to place an order. By confirming, you agree to our
+              You are about to place an order. By confirming,you agree to our
               terms and conditions
             </Text>
             <View

@@ -6,16 +6,19 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 MapboxGL.setAccessToken(
   'pk.eyJ1IjoiY2hyaXN0aWFub3d1c3UiLCJhIjoiY2xuOXBoNXhxMGNieDJpbWRzOHU3bmZwdCJ9.3Zxc69XFJsMZ_ZMVeC_VNQ',
 );
+MapboxGL.setConnected(true);
 
-export default function HomeScreen() {
+export default function MapViewComponent() {
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [randomLocations, setRandomLocations] = useState([]);
+  MapboxGL.setTelemetryEnabled(false);
 
   useEffect(() => {
     const getCurrentLocation = async () => {
       try {
-        const location = await MapboxGL.LocationManager.getLastKnownLocation();
+        // const location = await MapboxGL.LocationManager.getLastKnownLocation();
+        const location = await MapboxGL.locationManager.getLastKnownLocation();
         setCurrentLocation(location);
       } catch (error) {
         console.log('Error getting current location:', error);
