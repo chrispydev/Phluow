@@ -5,6 +5,7 @@ import RNBSheetWrapper from '../components/RNBSheetWrapper';
 import CustomButton from '../components/CustomButton';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Wrapper from '../components/Wrapper';
+import FloatingContainer from '../components/FloatingContainer';
 
 export default function HomeScreen() {
   return (
@@ -16,6 +17,7 @@ export default function HomeScreen() {
         }}>
         <Text>This is a text</Text>
       </View>
+      <FloatingContainer />
       <GestureHandlerRootView>
         <RNBSheetWrapper />
       </GestureHandlerRootView>

@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     fontFamily: 'Roboto_400Regular',
     paddingVertical: 24,
+    position: 'relative',
   },
   backButton: {
     marginLeft: '2%',

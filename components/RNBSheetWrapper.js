@@ -7,7 +7,7 @@ import {colors} from '../styles/colors';
 export default function RNBSheetWrapper({index, closeSheet, children}) {
   const bottomSheetRef = useRef(null);
 
-  const snapPoints = useMemo(() => ['90%', '100%'], []);
+  const snapPoints = useMemo(() => ['100%', '100%'], []);
 
   const handleSheetChanges = useCallback(i => {
     console.log('handleSheetChanges', i);
@@ -19,7 +19,6 @@ export default function RNBSheetWrapper({index, closeSheet, children}) {
         marginTop: '100%',
         paddingBottom: '100%',
         opacity: 0.9,
-        backgroundColor: 'red',
         borderTopRightRadius: 30,
         borderTopLeftRadius: 30,
       }}>
@@ -29,7 +28,7 @@ export default function RNBSheetWrapper({index, closeSheet, children}) {
         onClose={closeSheet}
         backgroundStyle={{
           padding: 10,
-          backgroundColor: colors.primaryDark,
+          backgroundColor: colors.boxColor,
           borderRadius: 30,
         }}
         ref={bottomSheetRef}
