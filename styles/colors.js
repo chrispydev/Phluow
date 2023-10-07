@@ -11,4 +11,5 @@ export const colors = {
   textLightColor: '#808080',
   boxColor: '#40444B',
   scheduleButtonColor: '#808080',
+  starColor: '#E68226',
 };
