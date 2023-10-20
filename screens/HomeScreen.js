@@ -1,30 +1,19 @@
-import React, {useState} from 'react';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import React from 'react';
 import Wrapper from '../components/Wrapper';
-import FloatingContainer from '../components/FloatingContainer';
-import WaterPurchase from '../components/home/WaterPurchase';
-
-import StarRating from 'react-native-star-rating';
-import {colors} from '../styles/colors';
-import {View} from 'react-native';
+import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
+import WaterPurchaseWrapper from '../components/home/WaterPurchaseWrapper';
 
 export default function HomeScreen() {
-  const [starCount, setStarCount] = useState(3);
   return (
-    <Wrapper removePadding>
-      {/*
-      <FloatingContainer />
+    <Wrapper removePadding show>
       <GestureHandlerRootView>
-        <WaterPurchase />
+        <WaterPurchaseWrapper
+          name={'Sachets water'}
+          price={'GHc 10.00'}
+          volume={'500ml'}
+          image={require('../assets/rober.png')}
+        />
       </GestureHandlerRootView>
-      */}
-      <StarRating
-        disabled={false}
-        maxStars={5}
-        rating={starCount}
-        selectedStar={rating => setStarCount(rating)}
-        fullStarColor={colors.starColor}
-      />
     </Wrapper>
   );
 }

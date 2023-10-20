@@ -1,15 +1,15 @@
 import React, {useRef, useCallback, useState} from 'react';
 import RNBSheetWrapper from '../RNBSheetWrapper';
-import {Switch, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {colors} from '../../styles/colors';
-import PurchaseDetails from '../PurchaseDetails';
+
 import CustomButton from '../CustomButton';
+import WaterPurchaseDetail from './WaterPurchaseDetail';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default function WaterPurchase() {
   const bottomSheetModalRef = useRef(null);
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current.close();
@@ -17,8 +17,8 @@ export default function WaterPurchase() {
 
   return (
     <RNBSheetWrapper
-      minH="70%"
-      maxH="100%"
+      minH="90%"
+      maxH="95%"
       bgColor={colors.primary}
       bottomSheetModalRef={bottomSheetModalRef}>
       <View style={{alignItems: 'flex-end', marginBottom: '3%'}}>
@@ -66,42 +66,26 @@ export default function WaterPurchase() {
           </Text>
         </View>
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <View
-          style={{
-            width: '80%',
-          }}>
-          <PurchaseDetails />
-        </View>
-        <View
-          style={{
-            backgroundColor: colors.boxColor,
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '94%',
-            borderRadius: 20,
-            paddingHorizontal: '5%',
-            marginRight: '2%',
-            marginLeft: '2%',
-          }}>
-          <Switch
-            trackColor={{
-              false: colors.scheduleButtonColor,
-              true: colors.complete,
-            }}
-            thumbColor={isEnabled ? colors.secondaryText : '#f4f3f4'}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
-            value={isEnabled}
-          />
-        </View>
-      </View>
+      <ScrollView>
+        <WaterPurchaseDetail
+          name={'Sachets water'}
+          price={'GHc 10.00'}
+          volume={'500ml'}
+          image={require('../../assets/rober.png')}
+        />
+        <WaterPurchaseDetail
+          name={'Bottle water'}
+          price={'GHc 20.00'}
+          volume={'500ml'}
+          image={require('../../assets/image-.png')}
+        />
+        <WaterPurchaseDetail
+          name={'Bottle water'}
+          price={'GHc 40.00'}
+          volume={'750ml'}
+          image={require('../../assets/image10.png')}
+        />
+      </ScrollView>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <CustomButton
           buttonText="Continue"

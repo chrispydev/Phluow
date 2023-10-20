@@ -4,7 +4,7 @@ import {colors} from '../styles/colors';
 import HorizontalLine from './HorizontalLine';
 import FormInput from './FormInput';
 
-export default function PurchaseDetails() {
+export default function PurchaseDetails({name, volume, price, image}) {
   return (
     <View
       style={{
@@ -32,7 +32,7 @@ export default function PurchaseDetails() {
               borderWidth: 2,
               borderColor: colors.primary,
             }}
-            source={require('../assets/rober.png')}
+            source={image}
           />
           <View style={{gap: 20}}>
             <Text
@@ -41,7 +41,7 @@ export default function PurchaseDetails() {
                 fontWeight: '600',
                 fontSize: 25,
               }}>
-              Sachete Water
+              {name}
             </Text>
             <Text
               style={{
@@ -49,7 +49,7 @@ export default function PurchaseDetails() {
                 fontSize: 25,
                 fontWeight: '600',
               }}>
-              500ml
+              {volume}
             </Text>
           </View>
         </View>
@@ -100,7 +100,7 @@ export default function PurchaseDetails() {
                 fontSize: 27,
                 fontWeight: '500',
               }}>
-              GHC 10.00
+              {price}
             </Text>
           </View>
         </View>
@@ -112,6 +112,7 @@ export default function PurchaseDetails() {
           placeHolderText="Enter number of purchase"
           secureText={false}
           fSize={27}
+          bRadius={25}
         />
       </View>
     </View>

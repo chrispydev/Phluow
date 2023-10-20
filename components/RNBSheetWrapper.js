@@ -1,5 +1,5 @@
 import React, {useCallback, useMemo} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, StyleSheet, Button} from 'react-native';
 
 import {
   BottomSheetModal,
@@ -7,12 +7,15 @@ import {
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
 
+import MapComponent from './MapComponent';
+
 export default function RNBSheetWrapper({
   children,
   minH,
   maxH,
   bgColor,
   mIndex,
+  removepadding,
   bottomSheetModalRef,
 }) {
   //variable
@@ -20,7 +23,7 @@ export default function RNBSheetWrapper({
 
   // callbacks
   const handlePresentModalPress = useCallback(() => {
-    bottomSheetModalRef.current.present();
+    bottomSheetModalRef.current?.present();
   }, [bottomSheetModalRef]);
 
   const handleSheetChanges = useCallback(index => {
@@ -30,13 +33,13 @@ export default function RNBSheetWrapper({
   //renders
   return (
     <BottomSheetModalProvider>
-      <View style={styles.container}>
-        <Text>This is the map component</Text>
+      <View style={[styles.container, {padding: 0}]}>
         <Button
           onPress={handlePresentModalPress}
           title="Press Modal"
           color="black"
         />
+        <MapComponent />
         <BottomSheetModal
           handleIndicatorStyle={{backgroundColor: 'white', width: '45%'}}
           backgroundStyle={{
@@ -59,7 +62,6 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    padding: 24,
     justifyContent: 'flex-start',
     backgroundColor: 'grey',
   },

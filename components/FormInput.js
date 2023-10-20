@@ -7,9 +7,12 @@ export default function FormInput({
   secureText,
   keyboardType,
   iconLeft,
+  iconRight,
   elevation,
   bgColor,
   fSize,
+  fWeight,
+  bRadius,
   children,
 }) {
   return (
@@ -19,6 +22,7 @@ export default function FormInput({
         {
           backgroundColor: bgColor ? bgColor : colors.boxColor,
           elevation: elevation ? elevation : 2,
+          borderRadius: bRadius && bRadius,
         },
       ]}>
       <View
@@ -29,12 +33,16 @@ export default function FormInput({
         }}>
         {iconLeft && (
           <>
-            <Image style={{width: '10%', padding: '9%'}} source={iconLeft} />
+            <Image style={{width: '4%', padding: '9%'}} source={iconLeft} />
           </>
         )}
         <TextInput
           placeholderTextColor={colors.lableText}
-          style={{fontSize: fSize ? fSize : 20, color: colors.secondaryText}}
+          style={{
+            fontSize: fSize ? fSize : 20,
+            color: colors.secondaryText,
+            fontWeight: fWeight && fWeight,
+          }}
           placeholder={placeHolderText}
           secureTextEntry={secureText}
           keyboardType={keyboardType}

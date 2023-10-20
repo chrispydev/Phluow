@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">phluow_native_cli</string>
-    <string name="mapbox_access_token">pk.eyJ1IjoiY2hyaXNweWRldiIsImEiOiJjbDZrdWdzNWkwM3J1M2JwczBlbWRlbndxIn0.0qR5xClx4sHDx-aoMx4mDw</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiY2hyaXN0aWFub3d1c3UiLCJhIjoiY2xuOXBoNXhxMGNieDJpbWRzOHU3bmZwdCJ9.3Zxc69XFJsMZ_ZMVeC_VNQ</string>
 </resources>

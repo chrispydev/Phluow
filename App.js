@@ -45,10 +45,9 @@ const screenOptions = ({route}) => ({
     paddingVertical: 20,
   },
   tabBarLabelStyle: {
-    fontSize: 20,
-    fontWeight: '600',
+    fontSize: 18,
+    fontWeight: '400',
     lineHeight: 30,
-    letterSpacing: -0.24,
   },
 });
 

@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {View, Text} from 'react-native';
 import RNBSheetWrapper from '../RNBSheetWrapper';
 import {colors} from '../../styles/colors';
 import CustomButton from '../CustomButton';
 
 export default function OderConfirm() {
+  const bottomSheetModalRef = useRef(null);
   return (
-    <RNBSheetWrapper minH="15%" maxH="30%">
+    <RNBSheetWrapper
+      minH="30%"
+      maxH="40%"
+      bgColor={colors.modalSheetColor}
+      bottomSheetModalRef={bottomSheetModalRef}>
       <View
         style={{
           gap: 20,

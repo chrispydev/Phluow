@@ -12,6 +12,8 @@ export default function CustomButton({
   disabled,
   height,
   width,
+  elevation,
+  fontWeight,
 }) {
   return (
     <TouchableOpacity
@@ -23,13 +25,20 @@ export default function CustomButton({
           paddingHorizontal: pHorizontal,
           paddingVertical: pVertical ? pVertical : 12,
           borderRadius: bRadius ? bRadius : 30,
-          height: height ? height : 75,
+          height: height ? height : 60,
           width: width && width,
+          elevation: elevation && elevation,
         },
       ]}
       onPress={buttonAction}>
       {children}
-      <Text style={styles.buttonText}>{buttonText}</Text>
+      <Text
+        style={[
+          styles.buttonText,
+          {fontWeight: fontWeight ? fontWeight : '500'},
+        ]}>
+        {buttonText}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -44,7 +53,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 25,
-    fontWeight: '500',
     textTransform: 'capitalize',
   },
 });

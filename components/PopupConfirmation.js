@@ -1,9 +1,18 @@
 import React from 'react';
 import {View, Modal} from 'react-native';
-import {colors} from '../styles/colors';
 import {BlurView} from '@react-native-community/blur';
 
-export default function PopupConfirmation({visible, onClose, children}) {
+export default function PopupConfirmation({
+  visible,
+  onClose,
+  boxColor,
+  width,
+  bRadius,
+  gap,
+  pVertical,
+  pHorizontal,
+  children,
+}) {
   return (
     <Modal
       visible={visible}
@@ -31,14 +40,15 @@ export default function PopupConfirmation({visible, onClose, children}) {
         }}>
         <View
           style={{
-            backgroundColor: colors.boxColor,
-            padding: 40,
-            borderRadius: 20,
+            backgroundColor: boxColor && boxColor,
+            paddingVertical: pVertical ? pVertical : 40,
+            paddingHorizontal: pHorizontal ? pHorizontal : 40,
+            borderRadius: bRadius ? bRadius : 20,
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 15,
+            gap: gap ? gap : 15,
             position: 'relative',
-            width: 350,
+            width: width ? width : 350,
           }}>
           {children}
         </View>
