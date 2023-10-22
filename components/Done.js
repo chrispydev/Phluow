@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {Text, Image} from 'react-native';
 import PopupConfirmation from './PopupConfirmation';
 import {colors} from '../styles/colors';
 import CustomButton from './CustomButton';

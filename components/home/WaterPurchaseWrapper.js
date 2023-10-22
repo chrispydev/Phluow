@@ -1,4 +1,4 @@
-import React, {useRef, useCallback, useState} from 'react';
+import React, {useRef, useCallback} from 'react';
 import RNBSheetWrapper from '../RNBSheetWrapper';
 import {Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,7 +8,7 @@ import CustomButton from '../CustomButton';
 import WaterPurchaseDetail from './WaterPurchaseDetail';
 import {ScrollView} from 'react-native-gesture-handler';
 
-export default function WaterPurchase() {
+export default function WaterPurchaseWrapper() {
   const bottomSheetModalRef = useRef(null);
 
   const handlePresentModalPress = useCallback(() => {

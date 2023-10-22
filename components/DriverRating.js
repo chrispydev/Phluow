@@ -29,13 +29,19 @@ export default function DriverRating() {
             color: colors.modalTextColor,
             fontWeight: '300',
             paddingBottom: 14,
-            fontSize: 20,
+            fontSize: 22,
             textAlign: 'left',
+            lineHeight: 25,
           }}>
           Rating Driver helps companies track and determine driver’s performance
           to enhance good customer support.
         </Text>
-        <View style={{marginTop: '9%'}}>
+        <View
+          style={{
+            marginTop: '9%',
+            backgroundColor: colors.primaryDarker,
+            width: '100%',
+          }}>
           <View
             style={{
               backgroundColor: colors.complete,
@@ -48,7 +54,7 @@ export default function DriverRating() {
         </View>
       </View>
       <CustomButton
-        buttonText="Back"
+        buttonText="Submit"
         bgColor={colors.secondary}
         pHorizontal={'20%'}
         bRadius={50}

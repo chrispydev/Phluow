@@ -1,19 +1,28 @@
 import React from 'react';
 import Wrapper from '../components/Wrapper';
-import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
-import WaterPurchaseWrapper from '../components/home/WaterPurchaseWrapper';
+import CancelOder from '../components/CancelOrder';
+import DriverRating from '../components/DriverRating';
 
 export default function HomeScreen() {
   return (
-    <Wrapper removePadding show>
-      <GestureHandlerRootView>
-        <WaterPurchaseWrapper
-          name={'Sachets water'}
-          price={'GHc 10.00'}
-          volume={'500ml'}
-          image={require('../assets/rober.png')}
-        />
-      </GestureHandlerRootView>
+    <Wrapper>
+      <DriverRating />
     </Wrapper>
   );
 }
+// import React from 'react';
+// import Wrapper from '../components/Wrapper';
+// import {GestureHandlerRootView} from 'react-native-gesture-handler';
+// import WaterPurchaseWrapper from '../components/home/WaterPurchaseWrapper';
+// import PayOnDelivery from '../components/PayOnDelivery';
+// import EndTrip from '../components/EndTrip';
+//
+// export default function HomeScreen() {
+//   return (
+//     <Wrapper removePadding show>
+//       <GestureHandlerRootView>
+//         <EndTrip />
+//       </GestureHandlerRootView>
+//     </Wrapper>
+//   );
+// }
