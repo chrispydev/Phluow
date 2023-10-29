@@ -152,7 +152,7 @@ export default function Services({navigation}) {
             justifyContent: 'center',
             alignItems: 'center',
             gap: 10,
-            marginTop: hideText ? '-10%' : '4%',
+            marginTop: hideText ? '-14%' : '4%',
             paddingVertical: hideText ? '2%' : '0',
             marginBottom: hideText ? '7%' : 0,
             backgroundColor: hideText ? colors.boxColor : colors.primaryDarker,
