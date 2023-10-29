@@ -10,20 +10,38 @@ import {
 } from 'react-native';
 import {colors} from '../styles/colors';
 
-const DynamicHeader = ({navigation}) => {
+const Header_Max_Height = 240;
+const Header_Min_Height = 120;
+const Scroll_Distance = Header_Min_Height - Header_Min_Height;
+
+const DynamicHeader = ({value, navigation}) => {
+  const animatedHeaderHeight = value.interpolate({
+    inputRange: [0, Scroll_Distance],
+    outputRange: [Header_Max_Height, Header_Min_Height],
+    extralpolate: 'clamp',
+  });
+
+  const animatedHeaderColor = value.interpolate({
+    inputRange: [0, Scroll_Distance],
+    outputRange: ['#181D31', '#678983'],
+    extralpolate: 'clamp',
+  });
+
   return (
     <View
       style={{
-        height: 230,
+        height: 200,
+        // height: animatedHeaderHeight,
+        // backgroundColor: animatedHeaderColor,
       }}>
       <ImageBackground
         source={require('../assets/imag1.png')}
-        imageStyle={{
-          height: 230,
-        }}
+        imageStyle={{flex: 1, height: 240, zIndex: -99999}}
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
+          borderBottomWidth: 10,
+          borderColor: colors.starColor,
         }}>
         <TouchableOpacity
           style={{
@@ -74,38 +92,33 @@ export default function Services({navigation}) {
         backgroundColor: colors.primary,
         fontFamily: 'Roboto_400Regular',
       }}>
-      <DynamicHeader navigation={navigation} />
-      <View
+      <DynamicHeader value={scrollOffsetY} navigation={navigation} />
+      <Image
         style={{
-          borderTopWidth: 10,
-          borderColor: colors.modalSheetColor,
-        }}>
-        <Image
-          style={{
-            borderWidth: 10,
-            borderColor: colors.modalSheetColor,
-            borderRadius: 20,
-            width: 135,
-            height: 130,
-            objectFit: 'contain',
-            bottom: '50%',
-            left: '4%',
-            zIndex: 99999,
-          }}
-          source={require('../assets/imag4.png')}
-        />
-        <View style={{paddingHorizontal: '5%', marginTop: '-5%'}}>
-          <Text
-            style={{
-              color: colors.secondaryText,
-              fontSize: 20,
-              fontWeight: '300',
-              letterSpacing: 1,
-            }}>
-            Welcome to [company name], your one-name
-          </Text>
+          borderWidth: 10,
+          borderColor: colors.primaryDark,
+          borderRadius: 15,
+          height: '15%',
+          width: '25%',
+          objectFit: 'contain',
+          left: '5%',
+        }}
+        source={require('../assets/imag4.png')}
+      />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {y: scrollOffsetY}}}],
+          {useNativeDriver: false},
+        )}>
+        <View>
+          {[...new Array(50)].map((_, index) => (
+            <View style={{backgroundColor: colors.textLightColor}}>
+              <Text style={{color: colors.secondaryText}}>{index}</Text>
+            </View>
+          ))}
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }

@@ -39,9 +39,7 @@ export default function RNBSheetWrapper({
           title="Press Modal"
           color="black"
         />
-        {/*
         <MapComponent />
-        */}
         <BottomSheetModal
           handleIndicatorStyle={{backgroundColor: 'white', width: '45%'}}
           backgroundStyle={{
