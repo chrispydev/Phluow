@@ -1,6 +1,13 @@
 import * as React from 'react';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import {Image} from 'react-native';
+
+import {useSelector} from 'react-redux';
+
 import SignUpScreen from './screens/SignUpScreen';
 import SigninScreen from './screens/SignInScreen';
 import PasswordReset from './screens/PasswordReset';
@@ -8,10 +15,9 @@ import ConfirmEmailOtp from './screens/ConfirmEmailOtp';
 import HomeScreen from './screens/HomeScreen';
 import PickUpOrder from './screens/PickUpOrder';
 import Services from './screens/Services';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {colors} from './styles/colors';
-import {Image} from 'react-native';
 import WelcomeScreen from './screens/WelcomeScreen';
+
+import {colors} from './styles/colors';
 
 const screenOptions = ({route}) => ({
   tabBarIcon: ({focused}) => {
@@ -63,19 +69,28 @@ function HomeTabs() {
 }
 
 function App() {
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="home-tab"
+        initialRouteName="welcome"
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="signUp" component={SignUpScreen} />
-        <Stack.Screen name="signin" component={SigninScreen} />
-        <Stack.Screen name="password-reset" component={PasswordReset} />
-        <Stack.Screen name="confirm-email" component={ConfirmEmailOtp} />
-        <Stack.Screen name="welcome" component={WelcomeScreen} />
-        <Stack.Screen name="home-tab" component={HomeTabs} />
+        {isAuthenticated ? (
+          <>
+            <Stack.Screen name="home-tab" component={HomeTabs} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="password-reset" component={PasswordReset} />
+            <Stack.Screen name="confirm-email" component={ConfirmEmailOtp} />
+            <Stack.Screen name="signin" component={SigninScreen} />
+            <Stack.Screen name="signUp" component={SignUpScreen} />
+            <Stack.Screen name="welcome" component={WelcomeScreen} />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -86,6 +86,7 @@ export default function SigninScreen({navigation}) {
             placeHolderText="Phone Number"
             secureText={false}
             iconLeft={require('../assets/calladd.png')}
+            bRadius={20}
           />
 
           <Text style={styles.label}>Login With Your Email Instead</Text>
@@ -94,7 +95,8 @@ export default function SigninScreen({navigation}) {
           <FormInput
             placeHolderText="Password"
             secureText={secure}
-            iconLeft={require('../assets/key.png')}>
+            iconLeft={require('../assets/key.png')}
+            bRadius={20}>
             <TouchableOpacity
               style={{marginRight: 10}}
               onPress={() => setSecure(!secure)}>
