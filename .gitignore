@@ -64,3 +64,11 @@ yarn-error.log
 
 # testing
 /coverage
+
+# hiding other files
+about
+notes
+
+# backend python
+backend/venv
+backend/db.sqlite3
