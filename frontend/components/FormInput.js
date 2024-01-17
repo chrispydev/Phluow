@@ -13,6 +13,7 @@ export default function FormInput({
   fSize,
   fWeight,
   bRadius,
+  handleInputChange,
   children,
 }) {
   return (
@@ -46,6 +47,7 @@ export default function FormInput({
           placeholder={placeHolderText}
           secureTextEntry={secureText}
           keyboardType={keyboardType}
+          onChangeText={handleInputChange}
         />
       </View>
       {children}

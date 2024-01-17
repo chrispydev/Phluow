@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import axios from 'axios';
+
 import CustomButton from '../components/CustomButton';
 import FormInput from '../components/FormInput';
 import Wrapper from '../components/Wrapper';
@@ -21,11 +23,55 @@ import {globalStyles} from '../styles/global';
 export default function SigninScreen({navigation}) {
   const [secure, setSecure] = useState(true);
 
+  const [phone_number, setPhoneNumber] = useState('');
+  const [password, setPassword] = useState('');
+
   const [visible, setVisible] = useState(false);
+
+  const urlEndpoint = 'http://10.11.110.236';
 
   const handleSubmit = () => {
     navigation.navigate('confirm-email');
     setVisible(!visible);
+  };
+
+  const login = async () => {
+    try {
+      // Fetch CSRF token
+      const csrfResponse = await axios.get(
+        urlEndpoint + '/company-auth/login/',
+      );
+      const csrfToken = csrfResponse.data.csrfToken;
+
+      // Make POST request with CSRF token in headers
+      const response = await axios.post(
+        urlEndpoint + '/company-auth/login/',
+        {
+          phone_number: phone_number,
+          password: password,
+        },
+        {
+          headers: {
+            'X-CSRFToken': csrfToken,
+            'Content-Type': 'application/json', // Set Content-Type header to indicate JSON data
+          },
+        },
+      );
+      console.log('Response data:', response.data);
+    } catch (error) {
+      Alert.alert(
+        'Authentication Failed',
+        'Your username or password is incorrect. Please try again.',
+        [
+          {
+            text: 'OK',
+            onPress: () => {}, // Empty onPress handler to close the alert
+          },
+        ],
+        {cancelable: false}, // Prevent dismissing the alert by tapping outside or pressing back button
+      );
+      console.error('Network request error:', error);
+    }
   };
 
   return (
@@ -87,6 +133,7 @@ export default function SigninScreen({navigation}) {
             secureText={false}
             iconLeft={require('../assets/calladd.png')}
             bRadius={20}
+            handleInputChange={text => setPhoneNumber(text)}
           />
 
           <Text style={styles.label}>Login With Your Email Instead</Text>
@@ -96,7 +143,8 @@ export default function SigninScreen({navigation}) {
             placeHolderText="Password"
             secureText={secure}
             iconLeft={require('../assets/key.png')}
-            bRadius={20}>
+            bRadius={20}
+            handleInputChange={text => setPassword(text)}>
             <TouchableOpacity
               style={{marginRight: 10}}
               onPress={() => setSecure(!secure)}>
@@ -115,7 +163,7 @@ export default function SigninScreen({navigation}) {
         <CustomButton
           bgColor={colors.secondary}
           buttonText="Sign in"
-          buttonAction={() => setVisible(!visible)}
+          buttonAction={() => login(!visible)}
         />
         <View style={{marginTop: 12}}>
           <View
