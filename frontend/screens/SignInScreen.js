@@ -13,12 +13,17 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import axios from 'axios';
 
+import {useDispatch} from 'react-redux';
+
 import CustomButton from '../components/CustomButton';
 import FormInput from '../components/FormInput';
 import Wrapper from '../components/Wrapper';
 import {colors} from '../styles/colors';
 import PopupConfirmation from '../components/PopupConfirmation';
 import {globalStyles} from '../styles/global';
+import LoadingIndicator from '../components/LoadingIndicator';
+
+import {setAuthUserData} from '../store/features/auth';
 
 export default function SigninScreen({navigation}) {
   const [secure, setSecure] = useState(true);
@@ -26,17 +31,22 @@ export default function SigninScreen({navigation}) {
   const [phone_number, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
+  const [loadingState, setLoadingState] = useState(false);
+
   const [visible, setVisible] = useState(false);
 
   const urlEndpoint = 'http://10.11.110.236';
 
   const handleSubmit = () => {
-    navigation.navigate('confirm-email');
     setVisible(!visible);
+    navigation.navigate('confirm-email');
   };
+
+  const dispatch = useDispatch();
 
   const login = async () => {
     try {
+      setLoadingState(true);
       // Fetch CSRF token
       const csrfResponse = await axios.get(
         urlEndpoint + '/company-auth/login/',
@@ -58,7 +68,10 @@ export default function SigninScreen({navigation}) {
         },
       );
       console.log('Response data:', response.data);
+      dispatch(setAuthUserData(response.data));
+      handleSubmit();
     } catch (error) {
+      setLoadingState(false);
       Alert.alert(
         'Authentication Failed',
         'Your username or password is incorrect. Please try again.',
@@ -114,6 +127,8 @@ export default function SigninScreen({navigation}) {
           height={60}
         />
       </PopupConfirmation>
+      {/*loading indicator*/}
+      <LoadingIndicator loadingState={loadingState} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.welcomesigninTextContainer}>
           <Image
@@ -248,7 +263,7 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     textTransform: 'capitalize',
     letterSpacing: 0.24,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'Inter',
   },
   welcomeText: {
     color: colors.secondaryText,
@@ -256,6 +271,7 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: '400',
     lineHeight: 30,
+    fontFamily: 'Inter-Light',
   },
   label: {
     color: colors.secondaryText,
