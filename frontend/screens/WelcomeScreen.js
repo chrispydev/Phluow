@@ -18,7 +18,10 @@ import useCustomDimensions from '../hooks/useCustomDimension';
 export default function WelcomeScreen({navigation}) {
   const {heightPercentage} = useCustomDimensions('0%', '62%');
   const {widthPercentage: fsp} = useCustomDimensions('9%', '0%');
-  const {widthPercentage: wlp} = useCustomDimensions('4%', '0%');
+  const {widthPercentage: wlp, heightPercentage: wlwp} = useCustomDimensions(
+    '4%',
+    '3%',
+  );
   const {heightPercentage: wip} = useCustomDimensions('0%', '43%');
   const {heightPercentage: sip} = useCustomDimensions('0%', '3.5%');
   const {heightPercentage: lip} = useCustomDimensions('0%', '5%');
@@ -50,7 +53,7 @@ export default function WelcomeScreen({navigation}) {
                 ]}>
                 Order With Ease
               </Text>
-              <Text style={[styles.text, {fontSize: wlp, lineHeight: lip}]}>
+              <Text style={[styles.text, {fontSize: wlp, lineHeight: wlwp}]}>
                 Find, order, and track the delivery of water from reliable and
                 certified suppliers.
               </Text>
@@ -70,7 +73,7 @@ export default function WelcomeScreen({navigation}) {
                 ]}>
                 We made it simple
               </Text>
-              <Text style={[styles.text, {fontSize: wlp}]}>
+              <Text style={[styles.text, {fontSize: wlp, lineHeight: wlwp}]}>
                 phluow for customers is the best way to meet your water needs.{' '}
               </Text>
               <View style={styles.carouselBars}>
