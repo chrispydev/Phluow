@@ -14,6 +14,8 @@ export default function FormInput({
   fWeight,
   bRadius,
   handleInputChange,
+  height,
+  width,
   children,
 }) {
   return (
@@ -24,6 +26,8 @@ export default function FormInput({
           backgroundColor: bgColor ? bgColor : colors.boxColor,
           elevation: elevation ? elevation : 2,
           borderRadius: bRadius && bRadius,
+          width: width,
+          height: height,
         },
       ]}>
       <View
@@ -57,8 +61,6 @@ export default function FormInput({
 
 const styles = StyleSheet.create({
   input: {
-    width: '100%',
-    height: 80,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

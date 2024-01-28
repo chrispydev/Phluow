@@ -9,6 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {colors} from '../styles/colors';
+import useCustomDimensions from '../hooks/useCustomDimension';
 
 export default function Wrapper({
   children,
@@ -17,6 +18,9 @@ export default function Wrapper({
   navigation,
   removePadding,
 }) {
+  const {widthPercentage: hBorderWP, heightPercentage: hBorderHP} =
+    useCustomDimensions('5%', '0%');
+
   return (
     <SafeAreaView style={styles.Container}>
       <StatusBar backgroundColor="#000" />
@@ -55,7 +59,7 @@ export default function Wrapper({
       </View>
       <View
         style={{
-          paddingHorizontal: removePadding ? 0 : 32,
+          paddingHorizontal: removePadding ? 0 : hBorderWP,
           position: 'relative',
         }}>
         {children}

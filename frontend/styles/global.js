@@ -12,7 +12,7 @@ export const globalStyles = StyleSheet.create({
     fontSize: 40,
     fontWeight: '700',
     textTransform: 'capitalize',
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'Inter',
   },
   welcomeText: {
     color: colors.secondaryText,

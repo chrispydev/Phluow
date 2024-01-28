@@ -17,8 +17,30 @@ import CustomButton from '../components/CustomButton';
 import PopupConfirmation from '../components/PopupConfirmation';
 import Wrapper from '../components/Wrapper';
 import {globalStyles} from '../styles/global';
+import useCustomDimensions from '../hooks/useCustomDimension';
 
 export default function SignUpScreen({navigation}) {
+  const {widthPercentage: helloWP, heightPercentage: helloHP} =
+    useCustomDimensions('9%', '6%');
+
+  const {widthPercentage: welcomeWP, heightPercentage: welcomeHP} =
+    useCustomDimensions('4.5%', '2.6%');
+
+  const {widthPercentage: inputTextWP, heightPercentage: inputTextHP} =
+    useCustomDimensions('85%', '8.5%');
+
+  const {widthPercentage: borderWP, heightPercentage: borderHP} =
+    useCustomDimensions('5%', '10%');
+
+  const {widthPercentage: labelWP, heightPercentage: labelHP} =
+    useCustomDimensions('4.4%', '4%');
+
+  const {widthPercentage: buttonWP, heightPercentage: buttonHP} =
+    useCustomDimensions('43%', '8.5%');
+
+  const {widthPercentage: buttonFontWP, heightPercentage: buttonFontHP} =
+    useCustomDimensions('5%', '3.4%');
+
   const [secure, setSecure] = useState(true);
   const [visible, setVisible] = useState(false);
 
@@ -73,31 +95,50 @@ export default function SignUpScreen({navigation}) {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text style={styles.text}>Find, Order With</Text>
-          <Text style={styles.text}>Ease</Text>
+          <Text style={[styles.text, {fontSize: helloWP, lineHeight: helloHP}]}>
+            Find, Order With
+          </Text>
+          <Text style={[styles.text, {fontSize: helloWP, lineHeight: helloHP}]}>
+            Ease
+          </Text>
         </View>
-        <Text style={styles.text1}>Let's Create An Account to Continue</Text>
+        <Text
+          style={[styles.text1, {fontSize: welcomeWP, lineHeight: welcomeHP}]}>
+          Let's Create An Account to Continue
+        </Text>
         <View style={{marginTop: 29, gap: 15, marginBottom: 100}}>
           <FormInput
             placeHolderText="Full Name"
             secureText={false}
+            width={inputTextWP}
+            height={inputTextHP}
+            bRadius={borderWP}
             iconLeft={require('../assets/profile.png')}
           />
           <FormInput
             keyboardType="email-address"
             placeHolderText="Email Address"
             secureText={false}
+            width={inputTextWP}
+            height={inputTextHP}
+            bRadius={borderWP}
             iconLeft={require('../assets/smsnotification.png')}
           />
           <FormInput
             keyboardType="phone-pad"
             placeHolderText="Phone Number"
             secureText={false}
+            width={inputTextWP}
+            height={inputTextHP}
+            bRadius={borderWP}
             iconLeft={require('../assets/calladd.png')}
           />
           <FormInput
             placeHolderText="Password"
             secureText={secure}
+            width={inputTextWP}
+            height={inputTextHP}
+            bRadius={borderWP}
             iconLeft={require('../assets/key.png')}>
             <TouchableOpacity onPress={() => setSecure(!secure)}>
               {secure ? (
@@ -111,9 +152,9 @@ export default function SignUpScreen({navigation}) {
             style={{
               color: colors.secondaryText,
               textTransform: 'capitalize',
-              fontWeight: '400',
-              fontSize: 14,
-              lineHeight: 20,
+              fontFamily: 'Inter-Light',
+              fontSize: labelWP,
+              lineHeight: labelHP,
             }}>
             Register As:
           </Text>
@@ -124,8 +165,12 @@ export default function SignUpScreen({navigation}) {
               alignItems: 'center',
             }}>
             <CustomButton
-              pHorizontal={15}
+              pHorizontal={borderWP}
+              width={buttonWP}
+              height={buttonHP}
               buttonText="An Individual"
+              fontSize={buttonFontWP}
+              lineHeight={buttonFontHP}
               bgColor={colors.boxColor}>
               <Image
                 style={{width: 20, height: 20, marginRight: 7}}
@@ -133,7 +178,11 @@ export default function SignUpScreen({navigation}) {
               />
             </CustomButton>
             <CustomButton
-              pHorizontal={15}
+              pHorizontal={borderWP}
+              width={buttonWP}
+              height={buttonHP}
+              fontSize={buttonFontWP}
+              lineHeight={buttonFontHP}
               buttonText="A Business"
               bgColor={colors.boxColor}>
               <Image
@@ -144,6 +193,11 @@ export default function SignUpScreen({navigation}) {
           </View>
 
           <CustomButton
+            pHorizontal={borderWP}
+            height={inputTextHP}
+            width={inputTextWP}
+            fontSize={buttonFontWP}
+            lineHeight={buttonFontHP}
             bgColor={colors.secondary}
             buttonText="Create Account"
             buttonAction={() => setVisible(!visible)}
@@ -158,9 +212,10 @@ export default function SignUpScreen({navigation}) {
             <Text
               style={{
                 textAlign: 'center',
-                fontWeight: '300',
+                fontSize: labelWP,
+                lineHeight: labelHP,
+                fontFamily: 'Inter-Light',
                 textTransform: 'capitalize',
-                fontSize: 22,
                 color: colors.secondaryText,
               }}>
               Already Have An Account
@@ -187,19 +242,15 @@ export default function SignUpScreen({navigation}) {
 const styles = StyleSheet.create({
   text: {
     color: colors.secondaryText,
-    fontSize: 40,
-    fontWeight: '700',
     textTransform: 'capitalize',
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'Inter-Bold',
   },
   text1: {
-    fontWeight: '300',
+    fontFamily: 'Inter-Light',
     textTransform: 'capitalize',
-    lineHeight: 20,
     fontStyle: 'normal',
     textAlign: 'center',
     marginTop: 19,
-    fontSize: 19,
     color: colors.secondaryText,
   },
 });

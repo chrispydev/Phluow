@@ -21,6 +21,9 @@ export default function WelcomeScreen({navigation}) {
   const {widthPercentage: wlp} = useCustomDimensions('4%', '0%');
   const {heightPercentage: wip} = useCustomDimensions('0%', '43%');
   const {heightPercentage: sip} = useCustomDimensions('0%', '3.5%');
+  const {heightPercentage: lip} = useCustomDimensions('0%', '5%');
+  const {widthPercentage: buttonFontWP, heightPercentage: buttonFontHP} =
+    useCustomDimensions('5%', '3.4%');
 
   return (
     <ScrollView style={{backgroundColor: colors.primary}}>
@@ -38,11 +41,16 @@ export default function WelcomeScreen({navigation}) {
               <Text
                 style={[
                   [styles.text],
-                  {fontSize: fsp, fontWeight: '700', marginBottom: 10},
+                  {
+                    fontSize: fsp,
+                    fontWeight: '700',
+                    marginBottom: 10,
+                    lineHeight: lip,
+                  },
                 ]}>
                 Order With Ease
               </Text>
-              <Text style={[styles.text, {fontSize: wlp, lineHeight: 20}]}>
+              <Text style={[styles.text, {fontSize: wlp, lineHeight: lip}]}>
                 Find, order, and track the delivery of water from reliable and
                 certified suppliers.
               </Text>
@@ -62,7 +70,7 @@ export default function WelcomeScreen({navigation}) {
                 ]}>
                 We made it simple
               </Text>
-              <Text style={[styles.text, {fontSize: wlp, lineHeight: 20}]}>
+              <Text style={[styles.text, {fontSize: wlp}]}>
                 phluow for customers is the best way to meet your water needs.{' '}
               </Text>
               <View style={styles.carouselBars}>
@@ -77,6 +85,8 @@ export default function WelcomeScreen({navigation}) {
             pHorizontal={29}
             bgColor={colors.secondary}
             bRadius={15}
+            fontSize={buttonFontWP}
+            lineHeight={buttonFontHP}
             buttonText="Create An Account"
             fontWeight={'400'}
             buttonAction={() => navigation.navigate('signUp')}
@@ -84,7 +94,10 @@ export default function WelcomeScreen({navigation}) {
           <TouchableOpacity
             style={styles.buttonText1}
             onPress={() => navigation.navigate('signin')}>
-            <Text style={[styles.buttonText1, {fontSize: sip}]}>Sign In</Text>
+            <Text
+              style={[styles.buttonText1, {fontSize: sip, lineHeight: lip}]}>
+              Sign In
+            </Text>
           </TouchableOpacity>
 
           <Text style={[styles.buttonText2, {fontSize: wlp}]}>

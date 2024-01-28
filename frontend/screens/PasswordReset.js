@@ -5,8 +5,15 @@ import {colors} from '../styles/colors';
 import FormInput from '../components/FormInput';
 import CustomButton from '../components/CustomButton';
 import {globalStyles} from '../styles/global';
+import useCustomDimensions from '../hooks/useCustomDimension';
 
 export default function PasswordReset({navigation}) {
+  const {widthPercentage: borderWP, heightPercentage: borderHP} =
+    useCustomDimensions('5%', '10%');
+
+  const {widthPercentage: customButtonWP, heightPercentage: customButtonHP} =
+    useCustomDimensions('85%', '8.5%');
+
   return (
     <Wrapper show navigation={navigation}>
       <View style={globalStyles.welcomesigninTextContainer}>
@@ -33,10 +40,16 @@ export default function PasswordReset({navigation}) {
           keyboardType="email-address"
           placeHolderText="Email Address"
           secureText={false}
+          width={customButtonWP}
+          height={customButtonHP}
+          bRadius={borderWP}
           iconLeft={require('../assets/smsnotification.png')}
         />
         <CustomButton
           bgColor={colors.secondary}
+          width={customButtonWP}
+          height={customButtonHP}
+          bRadius={borderWP}
           buttonText="Reset Email Address"
         />
       </View>

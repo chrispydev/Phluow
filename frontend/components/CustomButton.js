@@ -1,5 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import useCustomDimensions from '../hooks/useCustomDimension';
 
 export default function CustomButton({
   buttonText,
@@ -14,6 +15,8 @@ export default function CustomButton({
   width,
   elevation,
   fontWeight,
+  fontSize,
+  lineHeight,
 }) {
   return (
     <TouchableOpacity
@@ -35,7 +38,11 @@ export default function CustomButton({
       <Text
         style={[
           styles.buttonText,
-          {fontWeight: fontWeight ? fontWeight : '500'},
+          {
+            fontWeight: fontWeight ? fontWeight : '500',
+            fontSize: fontSize,
+            lineHeight: lineHeight,
+          },
         ]}>
         {buttonText}
       </Text>
@@ -53,6 +60,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 25,
+    fontFamily: 'Inter',
     textTransform: 'capitalize',
   },
 });

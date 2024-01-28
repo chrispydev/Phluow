@@ -24,8 +24,30 @@ import {globalStyles} from '../styles/global';
 import LoadingIndicator from '../components/LoadingIndicator';
 
 import {setAuthUserData} from '../store/features/auth';
+import useCustomDimensions from '../hooks/useCustomDimension';
 
 export default function SigninScreen({navigation}) {
+  const {widthPercentage: hwImage, heightPercentage: hImage} =
+    useCustomDimensions('60%', '8%');
+
+  const {widthPercentage: helloWP, heightPercentage: helloHP} =
+    useCustomDimensions('10%', '8%');
+
+  const {widthPercentage: welcomeWP, heightPercentage: welcomeHP} =
+    useCustomDimensions('5%', '2.6%');
+
+  const {widthPercentage: borderWP, heightPercentage: borderHP} =
+    useCustomDimensions('5%', '10%');
+
+  const {widthPercentage: labelWP, heightPercentage: labelHP} =
+    useCustomDimensions('4.4%', '4%');
+
+  const {widthPercentage: customButtonWP, heightPercentage: customButtonHP} =
+    useCustomDimensions('85%', '8.5%');
+
+  const {widthPercentage: buttonFontWP, heightPercentage: buttonFontHP} =
+    useCustomDimensions('6.5%', '4%');
+
   const [secure, setSecure] = useState(true);
 
   const [phone_number, setPhoneNumber] = useState('');
@@ -103,6 +125,7 @@ export default function SigninScreen({navigation}) {
               color: colors.secondaryText,
               textAlign: 'center',
               fontSize: 25,
+              fontFamily: 'Inter',
             }}>
             Success!
           </Text>
@@ -125,6 +148,8 @@ export default function SigninScreen({navigation}) {
           pHorizontal={100}
           bRadius={120}
           height={60}
+          fontSize={buttonFontWP}
+          lineHeight={buttonFontHP}
         />
       </PopupConfirmation>
       {/*loading indicator*/}
@@ -132,13 +157,27 @@ export default function SigninScreen({navigation}) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.welcomesigninTextContainer}>
           <Image
-            style={globalStyles.image}
+            style={{width: hwImage, height: hImage}}
             source={require('../assets/signin.png')}
           />
-          <Text style={styles.text}>Hello There</Text>
+          <Text style={[styles.text, {fontSize: helloWP, lineHeight: helloHP}]}>
+            Hello There
+          </Text>
           <View style={{gap: 5}}>
-            <Text style={styles.welcomeText}>Welcome Back</Text>
-            <Text style={styles.welcomeText}>Please sign in!</Text>
+            <Text
+              style={[
+                styles.welcomeText,
+                {fontSize: welcomeWP, lineHeight: welcomeHP},
+              ]}>
+              Welcome Back
+            </Text>
+            <Text
+              style={[
+                styles.welcomeText,
+                {fontSize: welcomeWP, lineHeight: welcomeHP},
+              ]}>
+              Please sign in!
+            </Text>
           </View>
         </View>
         <View style={{gap: 12, marginTop: 40}}>
@@ -147,18 +186,25 @@ export default function SigninScreen({navigation}) {
             placeHolderText="Phone Number"
             secureText={false}
             iconLeft={require('../assets/calladd.png')}
-            bRadius={20}
+            bRadius={borderWP}
+            width={customButtonWP}
+            height={customButtonHP}
             handleInputChange={text => setPhoneNumber(text)}
           />
 
-          <Text style={styles.label}>Login With Your Email Instead</Text>
+          <Text
+            style={[styles.label, {fontSize: labelWP, lineHeight: labelHP}]}>
+            Login With Your Email Instead
+          </Text>
         </View>
         <View style={{gap: 12, marginVertical: 12}}>
           <FormInput
             placeHolderText="Password"
             secureText={secure}
             iconLeft={require('../assets/key.png')}
-            bRadius={20}
+            bRadius={borderWP}
+            width={customButtonWP}
+            height={customButtonHP}
             handleInputChange={text => setPassword(text)}>
             <TouchableOpacity
               style={{marginRight: 10}}
@@ -172,13 +218,21 @@ export default function SigninScreen({navigation}) {
           </FormInput>
           <TouchableOpacity
             onPress={() => navigation.navigate('password-reset')}>
-            <Text style={styles.label}>Forget Your Password</Text>
+            <Text
+              style={[styles.label, {fontSize: labelWP, lineHeight: labelHP}]}>
+              Forget Your Password
+            </Text>
           </TouchableOpacity>
         </View>
         <CustomButton
           bgColor={colors.secondary}
           buttonText="Sign in"
           buttonAction={() => login(!visible)}
+          bRadius={borderWP}
+          fontSize={buttonFontWP}
+          lineHeight={buttonFontHP}
+          width={customButtonWP}
+          height={customButtonHP}
         />
         <View style={{marginTop: 12}}>
           <View
@@ -197,7 +251,7 @@ export default function SigninScreen({navigation}) {
             />
             <Text
               style={{
-                fontSize: 20,
+                fontSize: labelWP,
                 paddingHorizontal: 10,
                 color: colors.secondaryText,
               }}>
@@ -214,7 +268,12 @@ export default function SigninScreen({navigation}) {
           <CustomButton
             buttonText="Sign In With Google"
             bgColor={colors.boxColor}
-            pHorizontal={29}>
+            pHorizontal={29}
+            width={customButtonWP}
+            height={customButtonHP}
+            fontSize={buttonFontWP}
+            lineHeight={buttonFontHP}
+            bRadius={borderWP}>
             <Image
               style={{width: 20, height: 20, marginRight: 7}}
               source={require('../assets/Group1434.png')}
@@ -229,14 +288,20 @@ export default function SigninScreen({navigation}) {
             marginTop: 20,
             marginBottom: 20,
           }}>
-          <Text style={{color: colors.secondaryText, fontSize: 20}}>
+          <Text
+            style={{
+              color: colors.secondaryText,
+              fontSize: labelWP,
+              lineHeight: labelHP,
+              fontFamily: 'Inter-Light',
+            }}>
             Don't Have An Account?
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('signUp')}>
             <Text
               style={{
                 color: colors.secondary,
-                fontWeight: '500',
+                fontFamily: 'Inter-Light',
                 textAlign: 'center',
                 textTransform: 'capitalize',
                 fontSize: 20,
@@ -259,7 +324,6 @@ export const styles = StyleSheet.create({
   },
   text: {
     color: colors.secondaryText,
-    fontSize: 45,
     fontWeight: '700',
     textTransform: 'capitalize',
     letterSpacing: 0.24,
@@ -268,16 +332,12 @@ export const styles = StyleSheet.create({
   welcomeText: {
     color: colors.secondaryText,
     textAlign: 'center',
-    fontSize: 25,
     fontWeight: '400',
-    lineHeight: 30,
     fontFamily: 'Inter-Light',
   },
   label: {
     color: colors.secondaryText,
-    fontSize: 22,
-    fontWeight: '400',
-    lineHeight: 30,
+    fontFamily: 'Inter-Light',
     textTransform: 'capitalize',
   },
 });
