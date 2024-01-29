@@ -8,6 +8,13 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+
+import {
+  OrientationLocker,
+  PORTRAIT,
+  LANDSCAPE,
+} from 'react-native-orientation-locker';
+
 import CustomButton from '../components/CustomButton';
 import PagerView from 'react-native-pager-view';
 import ImageGrid from '../components/ImageGrid';
@@ -30,6 +37,13 @@ export default function WelcomeScreen({navigation}) {
 
   return (
     <ScrollView style={{backgroundColor: colors.primary}}>
+      <OrientationLocker
+        orientation={PORTRAIT}
+        onChange={orientation => console.log('onChange', orientation)}
+        onDeviceChange={orientation =>
+          console.log('onDeviceChange', orientation)
+        }
+      />
       <Wrapper navigation={navigation}>
         <StatusBar backgroundColor="#000" />
         <PagerView

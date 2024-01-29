@@ -16,7 +16,11 @@ import FormInput from '../components/FormInput';
 import CustomButton from '../components/CustomButton';
 import PopupConfirmation from '../components/PopupConfirmation';
 import Wrapper from '../components/Wrapper';
-import {globalStyles} from '../styles/global';
+import {
+  OrientationLocker,
+  PORTRAIT,
+  LANDSCAPE,
+} from 'react-native-orientation-locker';
 import useCustomDimensions from '../hooks/useCustomDimension';
 
 export default function SignUpScreen({navigation}) {
@@ -51,6 +55,13 @@ export default function SignUpScreen({navigation}) {
 
   return (
     <Wrapper show navigation={navigation}>
+      <OrientationLocker
+        orientation={PORTRAIT}
+        onChange={orientation => console.log('onChange', orientation)}
+        onDeviceChange={orientation =>
+          console.log('onDeviceChange', orientation)
+        }
+      />
       <StatusBar backgroundColor="#000" />
       <PopupConfirmation
         visible={visible}

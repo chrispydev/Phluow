@@ -9,6 +9,11 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
+import {
+  OrientationLocker,
+  PORTRAIT,
+  LANDSCAPE,
+} from 'react-native-orientation-locker';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import axios from 'axios';
@@ -111,6 +116,13 @@ export default function SigninScreen({navigation}) {
 
   return (
     <Wrapper show navigation={navigation}>
+      <OrientationLocker
+        orientation={PORTRAIT}
+        onChange={orientation => console.log('onChange', orientation)}
+        onDeviceChange={orientation =>
+          console.log('onDeviceChange', orientation)
+        }
+      />
       <StatusBar backgroundColor="#000" />
       <PopupConfirmation
         visible={visible}
