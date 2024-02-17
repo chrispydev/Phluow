@@ -12,7 +12,7 @@ import {
 import {
   OrientationLocker,
   PORTRAIT,
-  LANDSCAPE,
+  // LANDSCAPE,
 } from 'react-native-orientation-locker';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -25,11 +25,11 @@ import FormInput from '../components/FormInput';
 import Wrapper from '../components/Wrapper';
 import {colors} from '../styles/colors';
 import PopupConfirmation from '../components/PopupConfirmation';
-import {globalStyles} from '../styles/global';
 import LoadingIndicator from '../components/LoadingIndicator';
 
 import {setAuthUserData} from '../store/features/auth';
 import useCustomDimensions from '../hooks/useCustomDimension';
+import {urlEndpoint} from '../utils/utils';
 
 export default function SigninScreen({navigation}) {
   const {widthPercentage: hwImage, heightPercentage: hImage} =
@@ -62,8 +62,6 @@ export default function SigninScreen({navigation}) {
 
   const [visible, setVisible] = useState(false);
 
-  const urlEndpoint = 'http://10.11.110.236';
-
   const handleSubmit = () => {
     setVisible(!visible);
     navigation.navigate('confirm-email');
@@ -75,14 +73,12 @@ export default function SigninScreen({navigation}) {
     try {
       setLoadingState(true);
       // Fetch CSRF token
-      const csrfResponse = await axios.get(
-        urlEndpoint + '/company-auth/login/',
-      );
+      const csrfResponse = await axios.get(urlEndpoint + '/user-auth/login/');
       const csrfToken = csrfResponse.data.csrfToken;
 
       // Make POST request with CSRF token in headers
       const response = await axios.post(
-        urlEndpoint + '/company-auth/login/',
+        urlEndpoint + '/user-auth/login/',
         {
           phone_number: phone_number,
           password: password,

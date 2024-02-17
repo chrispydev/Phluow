@@ -22,6 +22,10 @@ import {
   LANDSCAPE,
 } from 'react-native-orientation-locker';
 import useCustomDimensions from '../hooks/useCustomDimension';
+import axios from 'axios';
+import {urlEndpoint} from '../utils/utils';
+import {setAuthUserData} from '../store/features/auth';
+import {useDispatch} from 'react-redux';
 
 export default function SignUpScreen({navigation}) {
   const {widthPercentage: helloWP, heightPercentage: helloHP} =
@@ -48,9 +52,62 @@ export default function SignUpScreen({navigation}) {
   const [secure, setSecure] = useState(true);
   const [visible, setVisible] = useState(false);
 
+  const dispatch = useDispatch();
+
+  // logins
+  const [full_name, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [loadingState, setLoadingState] = useState(false);
+
   const handleSubmit = () => {
     navigation.navigate('signin');
     setVisible(!visible);
+  };
+
+  const signUp = async () => {
+    try {
+      setLoadingState(true);
+      // Fetch CSRF token
+      const csrfResponse = await axios.get(urlEndpoint + '/user-auth/signup/');
+      const csrfToken = csrfResponse.data.csrfToken;
+
+      // Make POST request with CSRF token in headers
+      const response = await axios.post(
+        urlEndpoint + '/user-auth/signup/',
+        {
+          full_name: full_name,
+          email: email,
+          phone_number: phone_number,
+          password: password,
+        },
+        {
+          headers: {
+            'X-CSRFToken': csrfToken,
+            'Content-Type': 'application/json', // Set Content-Type header to indicate JSON data
+          },
+        },
+      );
+      console.log('Response data:', response.data);
+      dispatch(setAuthUserData(response.data));
+      handleSubmit();
+    } catch (error) {
+      setLoadingState(false);
+      Alert.alert(
+        'Authentication Failed',
+        'Phone number already taken. Enter a new one',
+        [
+          {
+            text: 'OK',
+            onPress: () => {}, // Empty onPress handler to close the alert
+          },
+        ],
+        {cancelable: false}, // Prevent dismissing the alert by tapping outside or pressing back button
+      );
+      console.error('Network request error:', error);
+    }
   };
 
   return (
@@ -125,6 +182,7 @@ export default function SignUpScreen({navigation}) {
             height={inputTextHP}
             bRadius={borderWP}
             iconLeft={require('../assets/profile.png')}
+            handleInputChange={text => setFullName(text)}
           />
           <FormInput
             keyboardType="email-address"
@@ -134,6 +192,7 @@ export default function SignUpScreen({navigation}) {
             height={inputTextHP}
             bRadius={borderWP}
             iconLeft={require('../assets/smsnotification.png')}
+            handleInputChange={text => setEmail(text)}
           />
           <FormInput
             keyboardType="phone-pad"
@@ -143,6 +202,7 @@ export default function SignUpScreen({navigation}) {
             height={inputTextHP}
             bRadius={borderWP}
             iconLeft={require('../assets/calladd.png')}
+            handleInputChange={text => setPhoneNumber(text)}
           />
           <FormInput
             placeHolderText="Password"
@@ -150,6 +210,7 @@ export default function SignUpScreen({navigation}) {
             width={inputTextWP}
             height={inputTextHP}
             bRadius={borderWP}
+            handleInputChange={text => setPassword(text)}
             iconLeft={require('../assets/key.png')}>
             <TouchableOpacity onPress={() => setSecure(!secure)}>
               {secure ? (
@@ -211,7 +272,7 @@ export default function SignUpScreen({navigation}) {
             lineHeight={buttonFontHP}
             bgColor={colors.secondary}
             buttonText="Create Account"
-            buttonAction={() => setVisible(!visible)}
+            buttonAction={() => signUp()}
           />
           <View
             style={{
